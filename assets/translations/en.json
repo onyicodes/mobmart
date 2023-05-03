@@ -1,0 +1,10 @@
+{
+    "appName": "MobMart",   
+    "navBar":{
+        "home":"Home",
+        "voucher":"Voucher",
+        "wallet": "Wallet",
+        "settings": "Settings"
+    }
+
+}
