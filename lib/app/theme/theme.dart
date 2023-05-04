@@ -246,13 +246,13 @@ class MobMartAppTheme {
         dialogTheme: ligthDialogTheme,
         appBarTheme: const AppBarTheme(
             foregroundColor: Colors.black,
-            backgroundColor: Color(0xffF2FDFF),
+            backgroundColor: Color(0xfff1f1f1),
             systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: Color(0xffF2FDFF),
+              systemNavigationBarColor: Colors.white, // navigation bar color
+          statusBarColor: Color(0xfff1f1f1),
                 statusBarBrightness: Brightness.light,
                 statusBarIconBrightness: Brightness.dark, // status bar color
-                systemNavigationBarContrastEnforced: false,
-                systemNavigationBarColor: Color(0xff1F88C1))),
+                systemNavigationBarContrastEnforced: true,)),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
           foregroundColor: Colors.white,
           backgroundColor: Colors.black,
@@ -356,11 +356,11 @@ class MobMartAppTheme {
         appBarTheme: AppBarTheme(
             foregroundColor: Colors.black,
             backgroundColor: darkCardColor,
-            systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: darkCardColor,
+            systemOverlayStyle:const SystemUiOverlayStyle(
+                statusBarColor: Color(0xff303030),
                 statusBarBrightness: Brightness.dark,
                 systemNavigationBarContrastEnforced: false,
-                systemNavigationBarColor: const Color(0xff1F88C1))),
+                systemNavigationBarColor: Color(0xff303030))),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
           foregroundColor: Colors.white,
           backgroundColor: Colors.black,

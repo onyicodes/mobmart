@@ -15,14 +15,7 @@ class LandingPage extends GetView<LandingController> {
         SystemUiOverlay.top, // Shows Status bar and hides Navigation bar
       ],
     );
-    {
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-          systemNavigationBarColor: Colors.white, // navigation bar color
-          statusBarColor: Color(0xffF2FDFF),
-          statusBarBrightness: Brightness.light,
-          statusBarIconBrightness: Brightness.dark // status bar color
-          ));
-    }
+    
   }
   final List<Widget> pages = const [
     Text("Home"),
