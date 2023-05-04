@@ -1,0 +1,12 @@
+[
+    {"icon": "assets/images/categories/category.png",
+     "label":"Category"},
+     {"icon":"assets/images/categories/flight.png",
+     "label":"Flight"},
+     {"icon":"assets/images/categories/bill.png",
+     "label":"Bill"},
+     {"icon":"assets/images/categories/dataplan.png",
+     "label":"Data plan"},
+     {"icon":"assets/images/categories/topup.png",
+     "label":"Top up"}
+]

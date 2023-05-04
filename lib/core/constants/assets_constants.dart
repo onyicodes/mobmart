@@ -9,5 +9,5 @@ class AssetsConstants {
   static const String navbarUnselectedVoucher = 'assets/svg/nav_bar/unselected/voucher_icon.svg';
   static const String navbarUnselectedSettings = 'assets/svg/nav_bar/unselected/settings_icon.svg';
   static const String navbarUnselectWallet = 'assets/svg/nav_bar/unselected/wallet_icon.svg';
-  
+ 
 }
