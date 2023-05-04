@@ -1,6 +1,6 @@
 
 import 'package:get/get.dart';
-import 'package:mobmart/app/features/presentation/controllers/splash_screen_controller.dart';
+import 'package:mobmart/app/features/splash/presentation/controllers/splash_screen_controller.dart';
 
 
 final getSplashscreenControllerSl = GetInstance();

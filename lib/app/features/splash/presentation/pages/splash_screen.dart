@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:mobmart/app/features/presentation/controllers/splash_screen_controller.dart';
+import 'package:mobmart/app/features/splash/presentation/controllers/splash_screen_controller.dart';
 import 'package:mobmart/core/constants/assets_constants.dart';
 
 class SplashScreenPage extends GetView<SplashScreenController> {
@@ -17,13 +18,15 @@ class SplashScreenPage extends GetView<SplashScreenController> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children:const [
+          children: [
             Align(
                 alignment: Alignment.center,
                 child:SizedBox(
                   width: 150,
                   height: 150,
-                  child: Image(image: AssetImage(AssetsConstants.logo))))
+                  child:  SvgPicture.asset(
+                                        AssetsConstants.logoSvg,
+                                        )))
           ],
         ),
       ),

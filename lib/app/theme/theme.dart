@@ -133,14 +133,64 @@ class MobMartAppTheme {
   );
 
   static IconThemeData darkIconTheme =
-      const IconThemeData(color: Color(0xffafafaf));
+      const IconThemeData(color: Color(0xffffffff));
   static IconThemeData lightIconTheme =
-      const IconThemeData(color: Color(0xff0E3692));
+      const IconThemeData(color: Color(0xff000000),size: 30);
   static BottomAppBarTheme lightBottomAppBarTheme =
       const BottomAppBarTheme(color: Color(0xffffffff));
   static DrawerThemeData drawerTheme = const DrawerThemeData(
     backgroundColor: Color(0xff1F88C1),
   );
+
+  
+
+  static NavigationBarThemeData lightNavigationBarThemeData =
+      NavigationBarThemeData(indicatorColor: Colors.transparent,iconTheme: MaterialStateProperty.all(lightIconTheme), );
+
+  static ButtonThemeData lightButtonTheme = const ButtonThemeData(
+    textTheme: ButtonTextTheme.normal,
+    minWidth: 88,
+    height: 36,
+    padding: EdgeInsets.only(top: 0, bottom: 0, left: 16, right: 16),
+    shape: RoundedRectangleBorder(
+      side: BorderSide(
+        color: Color(0xff000000),
+        width: 0,
+        style: BorderStyle.none,
+      ),
+      borderRadius: BorderRadius.all(Radius.circular(2.0)),
+    ),
+    alignedDropdown: false,
+    buttonColor: Color(0xffe0e0e0),
+    disabledColor: Color(0x61000000),
+    highlightColor: Color(0x29000000),
+    splashColor: Color(0x1f000000),
+    focusColor: Color(0x1f000000),
+    hoverColor: Color(0x0a000000),
+    colorScheme: ColorScheme(
+      primary: Color(0xff67c4a9),
+      secondary: Color(0xff47b897),
+      surface: Color(0xffffffff),
+      background: Color(0xffb6e2d5),
+      error: Color(0xffd32f2f),
+      onPrimary: Color(0xff000000),
+      onSecondary: Color(0xff000000),
+      onSurface: Color(0xff000000),
+      onBackground: Color(0xff000000),
+      onError: Color(0xffffffff),
+      brightness: Brightness.light,
+    ),
+  );
+
+  static DialogTheme ligthDialogTheme = const DialogTheme(
+      shape: RoundedRectangleBorder(
+    side: BorderSide(
+      color: Color(0xff000000),
+      width: 0,
+      style: BorderStyle.none,
+    ),
+    borderRadius: BorderRadius.all(Radius.circular(0.0)),
+  ));
 
   static DrawerThemeData darkThemeDrawerTheme = const DrawerThemeData(
     backgroundColor: Color(0xff0C4D69),
@@ -148,7 +198,35 @@ class MobMartAppTheme {
 
   static ThemeData light() {
     return ThemeData(
+        primarySwatch: const MaterialColor(4284990633, {
+          50: Color(0xffedf8f5),
+          100: Color(0xffdaf1ea),
+          200: Color(0xffb6e2d5),
+          300: Color(0xff91d4c1),
+          400: Color(0xff6cc6ac),
+          500: Color(0xff47b897),
+          600: Color(0xff399379),
+          700: Color(0xff2b6e5b),
+          800: Color(0xff1d493c),
+          900: Color(0xff0e251e)
+        }),
         brightness: Brightness.light,
+        
+        primaryColor: Color(0xff67c4a9),
+        primaryColorLight: Color(0xffdaf1ea),
+        primaryColorDark: Color(0xff2b6e5b),
+        canvasColor: Color(0xfffafafa),
+        scaffoldBackgroundColor: Color(0xfff1f1f1),
+        cardColor: Color(0xffffffff),
+        dividerColor: Color(0x1f000000),
+        highlightColor: Color(0x66bcbcbc),
+        splashColor: Color(0x66c8c8c8),
+        unselectedWidgetColor: Color(0x8a000000),
+        disabledColor: Color(0x61000000),
+        secondaryHeaderColor: Color(0xffedf8f5),
+        dialogBackgroundColor: Color(0xffffffff),
+        indicatorColor: Color(0xff47b897),
+        hintColor: Color(0x8a000000),
         checkboxTheme: CheckboxThemeData(
           fillColor: MaterialStateColor.resolveWith(
             (states) {
@@ -156,25 +234,16 @@ class MobMartAppTheme {
             },
           ),
         ),
-        indicatorColor: const Color(0xff1F88C1),
-        secondaryHeaderColor: const Color(0xff4d4d4d),
-        primaryColor: const Color(0xff0E3692),
-        primaryColorDark: const Color(0xff00374E),
-        primaryColorLight: const Color(0xff1DCDFE),
-        cardColor: const Color(0xfffdfdfd),
-        canvasColor: const Color(0xffefefef),
+        
         toggleButtonsTheme: const ToggleButtonsThemeData(
             color: Color(0xfffdfdfd), selectedColor: Color(0xff1DCDFE)),
-        dividerColor: const Color(0xffCBF3FC),
-        disabledColor: Colors.grey.shade500,
-        dialogBackgroundColor: Colors.white,
         drawerTheme: drawerTheme,
         iconTheme: lightIconTheme,
-        navigationBarTheme:
-            const NavigationBarThemeData(indicatorColor: Color(0xff34f5c5)),
+        navigationBarTheme:lightNavigationBarThemeData,
         shadowColor: Colors.grey.shade300,
-        scaffoldBackgroundColor: const Color(0xffF2FDFF),
+        buttonTheme: lightButtonTheme,
         bottomAppBarTheme: lightBottomAppBarTheme,
+        dialogTheme: ligthDialogTheme,
         appBarTheme: const AppBarTheme(
             foregroundColor: Colors.black,
             backgroundColor: Color(0xffF2FDFF),
@@ -188,18 +257,91 @@ class MobMartAppTheme {
           foregroundColor: Colors.white,
           backgroundColor: Colors.black,
         ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            selectedItemColor: Color(0xff1F88C1),
-            backgroundColor: Color(0xffffffff)),
         primaryTextTheme: primaryTextThemeLight);
   }
+
+  static ButtonThemeData darkButtonThemeData = const ButtonThemeData(
+    textTheme: ButtonTextTheme.normal,
+    minWidth: 88,
+    height: 36,
+    padding: EdgeInsets.only(top: 0, bottom: 0, left: 16, right: 16),
+    shape: RoundedRectangleBorder(
+      side: BorderSide(
+        color: Color(0xff000000),
+        width: 0,
+        style: BorderStyle.none,
+      ),
+      borderRadius: BorderRadius.all(Radius.circular(2.0)),
+    ),
+    alignedDropdown: false,
+    buttonColor: Color(0xff399379),
+    disabledColor: Color(0x61ffffff),
+    highlightColor: Color(0x29ffffff),
+    splashColor: Color(0x1fffffff),
+    focusColor: Color(0x1fffffff),
+    hoverColor: Color(0x0affffff),
+    colorScheme: ColorScheme(
+      primary: Color(0xff67c4a9),
+      secondary: Color(0xff64ffda),
+      surface: Color(0xff424242),
+      background: Color(0xff616161),
+      error: Color(0xffd32f2f),
+      onPrimary: Color(0xff000000),
+      onSecondary: Color(0xff000000),
+      onSurface: Color(0xffffffff),
+      onBackground: Color(0xff000000),
+      onError: Color(0xff000000),
+      brightness: Brightness.dark,
+    ),
+  );
+
+  static DialogTheme darkDialogTheme = const DialogTheme(
+      shape: RoundedRectangleBorder(
+    side: BorderSide(
+      color: Color(0xff000000),
+      width: 0,
+      style: BorderStyle.none,
+    ),
+    borderRadius: BorderRadius.all(Radius.circular(0.0)),
+  ));
+
+  static NavigationBarThemeData darkNavigationBarThemeData =
+     const NavigationBarThemeData(indicatorColor: Colors.transparent);
 
   static ThemeData dark() {
     Color darkThemeColor = const Color(0xff00161f);
     Color darkCardColor = const Color(0xff062735);
 
     return ThemeData(
+        primarySwatch: const MaterialColor(4280361249, {
+          50: Color(0xfff2f2f2),
+          100: Color(0xffe6e6e6),
+          200: Color(0xffcccccc),
+          300: Color(0xffb3b3b3),
+          400: Color(0xff999999),
+          500: Color(0xff808080),
+          600: Color(0xff666666),
+          700: Color(0xff4d4d4d),
+          800: Color(0xff333333),
+          900: Color(0xff191919)
+        }),
         brightness: Brightness.dark,
+        primaryColor: Color(0xff212121),
+        primaryColorLight: Color(0xff9e9e9e),
+        primaryColorDark: Color(0xff000000),
+        canvasColor: Color(0xff303030),
+        scaffoldBackgroundColor: Color(0xff303030),
+        cardColor: Color(0xff424242),
+        dividerColor: Color(0x1fffffff),
+        highlightColor: Color(0x40cccccc),
+        splashColor: Color(0x40cccccc),
+        unselectedWidgetColor: Color(0xb3ffffff),
+        disabledColor: Color(0x62ffffff),
+        secondaryHeaderColor: Color(0xff616161),
+        dialogBackgroundColor: Color(0xff424242),
+        indicatorColor: Color(0xff64ffda),
+        hintColor: Color(0x80ffffff),
+        dialogTheme: darkDialogTheme,
         checkboxTheme: CheckboxThemeData(
           fillColor: MaterialStateColor.resolveWith(
             (states) {
@@ -207,17 +349,10 @@ class MobMartAppTheme {
             },
           ),
         ),
-        indicatorColor: const Color(0xff1F88C1),
-        secondaryHeaderColor: const Color(0xff4d4d4d),
-        primaryColor: const Color(0xff000000),
-        primaryColorDark: darkThemeColor,
-        dialogBackgroundColor: darkCardColor,
-        canvasColor: darkCardColor,
-        cardColor: darkCardColor,
         drawerTheme: darkThemeDrawerTheme,
-        scaffoldBackgroundColor: darkThemeColor,
         shadowColor: Colors.black87,
         iconTheme: darkIconTheme,
+        buttonTheme: darkButtonThemeData,
         appBarTheme: AppBarTheme(
             foregroundColor: Colors.black,
             backgroundColor: darkCardColor,
@@ -230,9 +365,7 @@ class MobMartAppTheme {
           foregroundColor: Colors.white,
           backgroundColor: Colors.black,
         ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-            selectedItemColor: const Color(0xff29ABE2),
-            backgroundColor: darkCardColor),
+        navigationBarTheme: darkNavigationBarThemeData,
         primaryTextTheme: primaryTextThemeDark);
   }
 }
