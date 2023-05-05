@@ -14,7 +14,7 @@ abstract class AppPages {
   static final pages = <GetPage>[
    GetPage(
         name: Routes.initial,
-        page: () =>const SplashScreenPage(),
+        page: () =>SplashScreenPage(),
         binding: SplashBinding(),
         transition: Transition.noTransition),
     GetPage(

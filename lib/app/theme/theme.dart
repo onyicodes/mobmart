@@ -135,17 +135,18 @@ class MobMartAppTheme {
   static IconThemeData darkIconTheme =
       const IconThemeData(color: Color(0xffffffff));
   static IconThemeData lightIconTheme =
-      const IconThemeData(color: Color(0xff000000),size: 30);
+      const IconThemeData(color: Color(0xff000000), size: 30);
   static BottomAppBarTheme lightBottomAppBarTheme =
       const BottomAppBarTheme(color: Color(0xffffffff));
   static DrawerThemeData drawerTheme = const DrawerThemeData(
     backgroundColor: Color(0xff1F88C1),
   );
 
-  
-
   static NavigationBarThemeData lightNavigationBarThemeData =
-      NavigationBarThemeData(indicatorColor: Colors.transparent,iconTheme: MaterialStateProperty.all(lightIconTheme), );
+      NavigationBarThemeData(
+    indicatorColor: Colors.transparent,
+    iconTheme: MaterialStateProperty.all(lightIconTheme),
+  );
 
   static ButtonThemeData lightButtonTheme = const ButtonThemeData(
     textTheme: ButtonTextTheme.normal,
@@ -196,6 +197,10 @@ class MobMartAppTheme {
     backgroundColor: Color(0xff0C4D69),
   );
 
+  static BadgeThemeData badgeThemeData =
+      BadgeThemeData(backgroundColor: Colors.red, textColor: Colors.white, textStyle: primaryTextThemeLight.bodyMedium);
+
+
   static ThemeData light() {
     return ThemeData(
         primarySwatch: const MaterialColor(4284990633, {
@@ -211,7 +216,6 @@ class MobMartAppTheme {
           900: Color(0xff0e251e)
         }),
         brightness: Brightness.light,
-        
         primaryColor: Color(0xff67c4a9),
         primaryColorLight: Color(0xffdaf1ea),
         primaryColorDark: Color(0xff2b6e5b),
@@ -227,6 +231,7 @@ class MobMartAppTheme {
         dialogBackgroundColor: Color(0xffffffff),
         indicatorColor: Color(0xff47b897),
         hintColor: Color(0x8a000000),
+        badgeTheme: badgeThemeData,
         checkboxTheme: CheckboxThemeData(
           fillColor: MaterialStateColor.resolveWith(
             (states) {
@@ -234,12 +239,11 @@ class MobMartAppTheme {
             },
           ),
         ),
-        
         toggleButtonsTheme: const ToggleButtonsThemeData(
             color: Color(0xfffdfdfd), selectedColor: Color(0xff1DCDFE)),
         drawerTheme: drawerTheme,
         iconTheme: lightIconTheme,
-        navigationBarTheme:lightNavigationBarThemeData,
+        navigationBarTheme: lightNavigationBarThemeData,
         shadowColor: Colors.grey.shade300,
         buttonTheme: lightButtonTheme,
         bottomAppBarTheme: lightBottomAppBarTheme,
@@ -249,10 +253,11 @@ class MobMartAppTheme {
             backgroundColor: Color(0xfff1f1f1),
             systemOverlayStyle: SystemUiOverlayStyle(
               systemNavigationBarColor: Colors.white, // navigation bar color
-          statusBarColor: Color(0xfff1f1f1),
-                statusBarBrightness: Brightness.light,
-                statusBarIconBrightness: Brightness.dark, // status bar color
-                systemNavigationBarContrastEnforced: true,)),
+              statusBarColor: Color(0xfff1f1f1),
+              statusBarBrightness: Brightness.light,
+              statusBarIconBrightness: Brightness.dark, // status bar color
+              systemNavigationBarContrastEnforced: true,
+            )),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
           foregroundColor: Colors.white,
           backgroundColor: Colors.black,
@@ -306,7 +311,7 @@ class MobMartAppTheme {
   ));
 
   static NavigationBarThemeData darkNavigationBarThemeData =
-     const NavigationBarThemeData(indicatorColor: Colors.transparent);
+      const NavigationBarThemeData(indicatorColor: Colors.transparent);
 
   static ThemeData dark() {
     Color darkThemeColor = const Color(0xff00161f);
@@ -356,7 +361,7 @@ class MobMartAppTheme {
         appBarTheme: AppBarTheme(
             foregroundColor: Colors.black,
             backgroundColor: darkCardColor,
-            systemOverlayStyle:const SystemUiOverlayStyle(
+            systemOverlayStyle: const SystemUiOverlayStyle(
                 statusBarColor: Color(0xff303030),
                 statusBarBrightness: Brightness.dark,
                 systemNavigationBarContrastEnforced: false,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart' hide Trans;
+import 'package:mobmart/app/features/home/presentation/pages/home.dart';
 import 'package:mobmart/app/features/landing/presentation/controllers/landing_controller.dart';
 import 'package:mobmart/core/constants/assets_constants.dart';
 import 'package:mobmart/generated/locale_keys.g.dart';
@@ -15,10 +16,16 @@ class LandingPage extends GetView<LandingController> {
         SystemUiOverlay.top, // Shows Status bar and hides Navigation bar
       ],
     );
+
+     SystemChrome.setSystemUIOverlayStyle( const SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.white, // navigation bar color
+     statusBarBrightness: Brightness.light,
+     statusBarIconBrightness: Brightness.light// status bar color
+  ));
     
   }
   final List<Widget> pages = const [
-    Text("Home"),
+    Home(),
     Text("Voucher"),
     Text("Wallet"),
     Text("Settings")

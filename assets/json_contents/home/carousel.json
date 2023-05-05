@@ -1,0 +1,11 @@
+[
+    {"image": "assets/images/carousels/banner_1.PNG",
+     "title":"80% OFF",
+    "subtitle":"Discover fashion that suits your style",
+"headTag":"#FASHION DAY"},
+     {"image":"assets/images/carousels/banner_2.PNG",
+     "title":"HOT DEALS","subtitle":"Discover new deals near you", "headTag":"#SELLING FAST"},
+     {"image":"assets/images/carousels/banner_3.PNG",
+     "title":"BEST BUY","subtitle":"Pay less for more", "headTag":"#DISCOUNTED"}
+    
+]

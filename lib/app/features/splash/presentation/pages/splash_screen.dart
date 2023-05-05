@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mobmart/app/features/splash/presentation/controllers/splash_screen_controller.dart';
 import 'package:mobmart/core/constants/assets_constants.dart';
 
 class SplashScreenPage extends GetView<SplashScreenController> {
-  const SplashScreenPage({super.key});
+  SplashScreenPage({super.key}){
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  }
 
  
   

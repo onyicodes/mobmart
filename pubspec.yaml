@@ -46,6 +46,9 @@ dependencies:
   flutter_smart_dialog: ^4.9.0+5
   get_storage: ^2.1.1
   lottie: ^2.2.0
+  palette_generator: ^0.3.3+2
+  banner_carousel: ^1.2.1
+  flutter_carousel_widget: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -80,11 +83,13 @@ flutter:
     - assets/svg/nav_bar/selected/
     - assets/svg/nav_bar/unselected/
     - assets/svg/logo/
+    - assets/svg/icons/
     - assets/translations/
     - assets/json_contents/
     - assets/images/carousels/
     - assets/images/products/
     - assets/json_contents/lottie/
+    - assets/json_contents/home/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

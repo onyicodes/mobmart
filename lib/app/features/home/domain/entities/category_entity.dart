@@ -7,7 +7,7 @@ class CategoryEntity extends Equatable {
   });
 
   final String icon;
-  final List label;
+  final String label;
 
   @override
   List<Object?> get props => [
