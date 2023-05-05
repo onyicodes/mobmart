@@ -250,7 +250,7 @@ class MobMartAppTheme {
         dialogTheme: ligthDialogTheme,
         appBarTheme: const AppBarTheme(
             foregroundColor: Colors.black,
-            backgroundColor: Color(0xfff1f1f1),
+            backgroundColor: Color(0xffffffff),
             systemOverlayStyle: SystemUiOverlayStyle(
               systemNavigationBarColor: Colors.white, // navigation bar color
               statusBarColor: Color(0xfff1f1f1),
