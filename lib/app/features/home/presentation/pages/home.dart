@@ -10,7 +10,6 @@ import 'package:mobmart/app/features/home/presentation/widgets/search_app_bar_wi
 import 'package:mobmart/core/constants/assets_constants.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
 import 'package:mobmart/core/general_widgets/action_icon_widget.dart';
-import 'package:mobmart/core/general_widgets/custom_search_field.dart';
 
 class Home extends GetView<HomeController> {
   const Home({Key? key}) : super(key: key);
@@ -26,19 +25,22 @@ class Home extends GetView<HomeController> {
                 GetX<HomeController>(builder: (_) {
                   return SliverAppBar(
                     expandedHeight: 530.0,
-                    collapsedHeight: kToolbarHeight+20,
+                    collapsedHeight: kToolbarHeight + 20,
                     automaticallyImplyLeading: false,
                     pinned: true,
                     floating: true,
                     snap: true,
                     scrolledUnderElevation: 1,
                     centerTitle: true,
-                    backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+                    backgroundColor:
+                        Theme.of(context).appBarTheme.backgroundColor,
                     bottom: PreferredSize(
-                        preferredSize:const Size(double.infinity, kToolbarHeight),
+                        preferredSize:
+                            const Size(double.infinity, kToolbarHeight),
                         child: Container(
                           color: Theme.of(context).scaffoldBackgroundColor,
-                          padding: const EdgeInsets.only(bottom: 16.0, left: 12, right :12, top: 16),
+                          padding: const EdgeInsets.only(
+                              bottom: 16.0, left: 12, right: 12, top: 16),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -63,8 +65,7 @@ class Home extends GetView<HomeController> {
                         systemNavigationBarContrastEnforced: true,
                         statusBarColor: _.appBarExpanded
                             ? _.carouselBackgroundColor
-                            : Theme.of(context)
-                                .appBarTheme.backgroundColor),
+                            : Theme.of(context).appBarTheme.backgroundColor),
                     title: SearchAppBar(
                         backgroundColor: Colors.transparent,
                         actionWidgets: [
@@ -79,12 +80,14 @@ class Home extends GetView<HomeController> {
                         ]),
                     flexibleSpace: LayoutBuilder(builder:
                         (BuildContext context, BoxConstraints constraints) {
-
-                          //collapsed height - kToolbarHeight + 20
-                          //bottom height - kToolbarHeight
+                      //collapsed height - kToolbarHeight + 20
+                      //bottom height - kToolbarHeight
                       WidgetsBinding.instance.addPostFrameCallback((k) {
                         _.appBarExpanded = constraints.biggest.height !=
-                            MediaQuery.of(context).padding.top + kToolbarHeight + 20 + kToolbarHeight;
+                            MediaQuery.of(context).padding.top +
+                                kToolbarHeight +
+                                20 +
+                                kToolbarHeight;
                       });
 
                       return FlexibleSpaceBar(
@@ -137,7 +140,9 @@ class Home extends GetView<HomeController> {
                         ? ProductGridBuilder(
                             productList: _.productModelList,
                             productRequestStatus: _.productsRequestStatus,
-                            onTapProduct: (index) {})
+                            onTapProduct: (productModel) {
+                              _.viewProductDetails(productModel: productModel);
+                            })
                         : Container(
                             color: Colors.red,
                             height: 200,

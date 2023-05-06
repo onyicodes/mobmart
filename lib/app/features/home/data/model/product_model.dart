@@ -2,6 +2,7 @@
 //
 //     final productEntity = productEntityFromMap(jsonString);
 
+import 'package:flutter/material.dart';
 import 'package:mobmart/app/features/home/data/model/reviews_model.dart';
 import 'package:mobmart/app/features/home/data/model/seller_info_model.dart';
 
@@ -19,6 +20,10 @@ class ProductModel {
   final String brand;
   final int totalReviews;
   final String color;
+  final String category;
+  final String material;
+  final String condition;
+  final String heavy;
   final bool favourited;
   final String description;
   final ShippingInfoModel shippingInfo;
@@ -38,6 +43,10 @@ class ProductModel {
     required this.brand,
     required this.totalReviews,
     required this.color,
+    required this.category,
+    required this.material,
+    required this.condition,
+    required this.heavy,
     required this.favourited,
     required this.description,
     required this.shippingInfo,
@@ -57,6 +66,10 @@ class ProductModel {
         amountSold: json["amountSold"],
         brand: json["brand"],
         color: json["color"],
+        category: json["category"],
+        condition: json["condition"],
+        material: json["material"],
+        heavy: json["heavy"],
         totalReviews: json["totalReviews"],
         favourited: json["favourited"],
         description: json["description"],
@@ -79,6 +92,10 @@ class ProductModel {
         "amountSold": amountSold,
         "brand": brand,
         "color": color,
+        "material":material,
+        "condition":condition,
+        "category":category,
+        "heavy":heavy,
         "favourited": favourited,
         "description": description,
         "shippingInfo": shippingInfo.toMap(),

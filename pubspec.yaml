@@ -49,6 +49,7 @@ dependencies:
   palette_generator: ^0.3.3+2
   banner_carousel: ^1.2.1
   flutter_carousel_widget: ^2.0.2
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -88,6 +89,7 @@ flutter:
     - assets/json_contents/
     - assets/images/carousels/
     - assets/images/products/
+    - assets/images/profile_pics/
     - assets/json_contents/lottie/
     - assets/json_contents/home/
   #   - images/a_dot_ham.jpeg

@@ -11,13 +11,13 @@ class ProductImageCover extends StatelessWidget {
     return Stack(
       children: [
          Container(
-          padding: EdgeInsets.all(2),
+          padding:const  EdgeInsets.all(2),
           height: 150,
           width: 240,
           decoration: BoxDecoration(
               color: Theme.of(context).shadowColor.withAlpha(180),
              
-              borderRadius: BorderRadius.all(Radius.circular(2)),
+              borderRadius: const BorderRadius.all(Radius.circular(2)),
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image:AssetImage( imageUrl),

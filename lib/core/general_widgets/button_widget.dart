@@ -5,14 +5,14 @@ class CustomButton extends StatelessWidget {
   final void Function()? onPressed;
   final double radius;
   final double width;
-  final IconData? icon;
+  final Widget? icon;
   final Color backgroundColor;
   final Color textColor;
   final double height;
   final bool loading;
   final Color borderColor;
   final Color? iconColor;
-  final TextTheme primaryTextTheme;
+  final TextStyle textStyle;
 
   const CustomButton(
       {Key? key,
@@ -26,8 +26,8 @@ class CustomButton extends StatelessWidget {
       this.textColor = Colors.white,
       this.iconColor,
       this.height = 54.0,
-      this.loading = false,
-      required this.primaryTextTheme})
+      required this.textStyle,
+      this.loading = false})
       : super(key: key);
 
   @override
@@ -38,41 +38,45 @@ class CustomButton extends StatelessWidget {
       style: ButtonStyle(
           minimumSize: MaterialStateProperty.all(Size(width, height)),
           maximumSize: MaterialStateProperty.all(Size(width, height)),
-          shape:
-              MaterialStateProperty.all<OutlinedBorder>(RoundedRectangleBorder(
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+              RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(radius),
                   ),
-                  side: BorderSide(color:loading || onPressed == null ?  borderColor.withBlue(110):borderColor))),
+                  side: BorderSide(
+                      color: loading || onPressed == null
+                          ? borderColor.withBlue(110)
+                          : borderColor))),
           shadowColor: MaterialStateProperty.all(
             const Color(0xff4d4d4d).withOpacity(0.2),
           ),
           backgroundColor: MaterialStateProperty.all(
-              loading || onPressed == null ? backgroundColor.withBlue(110) : backgroundColor)),
+              loading || onPressed == null
+                  ? backgroundColor.withBlue(110)
+                  : backgroundColor)),
       child: loading
           ? const CircularProgressIndicator(
               color: Colors.white,
             )
           : SizedBox(
-            width: width,
-            child: Row(
+              width: width,
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (icon != null)
-                    Icon(
-                      icon,
-                      color: iconColor ?? Theme.of(context).iconTheme.color,
-                    ),
+                   
+                      icon!,
+                     
                   if (icon != null)
                     const SizedBox(
                       width: 12,
                     ),
                   Text(label,
-                      style: primaryTextTheme.displaySmall!
+                      style: textStyle
                           .copyWith(color: textColor)),
                 ],
               ),
-          ),
+            ),
     );
   }
 }

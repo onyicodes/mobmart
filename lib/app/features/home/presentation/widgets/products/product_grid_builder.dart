@@ -8,7 +8,7 @@ class ProductGridBuilder extends StatelessWidget {
   final List<ProductModel> productList;
   final RequestStatus productRequestStatus;
   final bool isSeller;
-  final void Function(int index) onTapProduct;
+  final void Function(ProductModel productModel) onTapProduct;
   const ProductGridBuilder(
       {super.key,
       required this.productList,
@@ -36,7 +36,7 @@ class ProductGridBuilder extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
             onTap: () {
-              onTapProduct(index);
+              onTapProduct(productList[index]);
             },
             child: productRequestStatus == RequestStatus.success
                 ? ProductCard(

@@ -49,7 +49,7 @@ class MobMartAppTheme {
     ),
     headlineSmall: GoogleFonts.inter(
       fontSize: 12.0,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w600,
       color: lightThemeTextColor,
     ),
     titleLarge: GoogleFonts.inter(
@@ -112,7 +112,7 @@ class MobMartAppTheme {
     ),
     headlineSmall: GoogleFonts.roboto(
       fontSize: 12.0,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w600,
       color: darkThemeTextColor,
     ),
     titleLarge: GoogleFonts.roboto(
@@ -253,7 +253,7 @@ class MobMartAppTheme {
             backgroundColor: Color(0xffffffff),
             systemOverlayStyle: SystemUiOverlayStyle(
               systemNavigationBarColor: Colors.white, // navigation bar color
-              statusBarColor: Color(0xfff1f1f1),
+              statusBarColor: Color(0xffffffff),
               statusBarBrightness: Brightness.light,
               statusBarIconBrightness: Brightness.dark, // status bar color
               systemNavigationBarContrastEnforced: true,

@@ -8,6 +8,7 @@ import 'package:mobmart/app/features/home/domain/entities/category_entity.dart';
 import 'package:mobmart/app/features/home/domain/usecases/fetch_carousel_usecase.dart';
 import 'package:mobmart/app/features/home/domain/usecases/fetch_categories_usecase.dart';
 import 'package:mobmart/app/features/home/domain/usecases/fetch_products_usecase.dart';
+import 'package:mobmart/app/routes/app_pages.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
 import 'package:mobmart/core/parameters/no_params.dart';
 import 'package:palette_generator/palette_generator.dart';
@@ -104,5 +105,9 @@ class HomeController extends GetxController {
           .then((value) => carouselPaletteColorList.add(value.dominantColor!));
     }
     carouselBackgroundColor = carouselPaletteColorList.first.color;
+  }
+
+  viewProductDetails({required ProductModel productModel}) {
+    Get.toNamed(Routes.details, arguments: productModel);
   }
 }

@@ -23,6 +23,7 @@ class ActionButtonWidget extends StatelessWidget {
             svgImagePath,
           ),
         ),
+        if(badgeCounter> 0)
         Positioned(
           right: 0,
           top: 0,

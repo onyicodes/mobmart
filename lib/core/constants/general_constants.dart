@@ -6,6 +6,7 @@ enum ListSpacingValue {
   spacingV32(32),
   spacingV24(24),
   spacingV16(16),
+  spacingV12(12),
   spacingV8(8);
 
   const ListSpacingValue(this.value);

@@ -39,8 +39,7 @@ class CarouselAppBar extends StatelessWidget {
                     child: Container(
                       height: 260,
                       decoration: BoxDecoration(
-                          color: backgroundColor,
-                          borderRadius: BorderRadius.circular(50)),
+                          color: backgroundColor,),
                     ),
                   ),
                   Padding(
@@ -95,7 +94,7 @@ class CarouselAppBar extends StatelessWidget {
                                   .buttonTheme
                                   .colorScheme!
                                   .onBackground,
-                              primaryTextTheme: primaryTextTheme)
+                                  textStyle: primaryTextTheme.displaySmall!)
                         ]),
                   ),
                 ],
