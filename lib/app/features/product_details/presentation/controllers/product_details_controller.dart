@@ -9,15 +9,20 @@ class ProductDetailsController extends GetxController
   late TabController tabController;
 
   final _imageIndexSelected = 0.obs;
+  final _selectedReviewOrder = "Popular".obs;
 
   final _tabIndex = 0.obs;
 
   int get imageIndexSelected => _imageIndexSelected.value;
   int get tabIndex => _tabIndex.value;
+  String get selectedReviewOrder => _selectedReviewOrder.value;
 
   set imageIndexSelected(value) => _imageIndexSelected.value = value;
   set tabIndex(value) => _tabIndex.value = value;
-  
+  set selectedReviewOrder(value) => _selectedReviewOrder.value = value;
+
+  List<String> reviewOrder = ["Popular", "Latest", "Oldest"];
+
   late ProductModel productModel;
 
   @override

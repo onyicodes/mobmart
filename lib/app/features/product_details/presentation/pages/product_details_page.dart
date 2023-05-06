@@ -1,8 +1,11 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mobmart/app/features/product_details/presentation/controllers/product_details_controller.dart';
+import 'package:mobmart/app/features/product_details/presentation/widgets/buy_button_widget.dart';
+import 'package:mobmart/app/features/product_details/presentation/widgets/description_builder.dart';
 import 'package:mobmart/app/features/product_details/presentation/widgets/reviews_and_rating_bar_builder.dart';
 import 'package:mobmart/app/features/product_details/presentation/widgets/reviews_card.dart';
 import 'package:mobmart/app/features/product_details/presentation/widgets/about_item_builder.dart';
@@ -11,6 +14,7 @@ import 'package:mobmart/app/features/product_details/presentation/widgets/seller
 import 'package:mobmart/app/features/product_details/presentation/widgets/shipping_info_builder%20copy.dart';
 import 'package:mobmart/core/constants/assets_constants.dart';
 import 'package:mobmart/core/general_widgets/action_icon_widget.dart';
+import 'package:mobmart/core/util/total_reviews_formatter.dart';
 
 class ProductDetailsPage extends GetView<ProductDetailsController> {
   ProductDetailsPage({Key? key}) : super(key: key);
@@ -83,27 +87,39 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                       height: 8,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left:8.0),
+                      padding: const EdgeInsets.only(left: 8.0),
                       child: Row(
                         children: [
-                          SvgPicture.asset( AssetsConstants.actionstoreFrontIcon, height: 25, width: 25,),
-                         const  SizedBox(width: 8,),
+                          SvgPicture.asset(
+                            AssetsConstants.actionstoreFrontIcon,
+                            height: 25,
+                            width: 25,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
                           Text(_.productModel.storeName)
                         ],
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(_.productModel.title, style: primaryTextTheme.displayMedium,),
+                      child: Text(
+                        _.productModel.title,
+                        style: primaryTextTheme.displayMedium,
+                      ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal:8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
-                            const  Icon(Icons.star_rounded, color: Colors.amber,),
+                              const Icon(
+                                Icons.star_rounded,
+                                color: Colors.amber,
+                              ),
                               Text("${_.productModel.ratings} Ratings")
                             ],
                           ),
@@ -142,20 +158,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                       padding: EdgeInsets.all(8.0),
                       child: Divider(),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text('Description'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        """When can I visit?: May 1 - October 29
-                  Experience Lake Geneva, Wisconsin’s Original Drive-Through Safari!
-                  Experience Safari Lake Geneva’s wildlife from the comfort of your own vehicle! Enhance your interaction with these amazing animals by purchasing a bowl of grain to feed them from your window or sunroof. Plus, you can drive through as many times as you like — because the animals are free to choose where they wish to be, every time through is a unique adventure. Bring the whole family or enjoy a solo trip cruising our safari drive-through and encounter some of the world’s most spectacular wild safari animals. There’s nothing like watching a giraffe stretch their neck out to munch on some tree leaves or seeing just how fast an ostrich can run. Experience this unique adventure near Chicagoland and you’ll soon discover why this is the place in Lake Geneva, Wisconsin everyone is talking about!""",
-                        style: primaryTextTheme.bodyLarge,
-                      ),
-                    ),
-
+                    DescriptionBuilder(description: _.productModel.description),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Divider(),
@@ -168,7 +171,6 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                     ),
                     SellerInfoBuilder(
                         sellerInfoModel: _.productModel.sellerInfor),
-
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Divider(),
@@ -180,9 +182,73 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                       padding: EdgeInsets.all(8.0),
                       child: Divider(),
                     ),
-                    Text(
-                      'Top Reviews',
-                      style: primaryTextTheme.displaySmall,
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Top Reviews',
+                                style: primaryTextTheme.displaySmall,
+                              ),
+                             const SizedBox(height: 6,),
+                              Text(
+                                'Showing 3 of ${totalReviewsFormatter(rating: _.productModel.sellerInfor.storeRating.total)} reviews',
+                                style: primaryTextTheme.bodyMedium,
+                              ),
+                            ],
+                          ),
+                          
+                          GetX<ProductDetailsController>(
+                            builder: (_) {
+                              return DropdownButtonHideUnderline(
+                                child: DropdownButton2(
+                                    
+                                    value: _.selectedReviewOrder,
+                                    
+                                    items: _.reviewOrder
+                                        .map((item) => DropdownMenuItem<String>(
+                                          value: item,
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Text(item),
+                                              ),
+                                            ))
+                                        .toList(),
+                                    onChanged: (value) {
+                                      _.selectedReviewOrder = value;
+                                    },
+                                    buttonStyleData: ButtonStyleData(
+                                        height: 45,
+                                        width: 140,
+                                        padding: const EdgeInsets.only(left: 14, right: 14),
+                                        decoration: BoxDecoration(
+                                          boxShadow: [],
+                                          borderRadius: BorderRadius.circular(8),
+                                          border: Border.all(
+                                            color: Theme.of(context).dividerColor,
+                                          ),
+                                          color: Theme.of(context).canvasColor,
+                                        ),
+                                        elevation: 2,
+                                      ),
+                                      iconStyleData: const IconStyleData(
+                                        icon: Icon(
+                                          Icons.keyboard_arrow_down_rounded,
+                                        ),
+                                        iconSize:25,
+                                        iconDisabledColor: Colors.grey,
+                                      ),
+                                    ),
+                                    
+                              );
+                            },
+                          )
+                        ],
+                      ),
                     ),
                     ListView.builder(
                         shrinkWrap: true,
@@ -202,24 +268,40 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                 color: Theme.of(context).cardColor,
                 height: 100,
                 width: double.infinity,
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          "Total Price",
-                          style: primaryTextTheme.bodyMedium!
-                              .copyWith(color: Theme.of(context).hintColor),
+                child: Padding(
+                  padding: const EdgeInsets.only(left:8.0, right: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Total Price",
+                              style: primaryTextTheme.bodyMedium!
+                                  .copyWith(color: Theme.of(context).hintColor),
+                            ),
+                           const SizedBox(height: 8,),
+                            Text(
+                              "\$${_.productModel.price.toStringAsFixed(2)}",
+                              style: primaryTextTheme.displayMedium!.copyWith(
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ],
                         ),
-                        Text(
-                          "\$${_.productModel.price}",
-                          style: primaryTextTheme.displayMedium!.copyWith(
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.w400),
-                        )
-                      ],
-                    ),
-                  ],
+                      ),
+                
+                     const Padding(
+                        padding:  EdgeInsets.all(8.0),
+                        child: BuyButtonWidget(),
+                      )
+                
+                    ],
+                  ),
                 ),
               )
             ],

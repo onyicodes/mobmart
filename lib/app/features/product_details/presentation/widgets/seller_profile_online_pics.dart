@@ -16,7 +16,7 @@ class SellerProfileOnlinePics extends StatelessWidget {
     return Stack(
       children: [
         CircleAvatar(
-          backgroundImage: AssetImage(profilePics),
+          backgroundImage:profilePics.isNotEmpty? AssetImage(profilePics):null,
           backgroundColor: Theme.of(context).shadowColor,
           radius: 40,
           child: Padding(
