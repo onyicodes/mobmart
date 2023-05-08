@@ -6,7 +6,9 @@ import 'package:mobmart/core/general_widgets/custom_list_space.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel productModel;
-  const ProductCard({Key? key, required this.productModel})
+  final bool favourite;
+  const ProductCard(
+      {Key? key, required this.productModel, required this.favourite})
       : super(key: key);
 
   @override
@@ -20,6 +22,7 @@ class ProductCard extends StatelessWidget {
         children: [
           ProductImageCover(
             imageUrl: productModel.photo.first,
+            favourited: favourite,
           ),
           CustomListSpacing(spacingValue: ListSpacingValue.spacingV8.value),
           Padding(
@@ -29,7 +32,8 @@ class ProductCard extends StatelessWidget {
               maxLines: 1,
               softWrap: true,
               overflow: TextOverflow.ellipsis,
-              style: primaryTextTheme.displaySmall,
+              style: primaryTextTheme.bodyLarge!
+                  .copyWith(color: Theme.of(context).hintColor),
             ),
           ),
           CustomListSpacing(spacingValue: ListSpacingValue.spacingV8.value),
@@ -37,34 +41,36 @@ class ProductCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(
               productModel.title,
-              maxLines: 1,
+              maxLines: 2,
               softWrap: true,
               overflow: TextOverflow.ellipsis,
-              style: primaryTextTheme.displaySmall,
+              style: primaryTextTheme.headlineSmall,
             ),
           ),
           CustomListSpacing(spacingValue: ListSpacingValue.spacingV8.value),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
                     const Icon(
                       Icons.star_rounded,
-                      color: Colors.yellow,
+                      color: Colors.amber,
+                      size: 20,
                     ),
                     Text(
                       "${productModel.ratings} | ${productModel.totalReviews}",
-                      style: primaryTextTheme.bodyLarge!
+                      style: primaryTextTheme.bodyMedium!
                           .copyWith(color: Theme.of(context).hintColor),
                     ),
                   ],
                 ),
                 Text(
-                  "${productModel.price}",
-                  style: primaryTextTheme.bodyLarge!
-                      .copyWith(color: Theme.of(context).hintColor),
+                  "\$${productModel.price.toStringAsFixed(2)}",
+                  style: primaryTextTheme.headlineLarge!
+                      .copyWith(color: Theme.of(context).primaryColor),
                 ),
               ],
             ),

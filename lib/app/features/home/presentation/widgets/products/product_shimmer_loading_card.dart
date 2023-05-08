@@ -27,7 +27,7 @@ class ProductShimmerLoadingCard extends StatelessWidget {
             ),
             Container(
               height: 12,
-              width: 150,
+              width: 120,
               color: Colors.grey.shade100,
             ),
             const SizedBox(
@@ -57,16 +57,12 @@ class ProductShimmerLoadingCard extends StatelessWidget {
                         width: 80,
                         color: Colors.grey.shade100,
                       ),
-                      Container(
-                        height: 10,
-                        width: 80,
-                        color: Colors.grey.shade100,
-                      ),
+                     
                     ],
                   ),
                   Container(
                     height: 10,
-                    width: 80,
+                    width: 40,
                     color: Colors.grey.shade100,
                   ),
                 ],

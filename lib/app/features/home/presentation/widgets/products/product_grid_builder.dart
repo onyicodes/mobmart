@@ -8,11 +8,13 @@ class ProductGridBuilder extends StatelessWidget {
   final List<ProductModel> productList;
   final RequestStatus productRequestStatus;
   final bool isSeller;
+  final bool Function(ProductModel productModel) checkFavourited;
   final void Function(ProductModel productModel) onTapProduct;
   const ProductGridBuilder(
       {super.key,
       required this.productList,
       this.isSeller = false,
+      required this.checkFavourited,
       required this.productRequestStatus,
       required this.onTapProduct});
 
@@ -21,7 +23,7 @@ class ProductGridBuilder extends StatelessWidget {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 340.0,
-        mainAxisExtent: 264,
+        mainAxisExtent: 275,
         mainAxisSpacing: 10.0,
         crossAxisSpacing: 5.0,
         childAspectRatio: 1.0,
@@ -40,6 +42,7 @@ class ProductGridBuilder extends StatelessWidget {
             },
             child: productRequestStatus == RequestStatus.success
                 ? ProductCard(
+                   favourite: checkFavourited(productList[index]),
                     productModel: productList[index],
                   )
                 : productRequestStatus == RequestStatus.loading

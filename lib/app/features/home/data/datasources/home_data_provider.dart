@@ -49,7 +49,6 @@ class HomeDataProviderImpl extends HomeDataProvider {
 
     final List productJsonList = jsonMap["data"];
 
-    print(productJsonList);
     return productJsonList
         .map((carouselJson) => ProductModel.fromMap(carouselJson))
         .toList();

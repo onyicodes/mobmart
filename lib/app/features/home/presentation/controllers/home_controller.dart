@@ -23,9 +23,12 @@ class HomeController extends GetxController {
       required this.fetchProductsUsecase,
       required this.fetchCategoriesUsecase});
 
+  final ScrollController scrollController = ScrollController();
+
   final _carousels = <CarouselEntity>[].obs;
   final _categories = <CategoryEntity>[].obs;
   final _productModelList = <ProductModel>[].obs;
+  final _favouriteProductModelList = <ProductModel>[].obs;
   final _currentCarouselIndex = 0.obs;
   final _carouselBackgroundColor = Colors.transparent.obs;
   final _carouselRequestStatus = RequestStatus.initial.obs;
@@ -36,6 +39,8 @@ class HomeController extends GetxController {
   List<CarouselEntity> get carouselsList => _carousels;
   List<CategoryEntity> get categoriesList => _categories;
   List<ProductModel> get productModelList => _productModelList;
+  List<ProductModel> get favouriteProductModelList =>
+      _favouriteProductModelList;
   Color get carouselBackgroundColor => _carouselBackgroundColor.value;
   RequestStatus get carouselRequestStatus => _carouselRequestStatus.value;
   RequestStatus get categoriesRequestStatus => _categoriesRequestStatus.value;
@@ -46,6 +51,8 @@ class HomeController extends GetxController {
   set carouselsList(value) => _carousels.value = value;
   set categoriesList(value) => _categories.value = value;
   set productModelList(value) => _productModelList.value = value;
+  set favouriteProductModelList(value) =>
+      _favouriteProductModelList.value = value;
   set carouselRequestStatus(value) => _carouselRequestStatus.value = value;
   set categoriesRequestStatus(value) => _categoriesRequestStatus.value = value;
   set productsRequestStatus(value) => _productsRequestStatus.value = value;
@@ -61,6 +68,8 @@ class HomeController extends GetxController {
     fetchCarousel();
     fetchCategories();
     fetchProducts();
+
+  
   }
 
   fetchCategories() async {

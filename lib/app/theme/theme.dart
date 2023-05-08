@@ -222,7 +222,7 @@ class MobMartAppTheme {
         primaryColorLight: Color(0xffdaf1ea),
         primaryColorDark: Color(0xff2b6e5b),
         canvasColor: Color(0xfffafafa),
-        scaffoldBackgroundColor: Color(0xfff1f1f1),
+        scaffoldBackgroundColor: Color(0xfff9f9f9),
         cardColor: Color(0xffffffff),
         dividerColor: Color(0x1f000000),
         highlightColor: Color(0x66bcbcbc),

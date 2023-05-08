@@ -2,7 +2,6 @@
 //
 //     final productEntity = productEntityFromMap(jsonString);
 
-import 'package:flutter/material.dart';
 import 'package:mobmart/app/features/home/data/model/reviews_model.dart';
 import 'package:mobmart/app/features/home/data/model/seller_info_model.dart';
 
@@ -24,7 +23,7 @@ class ProductModel {
   final String material;
   final String condition;
   final String heavy;
-  final bool favourited;
+  bool favourited;
   final String description;
   final ShippingInfoModel shippingInfo;
   final SellerInforModel sellerInfor;
