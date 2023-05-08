@@ -11,6 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
+      scrollBehavior: MyCustomScrollBehavior(),
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.initial,
       theme: MobMartAppTheme.light(),
@@ -21,5 +22,13 @@ class App extends StatelessWidget {
       getPages: AppPages.pages,
       locale:context.locale,
     );
+  }
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Widget buildOverscrollIndicator(
+      BuildContext context, Widget child, ScrollableDetails details) {
+    return child;
   }
 }
