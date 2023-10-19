@@ -26,8 +26,8 @@ class LandingPage extends GetView<LandingController> {
   }
   final List<Widget> pages = const [
     Home(),
-    Text("Voucher"),
-    Text("Wallet"),
+    Text("Favourites"),
+     Text("Cart"),
     Text("Settings")
   ];
 
@@ -76,31 +76,31 @@ class LandingPage extends GetView<LandingController> {
                             ),
                             label: LocaleKeys.navBar_home.tr(),
                           ),
-                          NavigationDestination(
-                            selectedIcon: SvgPicture.asset(
-                              AssetsConstants.navbarSelectedVoucher,
-                                height: 30,
-                              width:30,
-                            ),
-                            icon: SvgPicture.asset(
-                              AssetsConstants.navbarUnselectedVoucher,
-                                height: 30,
-                              width:30,
-                            ),
-                            label: LocaleKeys.navBar_voucher.tr(),
-                          ),
+                          
                           NavigationDestination(
                               icon: SvgPicture.asset(
-                                AssetsConstants.navbarUnselectWallet,
+                                AssetsConstants.navbarUnselectedFavouriteIcon,
                                   height: 30,
                               width:30,
                               ),
                               selectedIcon: SvgPicture.asset(
-                                AssetsConstants.navbarSelectWallet,
+                                AssetsConstants.navbarSelectedFavourite,
                                   height: 30,
                               width:30,
                               ),
-                              label: LocaleKeys.navBar_wallet.tr()),
+                              label: LocaleKeys.navBar_favourites.tr()),
+                          NavigationDestination(
+                              icon: SvgPicture.asset(
+                                AssetsConstants.navbarUnselectedCart,
+                                  height: 30,
+                              width:30,
+                              ),
+                              selectedIcon: SvgPicture.asset(
+                                AssetsConstants.navbarSelectedCart,
+                                  height: 30,
+                              width:30,
+                              ),
+                              label: LocaleKeys.navBar_cart.tr()),
                           NavigationDestination(
                               icon: SvgPicture.asset(
                                 AssetsConstants.navbarUnselectedSettings,
@@ -141,34 +141,36 @@ class LandingPage extends GetView<LandingController> {
                                 style: primaryTextTheme.headlineSmall,
                               ),
                             ),
+                           
+                           
                             NavigationRailDestination(
-                                selectedIcon: SvgPicture.asset(
-                                  AssetsConstants.navbarSelectedVoucher,
+                                icon: SvgPicture.asset(
+                                  AssetsConstants.navbarUnselectedFavouriteIcon,
                                    height: 30,
                               width:30,
                                 ),
-                                icon: SvgPicture.asset(
-                                  AssetsConstants.navbarUnselectedVoucher,
+                                selectedIcon: SvgPicture.asset(
+                                  AssetsConstants.navbarSelectedFavourite,
                                    height: 30,
                               width:30,
                                 ),
                                 label: Text(
-                                  LocaleKeys.navBar_voucher.tr(),
+                                  LocaleKeys.navBar_favourites.tr(),
                                   style: primaryTextTheme.headlineSmall,
                                 )),
-                            NavigationRailDestination(
+                             NavigationRailDestination(
                                 icon: SvgPicture.asset(
-                                  AssetsConstants.navbarUnselectWallet,
+                                  AssetsConstants.navbarUnselectedCart,
                                    height: 30,
                               width:30,
                                 ),
                                 selectedIcon: SvgPicture.asset(
-                                  AssetsConstants.navbarSelectWallet,
+                                  AssetsConstants.navbarSelectedCart,
                                    height: 30,
                               width:30,
                                 ),
                                 label: Text(
-                                  LocaleKeys.navBar_wallet.tr(),
+                                  LocaleKeys.navBar_cart.tr(),
                                   style: primaryTextTheme.headlineSmall,
                                 )),
                             NavigationRailDestination(

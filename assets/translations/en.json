@@ -4,6 +4,8 @@
         "home":"Home",
         "voucher":"Voucher",
         "wallet": "Wallet",
+        "cart": "Cart",
+        "favourites": "Favourites",
         "settings": "Settings"
     }
 

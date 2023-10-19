@@ -8,6 +8,10 @@ class AssetsConstants {
   static const String navbarUnselectedHome = 'assets/svg/nav_bar/unselected/home_icon.svg';
   static const String navbarUnselectedVoucher = 'assets/svg/nav_bar/unselected/voucher_icon.svg';
   static const String navbarUnselectedSettings = 'assets/svg/nav_bar/unselected/settings_icon.svg';
+  static const String navbarSelectedCart = 'assets/svg/nav_bar/selected/cart_icon.svg';
+  static const String navbarUnselectedCart = 'assets/svg/nav_bar/unselected/cart_icon.svg';
+  static const String navbarSelectedFavourite = 'assets/svg/nav_bar/selected/favourite_icon.svg';
+  static const String navbarUnselectedFavouriteIcon = 'assets/svg/nav_bar/unselected/favourite_icon.svg';
   static const String navbarUnselectWallet = 'assets/svg/nav_bar/unselected/wallet_icon.svg';
   static const String actionCartIcon = 'assets/svg/icons/cart_icon.svg';
   static const String actionSearchIcon = 'assets/svg/icons/search_icon.svg';
