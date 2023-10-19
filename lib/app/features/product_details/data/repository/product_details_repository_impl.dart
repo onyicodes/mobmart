@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:mobmart/app/features/home/data/datasources/home_data_provider.dart';
 import 'package:mobmart/app/features/home/data/model/product_model.dart';
 import 'package:mobmart/app/features/product_details/data/datasources/product_data_provider.dart';
 import 'package:mobmart/app/features/product_details/domain/repositories/product_details_repositories.dart';

@@ -52,7 +52,7 @@ class CustomSearchField extends StatelessWidget {
                 border: OutlineInputBorder(
                     borderSide: BorderSide(color: Theme.of(context).hintColor),
                     gapPadding: 20.0,
-                    borderRadius: BorderRadius.all(Radius.circular(8)))),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)))),
           ),
       ),
     );

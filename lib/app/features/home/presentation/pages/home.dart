@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart' hide Trans;
-import 'package:mobmart/app/features/home/domain/entities/carousel_entity.dart';
 import 'package:mobmart/app/features/home/presentation/controllers/home_controller.dart';
 import 'package:mobmart/app/features/home/presentation/widgets/banner_loader.dart';
 import 'package:mobmart/app/features/home/presentation/widgets/carousel_app_bar.dart';
@@ -23,7 +22,7 @@ class Home extends GetView<HomeController> {
     return Scaffold(
       body: NestedScrollView(
           floatHeaderSlivers: true,
-          physics: PageScrollPhysics(),
+          physics: const PageScrollPhysics(),
           headerSliverBuilder: (BuildContext context,
                   bool innerBoxIsScrolled) =>
               [
@@ -146,7 +145,7 @@ class Home extends GetView<HomeController> {
           body: GetBuilder<HomeController>(builder: (_) {
               return ListView(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),

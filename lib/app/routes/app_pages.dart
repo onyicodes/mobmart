@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobmart/app/features/home/presentation/bindings/home_binding.dart';
 import 'package:mobmart/app/features/home/presentation/pages/home.dart';
@@ -30,7 +29,7 @@ abstract class AppPages {
         transition: Transition.leftToRight),
     GetPage(
         name: Routes.details,
-        page: () =>  ProductDetailsPage(),
+        page: () =>  const ProductDetailsPage(),
         binding: ProductDetailsBinding(),
         transition: Transition.downToUp),
   ];

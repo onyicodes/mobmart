@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobmart/app/features/home/presentation/widgets/products/product_image_cover.dart';
 import 'package:shimmer/shimmer.dart';
 
 class BannerLoaderWidget extends StatelessWidget {

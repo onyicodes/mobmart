@@ -218,21 +218,21 @@ class MobMartAppTheme {
           900: Color(0xff0e251e)
         }),
         brightness: Brightness.light,
-        primaryColor: Color(0xff67c4a9),
-        primaryColorLight: Color(0xffdaf1ea),
-        primaryColorDark: Color(0xff2b6e5b),
-        canvasColor: Color(0xfffafafa),
-        scaffoldBackgroundColor: Color(0xfff9f9f9),
-        cardColor: Color(0xffffffff),
-        dividerColor: Color(0x1f000000),
-        highlightColor: Color(0x66bcbcbc),
-        splashColor: Color(0x66c8c8c8),
-        unselectedWidgetColor: Color(0x8a000000),
-        disabledColor: Color(0x61000000),
-        secondaryHeaderColor: Color(0xffedf8f5),
-        dialogBackgroundColor: Color(0xffffffff),
-        indicatorColor: Color(0xff47b897),
-        hintColor: Color(0x8a000000),
+        primaryColor: const Color(0xff67c4a9),
+        primaryColorLight: const Color(0xffdaf1ea),
+        primaryColorDark: const Color(0xff2b6e5b),
+        canvasColor: const Color(0xfffafafa),
+        scaffoldBackgroundColor: const Color(0xfff9f9f9),
+        cardColor: const Color(0xffffffff),
+        dividerColor: const Color(0x1f000000),
+        highlightColor: const Color(0x66bcbcbc),
+        splashColor: const Color(0x66c8c8c8),
+        unselectedWidgetColor: const Color(0x8a000000),
+        disabledColor: const Color(0x61000000),
+        secondaryHeaderColor: const Color(0xffedf8f5),
+        dialogBackgroundColor: const Color(0xffffffff),
+        indicatorColor: const Color(0xff47b897),
+        hintColor: const Color(0x8a000000),
         badgeTheme: badgeThemeData,
         checkboxTheme: CheckboxThemeData(
           fillColor: MaterialStateColor.resolveWith(
@@ -316,7 +316,6 @@ class MobMartAppTheme {
       const NavigationBarThemeData(indicatorColor: Colors.transparent);
 
   static ThemeData dark() {
-    Color darkThemeColor = const Color(0xff00161f);
     Color darkCardColor = const Color(0xff062735);
 
     return ThemeData(
@@ -333,21 +332,21 @@ class MobMartAppTheme {
           900: Color(0xff191919)
         }),
         brightness: Brightness.dark,
-        primaryColor: Color(0xff212121),
-        primaryColorLight: Color(0xff9e9e9e),
-        primaryColorDark: Color(0xff000000),
-        canvasColor: Color(0xff303030),
-        scaffoldBackgroundColor: Color(0xff303030),
-        cardColor: Color(0xff424242),
-        dividerColor: Color(0x1fffffff),
-        highlightColor: Color(0x40cccccc),
-        splashColor: Color(0x40cccccc),
-        unselectedWidgetColor: Color(0xb3ffffff),
-        disabledColor: Color(0x62ffffff),
-        secondaryHeaderColor: Color(0xff616161),
-        dialogBackgroundColor: Color(0xff424242),
-        indicatorColor: Color(0xff64ffda),
-        hintColor: Color(0x80ffffff),
+        primaryColor: const Color(0xff212121),
+        primaryColorLight: const Color(0xff9e9e9e),
+        primaryColorDark: const Color(0xff000000),
+        canvasColor: const Color(0xff303030),
+        scaffoldBackgroundColor: const Color(0xff303030),
+        cardColor: const Color(0xff424242),
+        dividerColor: const Color(0x1fffffff),
+        highlightColor: const Color(0x40cccccc),
+        splashColor: const Color(0x40cccccc),
+        unselectedWidgetColor: const Color(0xb3ffffff),
+        disabledColor: const Color(0x62ffffff),
+        secondaryHeaderColor: const Color(0xff616161),
+        dialogBackgroundColor: const Color(0xff424242),
+        indicatorColor: const Color(0xff64ffda),
+        hintColor: const Color(0x80ffffff),
         dialogTheme: darkDialogTheme,
         checkboxTheme: CheckboxThemeData(
           fillColor: MaterialStateColor.resolveWith(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobmart/app/features/home/data/model/product_model.dart';
 import 'package:mobmart/app/features/home/data/model/shipping_model.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
 import 'package:mobmart/core/general_widgets/custom_list_space.dart';

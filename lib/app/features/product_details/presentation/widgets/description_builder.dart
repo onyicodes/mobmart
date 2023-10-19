@@ -18,7 +18,7 @@ class DescriptionBuilder extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
            Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text('Description: ',style: primaryTextTheme.displaySmall,),
           ),
           for (String text in descriptionBulletList ) Padding(

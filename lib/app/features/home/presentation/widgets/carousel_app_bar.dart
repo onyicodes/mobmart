@@ -1,4 +1,3 @@
-import 'package:banner_carousel/banner_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:mobmart/app/features/home/domain/entities/carousel_entity.dart';
@@ -6,7 +5,6 @@ import 'package:mobmart/core/constants/general_constants.dart';
 import 'package:mobmart/core/general_widgets/button_widget.dart';
 import 'package:mobmart/core/general_widgets/custom_carousel_indicator_builder.dart';
 import 'package:mobmart/core/general_widgets/custom_list_space.dart';
-import 'package:mobmart/core/general_widgets/custom_search_field.dart';
 
 class CarouselAppBar extends StatelessWidget {
   final Color backgroundColor;

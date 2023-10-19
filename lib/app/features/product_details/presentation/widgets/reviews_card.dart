@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobmart/app/features/home/data/model/reviews_model.dart';
-import 'package:mobmart/core/general_widgets/button_widget.dart';
 
 class ReviewCard extends StatelessWidget {
   final ReviewModel review;

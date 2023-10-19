@@ -23,7 +23,7 @@ import 'package:mobmart/core/util/check_favourited_products.dart';
 import 'package:mobmart/core/util/total_reviews_formatter.dart';
 
 class ProductDetailsPage extends GetView<ProductDetailsController> {
-  ProductDetailsPage({Key? key}) : super(key: key);
+  const ProductDetailsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
               child: ListView(
                 controller: _.mainScrollController,
                 shrinkWrap: true,
-                physics: ScrollPhysics(),
+                physics: const ScrollPhysics(),
                 children: [
                   GetX<ProductDetailsController>(builder: (_) {
                     return Padding(
@@ -166,7 +166,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                         onTap: (index) {
                           _.tabIndex = index;
                         },
-                        tabs: [
+                        tabs: const [
                           Tab(
                             text: "About Item",
                           ),
@@ -178,7 +178,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                   GetX<ProductDetailsController>(builder: (_) {
                     return Visibility(
                       visible: _.tabIndex == 0,
-                      replacement: Text("Reviews"),
+                      replacement: const Text("Reviews"),
                       child: AboutItemsBuilder(productModel: _.productModel),
                     );
                   }),
@@ -253,7 +253,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                                   padding: const EdgeInsets.only(
                                       left: 14, right: 14),
                                   decoration: BoxDecoration(
-                                    boxShadow: [],
+                                    boxShadow: const [],
                                     borderRadius: BorderRadius.circular(8),
                                     border: Border.all(
                                       color: Theme.of(context).dividerColor,
@@ -307,7 +307,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                                       });
                                 }),
                           )
-                        : SizedBox.shrink();
+                        : const SizedBox.shrink();
                   }),
                   const SizedBox(
                     height: 24,

@@ -11,14 +11,14 @@ class BuyButtonWidget extends StatelessWidget {
     return Row(children: [
       Container(height: 45, width: 60, 
       decoration: BoxDecoration(color: Theme.of(context).buttonTheme.colorScheme!.primary,
-      borderRadius: BorderRadius.only(topLeft: Radius.circular(4), bottomLeft:  Radius.circular(4), topRight: Radius.circular(0), bottomRight: Radius.circular(0)),
+      borderRadius: const BorderRadius.only(topLeft: Radius.circular(4), bottomLeft:  Radius.circular(4), topRight: Radius.circular(0), bottomRight: Radius.circular(0)),
       ),
       child: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
           SvgPicture.asset(AssetsConstants.actionCartIcon, color: Colors.white, height: 20,width: 20,),
-          SizedBox(width: 4,),
+          const SizedBox(width: 4,),
           Text("1", style: primaryTextTheme.headlineMedium!.copyWith(color: Colors.white))
         ],),
       ),
@@ -26,7 +26,7 @@ class BuyButtonWidget extends StatelessWidget {
       
       Container(height: 45, width: 120, 
       decoration: BoxDecoration(color: Theme.of(context).buttonTheme.colorScheme!.onPrimary,
-      borderRadius: BorderRadius.only(topLeft: Radius.circular(0), bottomLeft:  Radius.circular(0), topRight: Radius.circular(4), bottomRight: Radius.circular(4)),
+      borderRadius: const BorderRadius.only(topLeft: Radius.circular(0), bottomLeft:  Radius.circular(0), topRight: Radius.circular(4), bottomRight: Radius.circular(4)),
       ),
       child:Center(child: Text("Buy Now", style: primaryTextTheme.headlineMedium!.copyWith(color: Colors.white) ,))
       )

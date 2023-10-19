@@ -1,6 +1,4 @@
-import 'dart:ui';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobmart/app/features/home/data/model/product_model.dart';
 import 'package:mobmart/app/features/home/domain/entities/carousel_entity.dart';

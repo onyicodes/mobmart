@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:mobmart/app/features/home/data/model/product_model.dart';
 import 'package:mobmart/app/features/home/data/model/seller_info_model.dart';
 import 'package:mobmart/app/features/product_details/presentation/widgets/seller_profile_online_pics.dart';
 import 'package:mobmart/core/constants/assets_constants.dart';
