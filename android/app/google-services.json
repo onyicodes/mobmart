@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "577466012100",
+    "project_id": "mobmart-7f763",
+    "storage_bucket": "mobmart-7f763.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577466012100:android:22745aaa061c8611e41491",
+        "android_client_info": {
+          "package_name": "com.example.mobmart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB62B975hNSVoJlcSgRiV0e2dc_TD0F5Z4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

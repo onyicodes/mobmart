@@ -28,6 +28,6 @@ class HomeBinding implements Bindings {
    homeControllerSl.lazyPut<HomeRepository>(
         () =>HomeRepositoryImpl(dataProvider: homeControllerSl()));
 
-    homeControllerSl.lazyPut<HomeDataProvider>(() => HomeDataProviderImpl());
+    homeControllerSl.lazyPut<HomeDataProvider>(() => HomeDataProviderImpl(firebaseDb: homeControllerSl() ));
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_connect/connect.dart';
 import 'package:mobmart/app/features/home/data/model/carousel_model.dart';
@@ -13,6 +14,8 @@ abstract class HomeDataProvider extends GetConnect {
 }
 
 class HomeDataProviderImpl extends HomeDataProvider {
+  FirebaseFirestore firebaseDb;
+  HomeDataProviderImpl({required this.firebaseDb});
   @override
   Future<List<CategoryModel>> fetchCategories() async {
     final String response = await rootBundle
@@ -28,14 +31,13 @@ class HomeDataProviderImpl extends HomeDataProvider {
 
   @override
   Future<List<CarouselModel>> fetchCarousel() async {
-    final String response =
-        await rootBundle.loadString('assets/json_contents/home/carousel.json');
+    print("I am here");
+    final QuerySnapshot<Map<String, dynamic>> bannersData =
+   await  firebaseDb.collection("banners").get();
+   
 
-    final List<dynamic> carouselJsonList;
-    carouselJsonList = jsonDecode(response);
-
-    return carouselJsonList
-        .map((carouselJson) => CarouselModel.fromMap(carouselJson))
+    return bannersData.docs
+        .map((carouselJson) => CarouselModel.fromMap(carouselJson.data()))
         .toList();
   }
 
