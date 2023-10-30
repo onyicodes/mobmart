@@ -6,6 +6,7 @@ import 'package:get/get_connect/connect.dart';
 import 'package:mobmart/app/features/home/data/model/carousel_model.dart';
 import 'package:mobmart/app/features/home/data/model/category_model.dart';
 import 'package:mobmart/app/features/home/data/model/product_model.dart';
+import 'package:mobmart/core/constants/general_constants.dart';
 
 abstract class HomeDataProvider extends GetConnect {
   Future<List<CarouselModel>> fetchCarousel();
@@ -31,9 +32,8 @@ class HomeDataProviderImpl extends HomeDataProvider {
 
   @override
   Future<List<CarouselModel>> fetchCarousel() async {
-    print("I am here");
     final QuerySnapshot<Map<String, dynamic>> bannersData =
-   await  firebaseDb.collection("banners").get();
+   await  firebaseDb.collection( FirestoreCollections.banners.name).get();
    
 
     return bannersData.docs

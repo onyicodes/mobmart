@@ -254,7 +254,7 @@ class MobMartAppTheme {
             foregroundColor: Colors.black,
             backgroundColor: Color(0xffffffff),
             systemOverlayStyle: SystemUiOverlayStyle(
-              systemNavigationBarColor: Colors.white, // navigation bar color
+              systemNavigationBarColor: Color(0xff67c4a9), // navigation bar color
               statusBarColor: Color(0xffffffff),
               statusBarBrightness: Brightness.light,
               statusBarIconBrightness: Brightness.dark, // status bar color

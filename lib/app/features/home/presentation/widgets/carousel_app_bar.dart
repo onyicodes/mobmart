@@ -36,8 +36,6 @@ class CarouselAppBar extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     child: Container(
                       height: 260,
-                      decoration: BoxDecoration(
-                          color: backgroundColor,),
                     ),
                   ),
                   Padding(
@@ -100,7 +98,7 @@ class CarouselAppBar extends StatelessWidget {
             )
             .toList(),
         options: CarouselOptions(
-            height: 400.0,
+            height: 360.0,
             aspectRatio: 16 / 9,
             viewportFraction: 1.0,
             initialPage: 0,

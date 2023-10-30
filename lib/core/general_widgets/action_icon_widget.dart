@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ActionButtonWidget extends StatelessWidget {
-  final void Function() onTap;
+  final void Function()? onTap;
   final String svgImagePath;
   final int badgeCounter;
   final Widget? selectedIcon;
@@ -13,7 +13,7 @@ class ActionButtonWidget extends StatelessWidget {
   const ActionButtonWidget(
       {super.key,
       required this.svgImagePath,
-      required this.onTap,
+      this.onTap,
       this.isSelected,
       this.selectedIcon, 
       this.splashIcon,
@@ -31,6 +31,8 @@ class ActionButtonWidget extends StatelessWidget {
           onPressed: onTap,
           icon:(isSelected == null || !isSelected!) || selectedIcon==null? SvgPicture.asset(
             svgImagePath,
+            height: 30,
+            width: 30,
           ) : selectedIcon!,
           selectedIcon: selectedIcon,
           isSelected: isSelected,

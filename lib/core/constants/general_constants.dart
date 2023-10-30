@@ -13,5 +13,9 @@ enum ListSpacingValue {
   final double value;
 }
 
+enum FirestoreCollections {
+  banners
+}
+
 
 enum RequestStatus { initial, loading, success, error }

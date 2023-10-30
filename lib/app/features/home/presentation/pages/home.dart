@@ -8,9 +8,7 @@ import 'package:mobmart/app/features/home/presentation/widgets/carousel_app_bar.
 import 'package:mobmart/app/features/home/presentation/widgets/category_builder_widget.dart';
 import 'package:mobmart/app/features/home/presentation/widgets/products/product_grid_builder.dart';
 import 'package:mobmart/app/features/home/presentation/widgets/search_app_bar_widget.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/general_widgets/action_icon_widget.dart';
 import 'package:mobmart/core/util/check_favourited_products.dart';
 
 class Home extends GetView<HomeController> {
@@ -26,7 +24,7 @@ class Home extends GetView<HomeController> {
           headerSliverBuilder: (BuildContext context,
                   bool innerBoxIsScrolled) =>
               [
-                GetX<HomeController>(builder: (_) {
+                GetBuilder<HomeController>(builder: (_) {
                   return SliverOverlapAbsorber(
                     handle: SliverOverlapAbsorberHandle() ,
                     sliver: SliverSafeArea(
@@ -71,24 +69,13 @@ class Home extends GetView<HomeController> {
                               .systemOverlayStyle!
                               .statusBarIconBrightness,
                           systemNavigationBarContrastEnforced: true,
-                          statusBarColor: _.appBarExpanded
-                              ? _.carouselBackgroundColor
-                              : Theme.of(context).appBarTheme.backgroundColor),
-                      title: SearchAppBar(
+                          // statusBarColor: _.appBarExpanded
+                          //     ? _.carouselBackgroundColor
+                          //     : Theme.of(context).appBarTheme.backgroundColor
+                          ),
+                      title: const SearchAppBar(
                           backgroundColor: Colors.transparent,
-                          actionWidgets: [
-                            GetBuilder<HomeController>(builder: (_) {
-                              return ActionButtonWidget(
-                                  svgImagePath: AssetsConstants.actionCartIcon,
-                                  onTap: () {},
-                                  badgeCounter:
-                                      _.favouriteProductModelList.length);
-                            }),
-                            ActionButtonWidget(
-                                svgImagePath: AssetsConstants.actionReviewIcon,
-                                onTap: () {},
-                                badgeCounter: 10)
-                          ]),
+                          actionWidgets: []),
                       flexibleSpace: LayoutBuilder(builder:
                           (BuildContext context, BoxConstraints constraints) {
                         //collapsed height - kToolbarHeight + 20

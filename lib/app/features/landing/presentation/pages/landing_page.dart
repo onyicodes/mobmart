@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart' hide Trans;
+import 'package:mobmart/app/features/favourites/presentation/pages/favourites.dart';
+import 'package:mobmart/app/features/home/presentation/controllers/home_controller.dart';
 import 'package:mobmart/app/features/home/presentation/pages/home.dart';
 import 'package:mobmart/app/features/landing/presentation/controllers/landing_controller.dart';
 import 'package:mobmart/core/constants/assets_constants.dart';
+import 'package:mobmart/core/general_widgets/action_icon_widget.dart';
 import 'package:mobmart/generated/locale_keys.g.dart';
 
 class LandingPage extends GetView<LandingController> {
@@ -26,7 +29,7 @@ class LandingPage extends GetView<LandingController> {
   }
   final List<Widget> pages = const [
     Home(),
-    Text("Favourites"),
+    FavouritePage(),
      Text("Cart"),
     Text("Settings")
   ];
@@ -78,11 +81,14 @@ class LandingPage extends GetView<LandingController> {
                           ),
                           
                           NavigationDestination(
-                              icon: SvgPicture.asset(
-                                AssetsConstants.navbarUnselectedFavouriteIcon,
-                                  height: 30,
-                              width:30,
-                              ),
+                              icon:GetX<HomeController>(
+                                builder: (_) {
+                                  return  ActionButtonWidget(
+                                      svgImagePath:  AssetsConstants.navbarUnselectedFavouriteIcon,
+                                    
+                                      badgeCounter:_.favouriteProductModelList.length);
+                                }
+                              ), 
                               selectedIcon: SvgPicture.asset(
                                 AssetsConstants.navbarSelectedFavourite,
                                   height: 30,
@@ -90,16 +96,17 @@ class LandingPage extends GetView<LandingController> {
                               ),
                               label: LocaleKeys.navBar_favourites.tr()),
                           NavigationDestination(
-                              icon: SvgPicture.asset(
-                                AssetsConstants.navbarUnselectedCart,
-                                  height: 30,
-                              width:30,
-                              ),
-                              selectedIcon: SvgPicture.asset(
-                                AssetsConstants.navbarSelectedCart,
-                                  height: 30,
-                              width:30,
-                              ),
+                              icon: const ActionButtonWidget(
+                                      svgImagePath: AssetsConstants.navbarUnselectedCart,
+                                    
+                                      badgeCounter:0),
+                               
+                              selectedIcon:
+                              const ActionButtonWidget(
+                                  svgImagePath: AssetsConstants.navbarSelectedCart,
+                                  
+                                  badgeCounter:0),
+                               
                               label: LocaleKeys.navBar_cart.tr()),
                           NavigationDestination(
                               icon: SvgPicture.asset(

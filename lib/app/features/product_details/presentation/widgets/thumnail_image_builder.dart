@@ -17,8 +17,8 @@ class ThumbnailImageBuilder extends StatelessWidget {
                   onPressed: () {
                     onTap(key);
                   },
-                  iconSize: 40,
-                  icon: Image.asset(value)))).values.toList(),
+                  iconSize: 30,
+                  icon: Image.asset( value, height: 30, width: 30,)))).values.toList(),
     );
   }
 }
