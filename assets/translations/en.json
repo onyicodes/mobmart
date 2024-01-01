@@ -7,6 +7,47 @@
         "cart": "Cart",
         "favourites": "Favourites",
         "settings": "Settings"
-    }
+    },
+    "buttons":{
+        "reload":"Reload"
+    },
+    "error": {
+        "networkError": "Connection error",
+        "serverError":"Server error occurred",
+        "noResultError": "Result not found",
+        "unknownError": "An error occurred",
+        "forBiddenError":"you don't have permission to access this resource",
+        "badRequest": "Bad request",
+       "notAuthorized":"You are not authorized to perform this action",
+       "cachingFailed": "Cache failure",
+       "AuthFieldValidationError":{
+                    "emailEmpty" :"Email field cannot be empty",
+                "fieldEmpty": "This field is required",
+                "emailFormatWrong" :"Enter a valid email address",
+                "phoneEmpty": "Phone number has not been entered",
+                "phoneFormatWrong":"wrong phone format entered",
+                "userNameEmpty":"Username is required",
+                "passwordEmpty" :"Password is required",
+                 "passwordFormatWrong":"Password must be between 8 to 12 characters"
+            }
+    },
+     "onboarding":{
+        "buttons":{
+            "skip":"Skip",
+            "next":"Next",
+            "getStarted":"Get started"
+        },
+        "contents":{
+            "page1": {"image":"assets/images/onboarding/onboard_image_1.png",
+            "title":"Create a FREE account\n& find new customers",
+        "subtitle": "Find the right market"},
+           "page2":  {"image":"assets/images/onboarding/onboard_image_2.png",
+            "title":"Advertise special\ndeals, events & more",
+        "subtitle": "Find the right market"},
+          "page3": {"image":"assets/images/onboarding/onboard_image_3.png",
+            "title":"Promote your\nlocation",
+        "subtitle": "Find the right market"}
+        }
+      }
 
 }

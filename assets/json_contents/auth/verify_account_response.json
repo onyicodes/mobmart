@@ -1,0 +1,19 @@
+{
+    "success": true,
+    "message": "successful",
+    "data": {
+      "id": 5,
+      "email": "donald@gmail.com",
+      "password": "$2b$10$3XJKBpnEJA8Kmx9E3DDK/u9yGb7vwIdGiWEGNh7A1TfUue9cv5wlK",
+      "username": "donaldboy",
+      "phone": "+2348100581890",
+      "googleId": null,
+      "facebookId": null,
+      "twitterId": null,
+      "appleId": null,
+      "verified": true,
+      "createdAt": "2022-12-19T02:18:47.880Z",
+      "updatedAt": "2022-12-19T10:41:59.406Z",
+      "role": "customer"
+    }
+  }

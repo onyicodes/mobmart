@@ -5,7 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:mobmart/app/features/home/presentation/widgets/products/product_grid_builder.dart';
+import 'package:mobmart/core/general_widgets/products/product_grid_builder.dart';
 import 'package:mobmart/app/features/product_details/presentation/controllers/product_details_controller.dart';
 import 'package:mobmart/app/features/product_details/presentation/widgets/buy_button_widget.dart';
 import 'package:mobmart/app/features/product_details/presentation/widgets/description_builder.dart';
@@ -356,8 +356,6 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                                           .favouriteProductModelList),
                               productRequestStatus: _.productsRequestStatus,
                               onTapProduct: (productModel) {
-                                print(
-                                    "${productModel.id} one ${_.productModel.id}");
                                 _.viewProductDetails(product: productModel);
                               })
                           : Container(

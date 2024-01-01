@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobmart/app/features/favourites/presentation/controllers/favourite_controller.dart';
 import 'package:mobmart/app/features/home/data/model/product_model.dart';
 import 'package:mobmart/app/features/home/presentation/controllers/home_controller.dart';
 import 'package:mobmart/app/features/product_details/domain/usecases/fetch_products_usecase.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
 import 'package:mobmart/core/parameters/no_params.dart';
+import 'package:mobmart/core/util/check_favourited_products.dart';
 
 class ProductDetailsController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -16,6 +18,8 @@ class ProductDetailsController extends GetxController
   final homeController = Get.find<HomeController>();
   final PageController reviewPageController = PageController();
   final ScrollController mainScrollController = ScrollController();
+
+  final favouriteController = Get.find<FavouriteController>();
 
   late TabController tabController;
 
@@ -63,7 +67,10 @@ class ProductDetailsController extends GetxController
     super.onInit();
     tabController = TabController(length: 2, vsync: this);
     productModel = Get.arguments;
-    favourited = productModel.favourited;
+    favourited = checkFavourited(
+        productModel: productModel,
+        favouriteProductList: favouriteController.favouriteProductModelList);
+    ;
 
     reviewsNumberOfPages = reviewsNumberOfPagesDeterminer(
         totalContents: productModel.reviews.length,
@@ -84,13 +91,14 @@ class ProductDetailsController extends GetxController
 
   displayFavouriteSplash() {
     if (favourited) {
-      homeController.favouriteProductModelList.add(productModel);
+      //optimistic design
+      favouriteController.favouriteProductModelList.add(productModel);
       showFavouriteSplash = true;
       Timer(const Duration(milliseconds: 900), () {
         showFavouriteSplash = false;
       });
     } else {
-      homeController.favouriteProductModelList
+      favouriteController.favouriteProductModelList
           .removeWhere((element) => element.id == productModel.id);
     }
 
@@ -98,9 +106,8 @@ class ProductDetailsController extends GetxController
   }
 
   updateFavourite() {
-    int productIndex = homeController.productModelList
-        .indexWhere((element) => element.id == productModel.id);
-    homeController.productModelList[productIndex].favourited = favourited;
+    favouriteController.update();
+    favouriteController.favProductsRequestStatus = RequestStatus.success;
     homeController.update();
   }
 
@@ -148,7 +155,6 @@ class ProductDetailsController extends GetxController
         mainScrollController.position.minScrollExtent,
         duration: const Duration(milliseconds: 600),
         curve: Curves.easeInOut);
-    
   }
 
   returnHome() {

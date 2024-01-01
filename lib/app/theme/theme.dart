@@ -218,7 +218,7 @@ class MobMartAppTheme {
           900: Color(0xff0e251e)
         }),
         brightness: Brightness.light,
-        primaryColor: const Color(0xff67c4a9),
+        primaryColor: const Color(0xff07cbfb),
         primaryColorLight: const Color(0xffdaf1ea),
         primaryColorDark: const Color(0xff2b6e5b),
         canvasColor: const Color(0xfffafafa),

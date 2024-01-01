@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart' hide Trans;
+import 'package:mobmart/app/features/favourites/presentation/controllers/favourite_controller.dart';
 import 'package:mobmart/app/features/favourites/presentation/pages/favourites.dart';
-import 'package:mobmart/app/features/home/presentation/controllers/home_controller.dart';
 import 'package:mobmart/app/features/home/presentation/pages/home.dart';
 import 'package:mobmart/app/features/landing/presentation/controllers/landing_controller.dart';
 import 'package:mobmart/core/constants/assets_constants.dart';
@@ -81,7 +81,7 @@ class LandingPage extends GetView<LandingController> {
                           ),
                           
                           NavigationDestination(
-                              icon:GetX<HomeController>(
+                              icon:GetX<FavouriteController>(
                                 builder: (_) {
                                   return  ActionButtonWidget(
                                       svgImagePath:  AssetsConstants.navbarUnselectedFavouriteIcon,

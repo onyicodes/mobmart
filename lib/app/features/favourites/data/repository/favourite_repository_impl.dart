@@ -25,7 +25,6 @@ class FavouriteRepositoryImpl extends FavouriteRepository {
     } on NotFoundException {
       return Left(NotFoundFailure());
     } catch (e) {
-      print(e);
       return Left(UnknownFailure());
     }
   }

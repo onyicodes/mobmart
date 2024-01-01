@@ -19,4 +19,19 @@ class ForbiddenFailure extends Failure {}
 
 class BadRequestFailure extends Failure {}
 
-class UnknownFailure extends Failure {}
+class CacheFailure extends Failure {}
+
+class AccountExistsFailure extends Failure {}
+
+class AccountNotFoundFailure extends Failure {}
+
+class FailedLoginFailure extends Failure {}
+
+class NotAuthorizedFailure extends Failure {}
+
+class UnknownFailure extends Failure {
+  @override
+  final String message;
+  const UnknownFailure({this.message = ""});
+}
+

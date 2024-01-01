@@ -56,7 +56,7 @@ class SellerInfoBuilder extends StatelessWidget {
                     CustomButton(
                       label: "Visit store",
                       height: 40,
-                      width: 150,
+                      width: 180,
                       radius: 8,
                       icon: SvgPicture.asset(
                         AssetsConstants.actionstoreFrontIcon,

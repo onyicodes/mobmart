@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:mobmart/app/features/favourites/presentation/controllers/favourite_controller.dart';
 import 'package:mobmart/app/features/home/data/model/product_model.dart';
 import 'package:mobmart/app/features/home/domain/entities/carousel_entity.dart';
 import 'package:mobmart/app/features/home/domain/entities/category_entity.dart';
@@ -22,6 +23,8 @@ class HomeController extends GetxController {
       required this.fetchCategoriesUsecase});
 
   final ScrollController scrollController = ScrollController();
+  final favouriteController = Get.find<FavouriteController>();
+  
 
   final _carousels = <CarouselEntity>[].obs;
   final _categories = <CategoryEntity>[].obs;
@@ -115,6 +118,7 @@ class HomeController extends GetxController {
   }
 
   viewProductDetails({required ProductModel productModel}) {
+    
     Get.toNamed(Routes.details, arguments: productModel);
   }
 }

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mobmart/app/features/home/data/model/product_model.dart';
-import 'package:mobmart/app/features/home/presentation/widgets/products/product_image_cover.dart';
+import 'package:mobmart/core/general_widgets/products/product_image_cover.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
 import 'package:mobmart/core/general_widgets/custom_list_space.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel productModel;
   final bool favourite;
+  final void Function()? updateFav;
   const ProductCard(
-      {Key? key, required this.productModel, required this.favourite})
+      {Key? key, required this.productModel, this.updateFav, required this.favourite})
       : super(key: key);
 
   @override
@@ -23,6 +24,7 @@ class ProductCard extends StatelessWidget {
           ProductImageCover(
             imageUrl: productModel.photo.first,
             favourited: favourite,
+            updateFav: updateFav
           ),
           CustomListSpacing(spacingValue: ListSpacingValue.spacingV8.value),
           Padding(

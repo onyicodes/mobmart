@@ -1,0 +1,34 @@
+{
+    "success": true,
+    "message": "successful",
+    "data": {
+      "user": {
+        "id": 5,
+        "email": "donald@gmail.com",
+        "password": "$2b$10$3XJKBpnEJA8Kmx9E3DDK/u9yGb7vwIdGiWEGNh7A1TfUue9cv5wlK",
+        "username": "donaldboy",
+        "phone": "+2348100581890",
+        "googleId": "",
+        "facebookId": "",
+        "twitterId": "",
+        "appleId": "",
+        "verified": true,
+        "createdAt": "2022-12-19T02:18:47.880Z",
+        "updatedAt": "2022-12-19T10:41:59.406Z",
+        "role": "customer",
+        "customer": {
+          "id": 4,
+          "firstName": "",
+          "lastName": "",
+          "photo": "",
+          "dob": "",
+          "userId": 5,
+          "createdAt": "2022-12-19T02:18:47.880Z",
+          "updatedAt": "2022-12-19T02:18:47.880Z",
+          "gender": "nb"
+        },
+        "seller": {}
+      },
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJkb25hbGRAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkM1hKS0JwbkVKQThLbXg5RTNEREsvdTl5R2I3dndJZEdpV0VHTmg3QTFUZlV1ZTljdjV3bEsiLCJ1c2VybmFtZSI6ImRvbmFsZGJveSIsInBob25lIjoiKzIzNDgxMDA1ODE4OTAiLCJnb29nbGVJZCI6bnVsbCwiZmFjZWJvb2tJZCI6bnVsbCwidHdpdHRlcklkIjpudWxsLCJhcHBsZUlkIjpudWxsLCJ2ZXJpZmllZCI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMi0xMi0xOVQwMjoxODo0Ny44ODBaIiwidXBkYXRlZEF0IjoiMjAyMi0xMi0xOVQxMDo0MTo1OS40MDZaIiwicm9sZSI6ImN1c3RvbWVyIiwiY3VzdG9tZXIiOnsiaWQiOjQsImZpcnN0TmFtZSI6bnVsbCwibGFzdE5hbWUiOm51bGwsInBob3RvIjpudWxsLCJkb2IiOm51bGwsInVzZXJJZCI6NSwiY3JlYXRlZEF0IjoiMjAyMi0xMi0xOVQwMjoxODo0Ny44ODBaIiwidXBkYXRlZEF0IjoiMjAyMi0xMi0xOVQwMjoxODo0Ny44ODBaIiwiZ2VuZGVyIjoibmIifSwic2VsbGVyIjpudWxsLCJpYXQiOjE2NzE0NDY3NzcsImV4cCI6MTY3MTYxOTU3N30.kcFJXsgePBVh5mOyRPYacajT3sR1Fb1dXql6mHIJuXY"
+    }
+  }
