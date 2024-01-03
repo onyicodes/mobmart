@@ -13,7 +13,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-
 class SigninController extends GetxController {
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController emailAddressController = TextEditingController();
@@ -55,7 +54,7 @@ class SigninController extends GetxController {
   set startedTypingPw(value) => _startedTypingPw.value = value;
 
   Future<void> goToSignup() async {
-    Get.toNamed(Routes.signup);
+    Get.offAndToNamed(Routes.signup);
   }
 
   checkPasswordError() {
@@ -70,7 +69,7 @@ class SigninController extends GetxController {
 
   goToPushToken({required Widget pinBottomsheet}) {
     Get.back();
-    Get.bottomSheet(pinBottomsheet);
+    Get.bottomSheet(pinBottomsheet, isDismissible: false);
   }
 
   goToPResetPassword({required Widget resetPwBottomsheet}) {
@@ -85,10 +84,12 @@ class SigninController extends GetxController {
     SigninParams params = SigninParams(email: email, password: password);
     final failOrSignup = await emailSigninUsecase(params);
     failOrSignup.fold((fail) {
+      print(fail.message);
       customSnackbar(title: "Error", message: mapFailureToErrorMessage(fail));
       return Future.value(RequestStatus.error);
     }, (signInModel) {
-      storeBox.write(CacheKeys.accessToken, signInModel.token);
+      customSnackbar(title: "Success", message: "Signed in successfully");
+      storeBox.write(CacheKeys.accessToken, signInModel.accessToken);
       storeBox.write(CacheKeys.userData, signInModel.user);
       storeBox.write(CacheKeys.isLoggedIn, true);
       return Future.value(RequestStatus.success);
@@ -104,7 +105,7 @@ class SigninController extends GetxController {
         .then((validated) async {
       if (validated) {
         requestStatus =
-            signInUser(email: params.email, password: params.password);
+            await signInUser(email: params.email, password: params.password);
 
         if (requestStatus == RequestStatus.success) {
           Get.offAndToNamed(Routes.home);

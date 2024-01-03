@@ -62,8 +62,6 @@ class _CustomAuthFieldState extends State<CustomAuthField> {
           obscureText: widget.isPasswordField ? true : false,
           style: primaryTextTheme.bodyLarge,
           decoration: InputDecoration(
-              prefixIconConstraints:
-                  const BoxConstraints(minWidth: 295, minHeight: 0),
               errorText: widget.errorText.isEmpty ? null : widget.errorText,
               hintText: widget.hintText,
               hintStyle: primaryTextTheme.bodyLarge!

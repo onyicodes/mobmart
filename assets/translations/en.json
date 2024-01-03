@@ -31,6 +31,29 @@
                  "passwordFormatWrong":"Password must be between 8 to 12 characters"
             }
     },
+    "pages":{
+       "auth":{
+            "signInTitle":"Welcome back",
+            "signInSubtitle":"Find the right product for you. Sell your products",
+            "dontHaveAccountText":"Don't have an account?",
+            "signinButtonLabel":"Sign in",
+            "signUpTitle":"Join us in making impact",
+            "signUpSubtitle":"Find the right product for you. Sell your products",
+            "signupButtonLabel":"Sign up",
+            "emailLabel":"E-mail",
+            "emailHint":"abc@example",
+            "nameLabel":"Name",
+            "nameHint":"Jane Doe",
+            "passwordLabel":"Password",
+            "passwordHint":"**********",
+            "phoneLabel":"Phone",
+            "phoneHint": "07000000000",
+            "forgotPasword":"Forgot password",
+            "alreadyHaveAccountText":"Already have an account?",
+            "continueButton": "Continue",
+            "forgotPasswordEnterEmailText":"Enter the email associated with your account for the verification proccesss and we will send 6 digits verification code to your email."
+            }
+    },
      "onboarding":{
         "buttons":{
             "skip":"Skip",

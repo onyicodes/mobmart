@@ -9,6 +9,8 @@ import 'package:mobmart/app/features/product_details/presentation/bindings/produ
 import 'package:mobmart/app/features/product_details/presentation/pages/product_details_page.dart';
 import 'package:mobmart/app/features/signin/presentation/bindings/signin_binding.dart';
 import 'package:mobmart/app/features/signin/presentation/pages/signin_page.dart';
+import 'package:mobmart/app/features/signup/presentation/bindings/signup_binding.dart';
+import 'package:mobmart/app/features/signup/presentation/pages/signup_page.dart';
 import 'package:mobmart/app/features/splash/presentation/bindings/splash_screen_binding.dart';
 import 'package:mobmart/app/features/splash/presentation/pages/splash_screen.dart';
 import 'package:mobmart/app/getx_managers/middlewares/auth_guard_middlewares.dart';
@@ -38,7 +40,15 @@ abstract class AppPages {
      GetPage(
         name: Routes.signin,
         page: () => const SigninPage(),
-        binding:SigninBinding(),),
+        binding:SigninBinding(),
+         transition: Transition.rightToLeft,
+        ),
+     GetPage(
+      name: Routes.signup,
+      page: () => const SignupPage(),
+      binding: SignupBinding(),
+      transition: Transition.leftToRight,
+    ),
     GetPage(
         name: Routes.home,
         page: () => const Home(),

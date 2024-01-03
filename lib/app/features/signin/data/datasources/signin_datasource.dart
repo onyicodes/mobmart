@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:mobmart/app/features/signin/data/model/signin_model.dart';
 import 'package:mobmart/core/constants/api_url/api_url.dart';
 import 'package:mobmart/core/error/exceptions.dart';
+import 'package:mobmart/core/network/network_info.dart';
 import 'package:mobmart/core/parameters/auth/signin_params.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get_connect/connect.dart';
 
 abstract class SigninDataProvider extends GetConnect {
@@ -12,34 +10,51 @@ abstract class SigninDataProvider extends GetConnect {
 }
 
 class SigninDataProviderImpl extends SigninDataProvider {
-// Get request
+
+ final NetworkInfo networkInfo;
+
+ SigninDataProviderImpl({required this.networkInfo});
+ 
   @override
   Future<SigninModel> emailSignin({required SigninParams params}) async {
-    Map<String, String> signupField = {
-      'email': params.email,
-      'password': params.password
-    };
+    Map<String, String> signupField = params.toMap();
 
     const String signinUrl = ApiUrls.baseUrl + ApiUrls.signin;
 
-    final String dummyResponse = await rootBundle
-        .loadString('assets/json_contents/auth/login_response.json');
-    //final Response response = await post(signupUrl, signupField);
+    final Response response = await post(signinUrl, signupField);
 
-    //if (response.statusCode == 200) {
-    final Map<String, dynamic> jsonString;
+     if (await networkInfo.isConnected) {
+      final Map<String, dynamic>? jsonString;
+      
+      
+       jsonString = response.body;
 
-    //jsonString = response.body;
-    jsonString = jsonDecode(dummyResponse);
-    if (jsonString['statusCode'] == 200) {
-      final Map<String, String> signinJsonData = jsonString['data'];
-      final signinModel = SigninModel.fromJson(signinJsonData);
-      return signinModel;
+
+      if (jsonString != null && jsonString['success']) {
+        final Map<String, dynamic> signinJsonData = jsonString['data'];
+        final signinModel = SigninModel.fromJson(signinJsonData);
+        return signinModel;
+      } else if (response.statusCode == 400) {
+        if (jsonString != null) {
+          throw jsonString['message'];
+        }
+        throw BadRequestException();
+      } else if (response.statusCode == 403) {
+        throw ForbiddenException();
+      } else if (response.statusCode == 404) {
+        throw AccountNotFoundException();
+      } else if (response.statusCode == 409) {
+        throw FailedLoginException();
+      } else if (response.statusCode == 500) {
+        throw ServerException();
+      } else {
+        if (jsonString != null) {
+          throw jsonString['message'];
+        }
+        throw UnknownException();
+      }
     } else {
-      throw UnknownException();
+      throw NetworkException();
     }
-    // } else {
-    //   throw ServerException();
-    //}
   }
 }

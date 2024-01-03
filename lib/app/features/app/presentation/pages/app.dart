@@ -19,6 +19,7 @@ class App extends StatelessWidget {
       initialBinding: SplashBinding(),
       theme: MobMartAppTheme.light(),
       darkTheme: MobMartAppTheme.dark(),
+      themeMode: ThemeMode.light,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
       defaultTransition: Transition.fade,

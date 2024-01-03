@@ -12,6 +12,8 @@ class SigninParams extends Equatable {
     required this.password,
   });
 
+  Map<String, String> toMap() => {"email": email, "password": password};
+
   @override
   List<Object?> get props => [];
 }

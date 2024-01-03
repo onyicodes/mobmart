@@ -1,7 +1,7 @@
 class AssetsConstants {
   static const String logo = 'assets/images/icons/logos/logo.png';
   static const String logoSvg = 'assets/svg/logo/logo.svg';
-  static const String appBg = 'assets/images/misc/bg_tiny.png';
+  static const String appBg = 'assets/images/misc/bg_tiny_.png';
   static const String googleIcon = 'assets/images/icons/g_icon.png';
   static const String fbIcon = 'assets/images/icons/f_icon.png';
   static const String navbarSelectedHome =

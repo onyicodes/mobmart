@@ -1,25 +1,25 @@
-import 'package:mobmart/app/features/signin/presentation/controllers/signin_controller.dart';
-import 'package:mobmart/app/features/signin/presentation/widgets/forgot_password_bottomsheet.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mobmart/app/features/signup/presentation/controllers/signup_controller.dart';
+import 'package:mobmart/app/features/signup/presentation/widgets/password_check.dart';
 import 'package:mobmart/core/constants/error_texts.dart';
 import 'package:mobmart/core/general_widgets/auth_field/custom_auth_field.dart';
 import 'package:mobmart/core/general_widgets/auth_field/password_textfield.dart';
 import 'package:mobmart/core/constants/assets_constants.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
+import 'package:mobmart/core/general_widgets/auth_field/phone_number_text_field.dart';
 import 'package:mobmart/core/general_widgets/button_widget.dart';
 import 'package:mobmart/core/general_widgets/custom_list_space.dart';
 import 'package:mobmart/core/general_widgets/social_signups.dart';
-import 'package:mobmart/core/parameters/auth/signin_params.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class SigninPage extends GetView<SigninController> {
-  const SigninPage({Key? key}) : super(key: key);
+class SignupPage extends GetView<SignupController> {
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextTheme primaryTextTheme = Theme.of(context).primaryTextTheme;
     return Scaffold(
-      body: GetX<SigninController>(builder: (_) {
+      body: GetX<SignupController>(builder: (_) {
         return Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -30,32 +30,29 @@ class SigninPage extends GetView<SigninController> {
             ),
           ),
           child: ListView(
+            shrinkWrap: true,
             children: [
-               CustomListSpacing(
-                  spacingValue: ListSpacingValue.spacingV100.value),
               CustomListSpacing(
-                  spacingValue: ListSpacingValue.spacingV32.value),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal:8.0),
-                child: Text(
-                  AuthFieldText.signinPageTitle,
-                  textAlign: TextAlign.center,
-                  style: primaryTextTheme.displayMedium,
-                ),
+                  spacingValue: ListSpacingValue.spacingV100.value),
+             
+              Text(
+                AuthFieldText.signupPageTitle,
+                textAlign: TextAlign.center,
+                style: primaryTextTheme.displayMedium,
               ),
               CustomListSpacing(
-                  spacingValue: ListSpacingValue.spacingV32.value),
+                  spacingValue: ListSpacingValue.spacingV12.value),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  AuthFieldText.signinPageSubtitle,
+                  AuthFieldText.signupPageSubtitle,
                   textAlign: TextAlign.center,
                   style: primaryTextTheme.bodyLarge,
                 ),
               ),
               CustomListSpacing(
-                  spacingValue: ListSpacingValue.spacingV32.value),
-             SocialSignups(
+                  spacingValue: ListSpacingValue.spacingV12.value),
+              SocialSignups(
                 onGoogleTap: () {
                   _.googleSignup();
                 },
@@ -74,46 +71,44 @@ class SigninPage extends GetView<SigninController> {
                     }
                   },
                   inputType: TextInputType.emailAddress),
+              CustomAuthField(
+                  controller: _.userNameController,
+                  hintText: AuthFieldText.nameHint,
+                  label: AuthFieldText.nameLabel,
+                  onChanged: (String value) {
+                    if (_.userNameError.isNotEmpty) {
+                      _.userNameError = '';
+                    }
+                  },
+                  errorText: _.userNameError,
+                  inputType: TextInputType.name),
+              PhoneInputTextField(
+                  controller: _.phoneController,
+                  errorText: _.phoneError,
+                  hintText: AuthFieldText.phoneHint,
+                  label: AuthFieldText.phoneLabel,
+                  onChanged: (phone) {
+                    _.onPhoneChange(phone);
+                  }),
               PasswordTextField(
                   controller: _.passwordController,
                   errorText: _.passwordError,
                   obscurePassword: _.obscurePasswordText,
                   label: AuthFieldText.passwordLabel,
                   onChanged: (String value) {
-                    _.checkPasswordError();
+                    _.checkPassword(text: value);
                   },
+                  validationWidget: const PasswordCheck(),
                   toggleObscureText: () {
                     _.obscurePasswordText = !_.obscurePasswordText;
                   },
                   hintText: AuthFieldText.passwordHint),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          _.forgotPassword(bottomsheet: const ForgotPassword());
-                        },
-                        child: Text(
-                          AuthFieldText.forgotPassword,
-                          style: primaryTextTheme.headlineMedium!
-                              .copyWith(color: Theme.of(context).primaryColor),
-                        )),
-                    const SizedBox()
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal:20.0, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal:20.0, vertical: 8.0),
                 child: CustomButton(
-                  label: AuthFieldText.signinButtonLabel,
+                  label: AuthFieldText.signupButtonLabel,
                   onPressed: () {
-                    _.signin(
-                        params: SigninParams(
-                      email: _.emailAddressController.text,
-                      password: _.passwordController.text,
-                    ));
+                    _.signup();
                   },
                   radius: 12,
                   height: 55,
@@ -123,21 +118,22 @@ class SigninPage extends GetView<SigninController> {
                   borderColor: Theme.of(context).primaryColor,
                 ),
               ),
-              CustomListSpacing(spacingValue: ListSpacingValue.spacingV12.value),
-              Row(
+              CustomListSpacing(
+                  spacingValue: ListSpacingValue.spacingV12.value),
+               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                   AuthFieldText.dontHaveAccountText,
+                    AuthFieldText.alreadyHaveAccountText,
                     style: primaryTextTheme.headlineMedium!
                         .copyWith(fontWeight: FontWeight.normal),
                   ),
                   TextButton(
                       onPressed: () {
-                        _.goToSignup();
+                        _.goToSignIn();
                       },
                       child: Text(
-                        AuthFieldText.signupButtonLabel,
+                        AuthFieldText.signinButtonLabel,
                         style: primaryTextTheme.headlineMedium!
                             .copyWith(color: Theme.of(context).primaryColor),
                       ))

@@ -2,14 +2,16 @@ import 'package:mobmart/core/entities/user_entity.dart';
 import 'package:equatable/equatable.dart';
 
 class SigninEntity extends Equatable {
-  final String token;
+  final String accessToken;
+  final String refreshToken;
   final UserEntity user;
 
   const SigninEntity({
-    required this.token,
+    required this.accessToken,
+    required this.refreshToken,
     required this.user,
   });
 
   @override
-  List<Object?> get props => [token, user];
+  List<Object?> get props => [accessToken, refreshToken, user];
 }

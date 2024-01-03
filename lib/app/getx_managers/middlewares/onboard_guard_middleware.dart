@@ -8,7 +8,7 @@ class OnboardGuardMiddleware extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    return authService.hasOnboarded() ?  const RouteSettings(name: Routes.signin) : null ;
+    return authService.hasOnboarded() ?  const RouteSettings(name: Routes.signup) : null ;
   }
   
 }

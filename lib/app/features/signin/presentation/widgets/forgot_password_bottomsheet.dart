@@ -1,8 +1,9 @@
 import 'dart:ui';
 
 import 'package:mobmart/app/features/signin/presentation/controllers/signin_controller.dart';
-import 'package:mobmart/app/features/signin/presentation/widgets/pin_bottomsheet.dart';
-import 'package:mobmart/core/auth_field/custom_auth_field.dart';
+import 'package:mobmart/core/verify_pin_bottomsheet.dart';
+import 'package:mobmart/core/constants/error_texts.dart';
+import 'package:mobmart/core/general_widgets/auth_field/custom_auth_field.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
 import 'package:mobmart/core/general_widgets/button_widget.dart';
 import 'package:mobmart/core/general_widgets/custom_list_space.dart';
@@ -19,7 +20,7 @@ class ForgotPassword extends StatelessWidget {
       filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
       child: Container(
         padding: const EdgeInsets.all(12),
-        height: 350,
+        constraints: const BoxConstraints(minHeight: 350),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(16), topRight: Radius.circular(16)),
@@ -35,14 +36,12 @@ class ForgotPassword extends StatelessWidget {
             CustomListSpacing(
                 spacingValue: ListSpacingValue.spacingV32.value),
             Text(
-              'Forgot password',
+              AuthFieldText.forgotPassword,
               style: primaryTextTheme.displayMedium,
             ),
             CustomListSpacing(
                 spacingValue: ListSpacingValue.spacingV24.value),
-            Text(
-              """Enter your email for the verification proccesss,
-we will send 4 digits code to your email.""",
+            Text(AuthFieldText.forgotPasswordEnterEmailText,
               style: primaryTextTheme.bodyLarge,
             ),
             CustomListSpacing(
@@ -51,8 +50,8 @@ we will send 4 digits code to your email.""",
               builder: (_) {
                 return CustomAuthField(
                     controller: _.emailAddressController,
-                    hintText: 'abc@example.com',
-                    label: 'E-mail',
+                    hintText: AuthFieldText.emailHint,
+                    label: AuthFieldText.emailLabel,
                     errorText: _.emailError,
                     onChanged: (String value) {
                       if (_.emailError.isNotEmpty) {
@@ -68,10 +67,10 @@ we will send 4 digits code to your email.""",
               child: GetBuilder<SigninController>(
                 builder: (_) {
                   return CustomButton(
-                      label: 'Continue',
+                      label: AuthFieldText.continueButton,
                       onPressed: () {
                         _.goToPushToken(
-                            pinBottomsheet: const VerifyPinBottomSheet());
+                            pinBottomsheet: VerifyPinBottomSheet(onResendPin: () {  }, confirmPin: () {  }, isLoading: false, title: '', subTitle: '',));
                       },
                       radius: 12,
                       width: 345,

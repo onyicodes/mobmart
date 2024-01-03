@@ -27,6 +27,6 @@ class SigninBinding implements Bindings {
         () => SigninRepositoryImpl(dataProvider: getSigninControllerSl()));
 
     getSigninControllerSl
-        .lazyPut<SigninDataProvider>(() => SigninDataProviderImpl());
+        .lazyPut<SigninDataProvider>(() => SigninDataProviderImpl(networkInfo: getSigninControllerSl()));
   }
 }

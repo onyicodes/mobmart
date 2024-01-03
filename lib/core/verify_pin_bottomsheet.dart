@@ -11,7 +11,12 @@ import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
 class VerifyPinBottomSheet extends StatelessWidget {
-  const VerifyPinBottomSheet({super.key});
+  final VoidCallback onResendPin;
+  final VoidCallback confirmPin;
+  final bool isLoading;
+  final String title;
+  final String subTitle;
+  const VerifyPinBottomSheet({super.key, required this.onResendPin, required this.confirmPin, required this.isLoading, required this.title, required this.subTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +24,7 @@ class VerifyPinBottomSheet extends StatelessWidget {
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
       child: Container(
-        padding: const EdgeInsets.all(12),
-        height: 350,
+        padding: const EdgeInsets.all(20),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(16), topRight: Radius.circular(16)),
@@ -28,30 +32,21 @@ class VerifyPinBottomSheet extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            const SizedBox(
-              height: 4,
-            ),
-            // const Align(
-            //     alignment: Alignment.topCenter, child: BottomSheetBorderLine()),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+            CustomListSpacing(spacingValue: ListSpacingValue.spacingV32.value),
             Text(
-              'Enter 4 Digits Code',
+              'Enter 6 Digits Code',
               style: primaryTextTheme.displayMedium,
             ),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV24.value),
+            CustomListSpacing(spacingValue: ListSpacingValue.spacingV16.value),
             Text(
-              """Enter the 4 digits code that you received on
-your email.""",
+              """Enter the 6 digits code that you received on your email.""",
               style: primaryTextTheme.bodyLarge,
             ),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+            CustomListSpacing(spacingValue: ListSpacingValue.spacingV32.value),
             GetBuilder<SigninController>(
               builder: (_) {
                 return Pinput(
-                  length: 4,
+                  length: 6,
                   defaultPinTheme: defaultPinTheme,
                   focusedPinTheme: focusedPinTheme,
                   submittedPinTheme: submittedPinTheme,
@@ -68,8 +63,7 @@ your email.""",
                 );
               },
             ),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+            CustomListSpacing(spacingValue: ListSpacingValue.spacingV24.value),
             Center(
               child: GetBuilder<SigninController>(
                 builder: (_) {
@@ -88,8 +82,7 @@ your email.""",
                 },
               ),
             ),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+            CustomListSpacing(spacingValue: ListSpacingValue.spacingV32.value),
           ],
         ),
       ),

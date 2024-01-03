@@ -60,6 +60,7 @@ dependencies:
   phone_form_field: ^8.1.1
   font_awesome_flutter: ^10.6.0
   pinput: ^3.0.1
+  internet_connection_checker_plus: ^2.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:mobmart/app/features/signin/presentation/controllers/signin_controller.dart';
-import 'package:mobmart/core/auth_field/password_textfield.dart';
+import 'package:mobmart/core/general_widgets/auth_field/password_textfield.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
 import 'package:mobmart/core/general_widgets/button_widget.dart';
 import 'package:mobmart/core/general_widgets/custom_list_space.dart';
@@ -18,7 +18,7 @@ class ResetPassword extends StatelessWidget {
       filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
       child: Container(
         padding: const EdgeInsets.all(12),
-        height: 430,
+         height: MediaQuery.of(context).size.height*0.8,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(16), topRight: Radius.circular(16)),
@@ -26,11 +26,6 @@ class ResetPassword extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            const SizedBox(
-              height: 4,
-            ),
-            // const Align(
-            //     alignment: Alignment.topCenter, child: BottomSheetBorderLine()),
             CustomListSpacing(
                 spacingValue: ListSpacingValue.spacingV32.value),
             Text(
@@ -38,13 +33,13 @@ class ResetPassword extends StatelessWidget {
               style: primaryTextTheme.displayMedium,
             ),
             CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV24.value),
+                spacingValue: ListSpacingValue.spacingV16.value),
             Text(
               """Set the new password for your account so you can login and access all the features.""",
               style: primaryTextTheme.bodyLarge,
             ),
             CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+                spacingValue: ListSpacingValue.spacingV24.value),
             GetX<SigninController>(
               builder: (_) {
                 return PasswordTextField(
@@ -62,7 +57,7 @@ class ResetPassword extends StatelessWidget {
               },
             ),
             CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+                spacingValue: ListSpacingValue.spacingV8.value),
             GetX<SigninController>(
               builder: (_) {
                 return PasswordTextField(
@@ -79,8 +74,8 @@ class ResetPassword extends StatelessWidget {
                     hintText: 'Re-enter password');
               },
             ),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+             CustomListSpacing(
+                spacingValue: ListSpacingValue.spacingV24.value),
             Center(
               child: GetBuilder<SigninController>(
                 builder: (_) {
@@ -96,8 +91,7 @@ class ResetPassword extends StatelessWidget {
                 },
               ),
             ),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+            
           ],
         ),
       ),

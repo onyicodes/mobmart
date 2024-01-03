@@ -68,8 +68,6 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
               obscureText: widget.obscurePassword ? true : false,
               style: primaryTextTheme.bodyLarge,
               decoration: InputDecoration(
-                  prefixIconConstraints:
-                      const BoxConstraints(minWidth: 295, minHeight: 0),
                   suffixIcon: IconButton(
                       onPressed: widget.toggleObscureText,
                       icon: FaIcon(widget.obscurePassword
