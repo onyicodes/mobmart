@@ -36,8 +36,7 @@ class CustomButton extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       onPressed: loading ? null : onPressed,
       style: ButtonStyle(
-          minimumSize: MaterialStateProperty.all(Size(width, height)),
-          maximumSize: MaterialStateProperty.all(Size(width, height)),
+          fixedSize: MaterialStateProperty.all(Size(width, height)),
           shape: MaterialStateProperty.all<OutlinedBorder>(
               RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(

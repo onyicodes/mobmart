@@ -62,7 +62,7 @@ class UserModel extends UserEntity {
   Map<String, dynamic> toMap() => {
         "id": id,
         "email": email,
-        "username": name,
+        "name": name,
         "phone": phone,
         "deviceToken": deviceToken,
         "verified": verified,

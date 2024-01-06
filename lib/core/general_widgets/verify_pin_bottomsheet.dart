@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:mobmart/app/features/signin/presentation/widgets/pin_themes.dart';
+import 'package:mobmart/app/features/auth/presentation/widgets/pin_themes.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
 import 'package:mobmart/core/general_widgets/custom_list_space.dart';
 import 'package:flutter/material.dart';

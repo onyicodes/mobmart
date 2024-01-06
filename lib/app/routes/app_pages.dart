@@ -7,11 +7,10 @@ import 'package:mobmart/app/features/onboarding/presentation/bindings/onboard_bi
 import 'package:mobmart/app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:mobmart/app/features/product_details/presentation/bindings/product_details_binding.dart';
 import 'package:mobmart/app/features/product_details/presentation/pages/product_details_page.dart';
-import 'package:mobmart/app/features/signin/presentation/bindings/signin_binding.dart';
-import 'package:mobmart/app/features/signin/presentation/pages/signin_page.dart';
-import 'package:mobmart/app/features/signup/presentation/bindings/signup_binding.dart';
-import 'package:mobmart/app/features/signup/presentation/pages/signup_page.dart';
-import 'package:mobmart/app/features/signup/presentation/pages/success_page.dart';
+import 'package:mobmart/app/features/auth/presentation/bindings/signup_binding.dart';
+import 'package:mobmart/app/features/auth/presentation/pages/signin_page.dart';
+import 'package:mobmart/app/features/auth/presentation/pages/signup_page.dart';
+import 'package:mobmart/app/features/auth/presentation/pages/success_page.dart';
 import 'package:mobmart/app/features/splash/presentation/bindings/splash_screen_binding.dart';
 import 'package:mobmart/app/features/splash/presentation/pages/splash_screen.dart';
 import 'package:mobmart/app/getx_managers/middlewares/auth_guard_middlewares.dart';
@@ -41,12 +40,13 @@ abstract class AppPages {
         
      GetPage(
         name: Routes.accountSuccess,
+        binding: SignupBinding(),
         page: () => const SuccessPage()),
 
      GetPage(
         name: Routes.signin,
         page: () => const SigninPage(),
-        binding:SigninBinding(),
+        binding:SignupBinding(),
          transition: Transition.rightToLeft,
         ),
      GetPage(

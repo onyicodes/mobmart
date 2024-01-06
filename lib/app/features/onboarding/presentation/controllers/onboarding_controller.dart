@@ -27,11 +27,13 @@ class OnboardingController extends GetxController {
   set contentList(value) => _contentList.value = value;
   set accountType(value) => _accountType.value = value;
   set page(value) => _page.value = value;
-
+  late String lastUserId;
   @override
   void onInit() {
     super.onInit();
+
     getOnboardingContents();
+    lastUserId = storeBox.read(CacheKeys.lastUserID) ?? "";
   }
 
   getOnboardingContents() async {
@@ -42,7 +44,7 @@ class OnboardingController extends GetxController {
   }
 
   toSignupPage() async {
-    await storeBox.write(CacheKeys.hasOnboarded, true);
+    await storeBox.write(CacheKeys.hasOnboarded(lastUserId), true);
     Get.offAndToNamed(Routes.signin);
   }
 }

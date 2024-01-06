@@ -1,14 +1,14 @@
+
 import 'package:email_validator/email_validator.dart';
-import 'package:mobmart/app/features/signin/presentation/bindings/signin_binding.dart';
-import 'package:mobmart/app/features/signin/presentation/controllers/signin_controller.dart';
-import 'package:mobmart/app/features/signup/presentation/bindings/signup_binding.dart';
-import 'package:mobmart/app/features/signup/presentation/controllers/signup_controller.dart';
+import 'package:mobmart/app/features/auth/presentation/bindings/signup_binding.dart';
+import 'package:mobmart/app/features/auth/presentation/controllers/signin_controller.dart';
+import 'package:mobmart/app/features/auth/presentation/controllers/signup_controller.dart';
 import 'package:mobmart/core/constants/error_texts.dart';
 import 'package:mobmart/core/parameters/auth/email_signup_params.dart';
 import 'package:mobmart/core/parameters/auth/signin_params.dart';
 
 final signupController = getSignupControllerSl<SignupController>();
-final signinController = getSigninControllerSl<SigninController>();
+final signinController = getSignupControllerSl<SigninController>();
 
 class AuthFieldValidationPage {
   Future<bool> validateEmailSignupData({required SignupParams params}) {
