@@ -45,21 +45,23 @@ class AuthFieldText {
   static String forgotPasswordEnterEmailText =
       LocaleKeys.pages_auth_forgotPasswordEnterEmailText.tr();
   static String continueButton = LocaleKeys.pages_auth_continueButton.tr();
+  static String continueToAppButton = LocaleKeys.pages_auth_continueToApp.tr();
 }
 
-enum ErrorMessage {
-  networkError('Connection error'),
-  serverError('Server error occurred'),
-  notAuthorized('You are not authorized to perform this action'),
-  cachingFailed('Cache failure'),
-  unknownError('an unknown error occurred'),
-  noResultFound('Result not found'),
-  accountAlreadyExists('account already exists'),
-  failedLogin('You have entered an invalid username or password'),
-  accountNotFound('account not found');
-
-  const ErrorMessage(this.message);
-  final String message;
+class ErrorMessage {
+  static String networkError = LocaleKeys.error_networkError.tr();
+  static String serverError = LocaleKeys.error_serverError.tr();
+  static String notAuthorized = LocaleKeys.error_notAuthorized.tr();
+  static String badRequest = LocaleKeys.error_badRequest.tr();
+  static String cachingFailed = LocaleKeys.error_cachingFailed.tr();
+  static String unknownError = LocaleKeys.error_unknownError.tr();
+  static String forbidden = LocaleKeys.error_forBiddenError.tr();
+  static String noResultFound = LocaleKeys.error_noResultError.tr();
+  static String accountAlreadyExists =
+      LocaleKeys.error_createAccount_emailExists.tr();
+  static String failedLogin = LocaleKeys.error_login_failedLogin.tr();
+  static String accountNotFound = LocaleKeys.error_login_accountNotFound.tr();
+  static String accountNotVerified = LocaleKeys.error_login_accountNotVerified.tr();
 }
 
 enum PublishDealValidationErrorMessage {

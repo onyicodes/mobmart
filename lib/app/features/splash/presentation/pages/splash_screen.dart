@@ -17,8 +17,8 @@ class SplashScreenPage extends GetView<SplashScreenController> {
       builder: (_) => Scaffold(
         extendBodyBehindAppBar: true,
         body: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+          width: double.infinity,
+          height: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(AssetsConstants.appBg),

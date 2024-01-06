@@ -13,7 +13,7 @@ final signinController = getSigninControllerSl<SigninController>();
 class AuthFieldValidationPage {
   Future<bool> validateEmailSignupData({required SignupParams params}) {
     bool validated = true;
-    if (params.userName.isEmpty) {
+    if (params.name.isEmpty) {
       signupController.userNameError =
           AuthFieldValidationErrorMessage.userNameEmpty;
       validated = false;

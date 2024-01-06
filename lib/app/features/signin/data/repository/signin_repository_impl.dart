@@ -23,6 +23,8 @@ class SigninRepositoryImpl extends SigninRepository {
       return Left(NetworkFailure());
     } on AccountNotFoundException {
       return Left(AccountNotFoundFailure());
+    } on AccountNotVerifiedException{
+      return Left(AccountNotVerifiedFailure());
     } catch (e) {
       return  Left(UnknownFailure(message: e.toString()));
     }

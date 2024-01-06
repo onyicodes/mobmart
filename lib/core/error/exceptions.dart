@@ -8,6 +8,8 @@ class ForbiddenException implements Exception {}
 
 class BadRequestException implements Exception {}
 
+class AccountNotVerifiedException implements Exception {}
+
 class UnknownException implements Exception {}
 
 class CacheException implements Exception {}

@@ -17,5 +17,12 @@ enum FirestoreCollections {
   banners
 }
 
+enum EnumAccountProviders {
+  google,
+  credentials,
+  apple,
+  facebook
+}
+
 
 enum RequestStatus { initial, loading, success, error }

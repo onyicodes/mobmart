@@ -4,6 +4,9 @@ class AssetsConstants {
   static const String appBg = 'assets/images/misc/bg_tiny_.png';
   static const String googleIcon = 'assets/images/icons/g_icon.png';
   static const String fbIcon = 'assets/images/icons/f_icon.png';
+  static const String lottieCongratsText = 'assets/json_contents/lottie/congrats_text.json';
+  static const String lottieCongratsBg =
+      'assets/json_contents/lottie/congrats_bg.json';
   static const String navbarSelectedHome =
       'assets/svg/nav_bar/selected/home_icon.svg';
   static const String navbarSelectedVoucher =

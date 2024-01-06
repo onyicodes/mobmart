@@ -10,11 +10,10 @@ abstract class SigninDataProvider extends GetConnect {
 }
 
 class SigninDataProviderImpl extends SigninDataProvider {
+  final NetworkInfo networkInfo;
 
- final NetworkInfo networkInfo;
+  SigninDataProviderImpl({required this.networkInfo});
 
- SigninDataProviderImpl({required this.networkInfo});
- 
   @override
   Future<SigninModel> emailSignin({required SigninParams params}) async {
     Map<String, String> signupField = params.toMap();
@@ -23,12 +22,10 @@ class SigninDataProviderImpl extends SigninDataProvider {
 
     final Response response = await post(signinUrl, signupField);
 
-     if (await networkInfo.isConnected) {
+    if (await networkInfo.isConnected) {
       final Map<String, dynamic>? jsonString;
-      
-      
-       jsonString = response.body;
 
+      jsonString = response.body;
 
       if (jsonString != null && jsonString['success']) {
         final Map<String, dynamic> signinJsonData = jsonString['data'];
@@ -39,12 +36,14 @@ class SigninDataProviderImpl extends SigninDataProvider {
           throw jsonString['message'];
         }
         throw BadRequestException();
+      } else if (response.statusCode == 401) {
+        throw  FailedLoginException();
       } else if (response.statusCode == 403) {
         throw ForbiddenException();
       } else if (response.statusCode == 404) {
         throw AccountNotFoundException();
       } else if (response.statusCode == 409) {
-        throw FailedLoginException();
+        throw  AccountNotVerifiedException();
       } else if (response.statusCode == 500) {
         throw ServerException();
       } else {

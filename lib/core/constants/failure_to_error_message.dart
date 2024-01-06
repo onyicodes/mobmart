@@ -1,29 +1,34 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:mobmart/core/constants/error_texts.dart';
 import 'package:mobmart/core/error/failures.dart';
-import 'package:mobmart/generated/locale_keys.g.dart';
 
 String mapFailureToErrorMessage(Failure failure) {
   switch (failure.runtimeType) {
     case NetworkFailure:
-      final response = LocaleKeys.error_networkError.tr();
+      final response = ErrorMessage.networkError;
       return response;
     case ServerFailure:
-      final response = LocaleKeys.error_serverError.tr();
+      final response = ErrorMessage.serverError;
       return response;
     case UnknownFailure:
-      final response =LocaleKeys.error_unknownError.tr();
+      final response = ErrorMessage.unknownError;
       return response;
     case NotFoundFailure:
-      final response = LocaleKeys.error_noResultError.tr();
+      final response = ErrorMessage.noResultFound;
       return response;
     case BadRequestFailure:
-      final response = LocaleKeys.error_badRequest.tr();
+      final response =  ErrorMessage.badRequest;
       return response;
     case ForbiddenFailure:
-      final response = LocaleKeys.error_forBiddenError.tr();
+      final response = ErrorMessage.forbidden;
+      return response;
+    case AccountNotVerifiedFailure:
+      final response = ErrorMessage.accountNotVerified;
+      return response;
+    case AccountExistsFailure:
+      final response = ErrorMessage.accountAlreadyExists;
       return response;
     default:
-      final response = LocaleKeys.error_unknownError.tr();
+      final response = ErrorMessage.unknownError;
       return response;
   }
 }

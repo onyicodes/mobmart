@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobmart/app/features/signup/presentation/controllers/signup_controller.dart';
-import 'package:mobmart/app/features/signup/presentation/widgets/password_check.dart';
 import 'package:mobmart/core/constants/error_texts.dart';
 import 'package:mobmart/core/general_widgets/auth_field/custom_auth_field.dart';
+import 'package:mobmart/core/general_widgets/auth_field/password_check.dart';
 import 'package:mobmart/core/general_widgets/auth_field/password_textfield.dart';
 import 'package:mobmart/core/constants/assets_constants.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
@@ -30,11 +30,9 @@ class SignupPage extends GetView<SignupController> {
             ),
           ),
           child: ListView(
-            shrinkWrap: true,
             children: [
               CustomListSpacing(
                   spacingValue: ListSpacingValue.spacingV100.value),
-             
               Text(
                 AuthFieldText.signupPageTitle,
                 textAlign: TextAlign.center,
@@ -98,17 +96,26 @@ class SignupPage extends GetView<SignupController> {
                   onChanged: (String value) {
                     _.checkPassword(text: value);
                   },
-                  validationWidget: const PasswordCheck(),
+                  validationWidget: _.passwordController.text.isNotEmpty
+                      ? PasswordCheck(
+                          has8Characters: _.has8Characters,
+                          hasLowercase: _.hasLowercase,
+                          hasUppercase: _.hasUppercase,
+                          hasNumber: _.hasNumber,
+                          hasSpecialCharacter: _.hasSpecialCharacter)
+                      : const SizedBox.shrink(),
                   toggleObscureText: () {
                     _.obscurePasswordText = !_.obscurePasswordText;
                   },
                   hintText: AuthFieldText.passwordHint),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:20.0, vertical: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
                 child: CustomButton(
                   label: AuthFieldText.signupButtonLabel,
                   onPressed: () {
-                    _.signup();
+                   
+                   _.signup();
                   },
                   radius: 12,
                   height: 55,
@@ -120,7 +127,7 @@ class SignupPage extends GetView<SignupController> {
               ),
               CustomListSpacing(
                   spacingValue: ListSpacingValue.spacingV12.value),
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(

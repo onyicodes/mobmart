@@ -29,7 +29,16 @@
                 "userNameEmpty":"Username is required",
                 "passwordEmpty" :"Password is required",
                  "passwordFormatWrong":"Password must be between 8 to 12 characters"
-            }
+            },
+        "createAccount":{
+            "emailExists": "Email already exist"
+        },
+        "login":{
+            "failedLogin":"You have entered an invalid username or password",
+            "accountNotFound": "Account not found!",
+            "accountNotVerified": "Kindly verify your account to continu"
+        }
+        
     },
     "pages":{
        "auth":{
@@ -51,8 +60,17 @@
             "forgotPasword":"Forgot password",
             "alreadyHaveAccountText":"Already have an account?",
             "continueButton": "Continue",
+            "continueToApp": "Continue to app",
             "forgotPasswordEnterEmailText":"Enter the email associated with your account for the verification proccesss and we will send 6 digits verification code to your email."
             }
+    },
+    "snackBar":{
+       "signUp":{
+          "accountSuccess":"Account Successfully registered",
+          "passwordRequirements":"Check password field requirements",
+          "AccountVerified":"Account verified successfully",
+          "VerificationResent":"A token has been sent to your email"
+       }
     },
      "onboarding":{
         "buttons":{

@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:mobmart/app/features/signin/presentation/controllers/signin_controller.dart';
-import 'package:mobmart/core/verify_pin_bottomsheet.dart';
 import 'package:mobmart/core/constants/error_texts.dart';
 import 'package:mobmart/core/general_widgets/auth_field/custom_auth_field.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
@@ -69,8 +68,8 @@ class ForgotPassword extends StatelessWidget {
                   return CustomButton(
                       label: AuthFieldText.continueButton,
                       onPressed: () {
-                        _.goToPushToken(
-                            pinBottomsheet: VerifyPinBottomSheet(onResendPin: () {  }, confirmPin: () {  }, isLoading: false, title: '', subTitle: '',));
+                       
+                        _.goToPushToken();
                       },
                       radius: 12,
                       width: 345,

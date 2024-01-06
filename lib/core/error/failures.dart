@@ -29,9 +29,10 @@ class FailedLoginFailure extends Failure {}
 
 class NotAuthorizedFailure extends Failure {}
 
+class AccountNotVerifiedFailure extends Failure {}
+
 class UnknownFailure extends Failure {
   @override
   final String message;
   const UnknownFailure({this.message = ""});
 }
-

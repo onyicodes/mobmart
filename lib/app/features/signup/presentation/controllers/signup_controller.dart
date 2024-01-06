@@ -1,9 +1,13 @@
 import 'dart:async';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart' hide Trans;
 import 'package:get_storage/get_storage.dart';
+import 'package:mobmart/app/features/signin/presentation/controllers/signin_controller.dart';
 import 'package:mobmart/app/features/signup/domain/usecases/email_signup_usecase.dart';
+import 'package:mobmart/app/features/signup/domain/usecases/resend_verify_token_usecase.dart';
+import 'package:mobmart/app/features/signup/domain/usecases/verify_account_token_usecase.dart';
 import 'package:mobmart/app/routes/app_pages.dart';
 import 'package:mobmart/core/constants/error_texts.dart';
 import 'package:mobmart/core/constants/failure_to_error_message.dart';
@@ -11,24 +15,35 @@ import 'package:mobmart/core/constants/general_constants.dart';
 import 'package:mobmart/core/general_widgets/custom_snackbar.dart';
 import 'package:mobmart/core/keys/cache_keys.dart';
 import 'package:mobmart/core/parameters/auth/email_signup_params.dart';
+import 'package:mobmart/core/parameters/auth/resend_verify_token_params.dart';
+import 'package:mobmart/core/parameters/auth/signin_params.dart';
+import 'package:mobmart/core/parameters/auth/verify_token_params.dart';
 import 'package:mobmart/core/validators/auth_field_validator.dart';
+import 'package:mobmart/core/general_widgets/verify_pin_bottomsheet.dart';
+import 'package:mobmart/generated/locale_keys.g.dart';
 import 'package:phone_form_field/phone_form_field.dart';
 
 class SignupController extends GetxController {
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController emailAddressController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-   final phoneController =
+  final phoneController =
       PhoneController(const PhoneNumber(isoCode: IsoCode.NG, nsn: ""));
+
+  final signinController = Get.find<SigninController>();
 
   final FlutterSecureStorage secureStorage;
 
   final EmailSignupUsecase emailSignupUsecase;
+  final VerifyAccountTokenUsecase verifyAccountTokenUsecase;
+  final ResendVerifyTokenUsecase resendVerifyTokenUsecase;
   final AuthFieldValidationPage authFieldValidationPage;
   final GetStorage storeBox;
   SignupController(
       {required this.emailSignupUsecase,
       required this.authFieldValidationPage,
+      required this.verifyAccountTokenUsecase,
+      required this.resendVerifyTokenUsecase,
       required this.secureStorage,
       required this.storeBox});
 
@@ -40,6 +55,8 @@ class SignupController extends GetxController {
 
   final _obscurePasswordText = true.obs;
   final _requestStatus = RequestStatus.initial.obs;
+  final _signInRequestStatus = RequestStatus.initial.obs;
+  final _verifyTokenRequestStatus = RequestStatus.initial.obs;
   final _phoneError = ''.obs;
   final _userNameError = ''.obs;
   final _passwordError = ''.obs;
@@ -59,6 +76,8 @@ class SignupController extends GetxController {
   String get passwordError => _passwordError.value;
   String get emailError => _emailError.value;
   RequestStatus get requestStatus => _requestStatus.value;
+  RequestStatus get signInRequestStatus => _signInRequestStatus.value;
+  RequestStatus get verifyTokenRequestStatus => _verifyTokenRequestStatus.value;
   bool get startedTypingPw => _startedTypingPw.value;
   bool get validPasswordField => _validPasswordField.value;
 
@@ -74,6 +93,9 @@ class SignupController extends GetxController {
   set passwordError(value) => _passwordError.value = value;
   set emailError(value) => _emailError.value = value;
   set requestStatus(value) => _requestStatus.value = value;
+  set signInRequestStatus(value) => _signInRequestStatus.value = value;
+  set verifyTokenRequestStatus(value) =>
+      _verifyTokenRequestStatus.value = value;
   set startedTypingPw(value) => _startedTypingPw.value = value;
   set validPasswordField(value) => _validPasswordField.value = value;
 
@@ -90,16 +112,15 @@ class SignupController extends GetxController {
   checkPassword({required String text}) {
     //clears error text when user starts typing after an error occurred in the password field
     if (passwordError.isNotEmpty) {
-          passwordError = '';
-      }
+      passwordError = '';
+    }
     //checks if user has started typing to determine when to show the password field requirements
     if (text.isEmpty) {
-        startedTypingPw = false;
-      }else
-      if (text.isNotEmpty && !startedTypingPw) {
-        startedTypingPw = true;
-      }
-      
+      startedTypingPw = false;
+    } else if (text.isNotEmpty && !startedTypingPw) {
+      startedTypingPw = true;
+    }
+
     regexSpecialCharater.hasMatch(text)
         ? hasSpecialCharacter = true
         : hasSpecialCharacter = false;
@@ -130,34 +151,42 @@ class SignupController extends GetxController {
   Future<void> signup() async {
     requestStatus = RequestStatus.loading;
     SignupParams params = SignupParams(
-      phone: "",
-      email: emailAddressController.text,
-      userName: userNameController.text,
-      password: passwordController.text,
-    );
+        phone: phoneController.value!.nsn,
+        email: emailAddressController.text.trim(),
+        name: userNameController.text,
+        password: passwordController.text,
+        countryCode: phoneController.value!.countryCode,
+        provider: EnumAccountProviders.credentials.name);
     await authFieldValidationPage
         .validateEmailSignupData(params: params)
         .then((validated) async {
       if (validated) {
         if (validPasswordField) {
           final failOrSignup = await emailSignupUsecase(params);
-          failOrSignup.fold((fail) {
-            customSnackbar(
-                title: 'error', message: mapFailureToErrorMessage(fail));
+          failOrSignup.fold((fail) async {
             requestStatus = RequestStatus.error;
-          }, (token) {
-            requestStatus = RequestStatus.success;
-            secureStorage.write(
+            await customSnackbar(
+                title: 'Error',
+                message: fail.message.isNotEmpty
+                    ? fail.message
+                    : mapFailureToErrorMessage(fail));
+          }, (successMessage) async {
+            await secureStorage.write(
                 key: CacheKeys.username, value: userNameController.text);
-            secureStorage.write(
+            await secureStorage.write(
                 key: CacheKeys.password, value: passwordController.text);
-           
+            requestStatus = RequestStatus.success;
+            await customSnackbar(
+                title: 'Success',
+                message: LocaleKeys.snackBar_signUp_accountSuccess.tr());
+            openPinVerification();
             // Get.toNamed(Routes.verifycode, arguments: token);
           });
         } else {
-          passwordError = AuthFieldValidationErrorMessage.phoneFormatWrong;
+          passwordError = AuthFieldValidationErrorMessage.passwordFormatWrong;
           customSnackbar(
-              title: 'Error', message: 'Check password field requirements');
+              title: 'Error',
+              message: LocaleKeys.snackBar_signUp_passwordRequirements);
           requestStatus = RequestStatus.error;
         }
       } else {
@@ -166,8 +195,82 @@ class SignupController extends GetxController {
     });
   }
 
-  onPhoneChange( PhoneNumber? p){
-     String? Function(PhoneNumber?) h = PhoneValidator.validMobile();
+  verifyToken({required String pin}) async {
+    verifyTokenRequestStatus = RequestStatus.loading;
+    final params = VerifyTokenParams(token: pin);
+    final failOrVerify = await verifyAccountTokenUsecase(params);
+    failOrVerify.fold((fail) async {
+      verifyTokenRequestStatus = RequestStatus.error;
+      await customSnackbar(
+          title: 'Error',
+          message: fail.message.isNotEmpty
+              ? fail.message
+              : mapFailureToErrorMessage(fail));
+    }, (successMessage) async {
+      verifyTokenRequestStatus = RequestStatus.success;
+      await customSnackbar(
+          title: 'Success',
+          message: LocaleKeys.snackBar_signUp_AccountVerified.tr());
+      Get.toNamed(Routes.accountSuccess);
+    });
+  }
+
+  resendVerifyToken({required String email}) async {
+    verifyTokenRequestStatus = RequestStatus.loading;
+    final params = ResendVerifyTokenParams(email: email);
+    final failOrResent = await resendVerifyTokenUsecase(params);
+    failOrResent.fold((fail) async {
+      verifyTokenRequestStatus = RequestStatus.error;
+      await customSnackbar(
+          title: 'Error',
+          message: fail.message.isNotEmpty
+              ? fail.message
+              : mapFailureToErrorMessage(fail));
+    }, (successMessage) async {
+      verifyTokenRequestStatus = RequestStatus.success;
+      await customSnackbar(
+          title: 'Success',
+          message: LocaleKeys.snackBar_signUp_VerificationResent.tr());
+    });
+  }
+
+  openPinVerification() {
+    Get.bottomSheet(GetX<SignupController>(builder: (_) {
+      return VerifyPinBottomSheet(
+        onResendPin: () {
+          resendVerifyToken(email: emailAddressController.text);
+        },
+        confirmPin: (pin) {
+          verifyToken(pin: pin);
+        },
+        isLoading: verifyTokenRequestStatus == RequestStatus.loading,
+        title: '',
+        subTitle: '',
+      );
+    }), isDismissible: false);
+  }
+
+  signInUser({required String email, required String password}) async {
+    signInRequestStatus = RequestStatus.loading;
+    final SigninParams params = SigninParams(
+        email: email.trim().toLowerCase(), password: password.trim());
+    requestStatus = await signinController.signInUser(params: params);
+
+    if (requestStatus == RequestStatus.success) {
+      await customSnackbar(title: "Success", message: "Welcome");
+      signInRequestStatus = RequestStatus.success;
+      Get.offAndToNamed(Routes.landing);
+
+    } else {
+      customSnackbar(
+          title: "Sign in", message: 'Sign in to continue', duration: 5);
+      signInRequestStatus = RequestStatus.error;
+      Get.offAndToNamed(Routes.signin);
+    }
+  }
+
+  onPhoneChange(PhoneNumber? p) {
+    String? Function(PhoneNumber?) h = PhoneValidator.validMobile();
 
     if (h(p) != null) {
       phoneError = AuthFieldValidationErrorMessage.phoneFormatWrong;

@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:mobmart/core/general_widgets/verify_pin_bottomsheet.dart';
 
 class SigninController extends GetxController {
   final TextEditingController userNameController = TextEditingController();
@@ -67,9 +68,19 @@ class SigninController extends GetxController {
     Get.bottomSheet(bottomsheet);
   }
 
-  goToPushToken({required Widget pinBottomsheet}) {
-    Get.back();
-    Get.bottomSheet(pinBottomsheet, isDismissible: false);
+  goToPushToken() {
+    if (Get.isBottomSheetOpen??false) {
+      Get.back();
+    }
+    Get.bottomSheet(
+        VerifyPinBottomSheet(
+          onResendPin: () {},
+          confirmPin: (pin) {},
+          isLoading: false,
+          title: '',
+          subTitle: '',
+        ),
+        isDismissible: false);
   }
 
   goToPResetPassword({required Widget resetPwBottomsheet}) {
@@ -79,9 +90,7 @@ class SigninController extends GetxController {
 
   verifyPin({required String pin}) {}
 
-  Future<RequestStatus> signInUser(
-      {required String email, required String password}) async {
-    SigninParams params = SigninParams(email: email, password: password);
+  Future<RequestStatus> signInUser({required SigninParams params}) async {
     final failOrSignup = await emailSigninUsecase(params);
     failOrSignup.fold((fail) {
       print(fail.message);
@@ -105,7 +114,7 @@ class SigninController extends GetxController {
         .then((validated) async {
       if (validated) {
         requestStatus =
-            await signInUser(email: params.email, password: params.password);
+            await signInUser(params: params);
 
         if (requestStatus == RequestStatus.success) {
           Get.offAndToNamed(Routes.home);
