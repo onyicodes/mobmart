@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
-import 'package:mobmart/app/features/home/domain/entities/carousel_entity.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/general_widgets/button_widget.dart';
-import 'package:mobmart/core/general_widgets/custom_carousel_indicator_builder.dart';
-import 'package:mobmart/core/general_widgets/custom_list_space.dart';
+import 'package:mobmart_app/app/features/home/domain/entities/carousel_entity.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/general_widgets/button_widget.dart';
+import 'package:mobmart_app/core/general_widgets/custom_carousel_indicator_builder.dart';
+import 'package:mobmart_app/core/general_widgets/custom_list_space.dart';
 
 class CarouselAppBar extends StatelessWidget {
   final Color backgroundColor;
@@ -43,9 +43,12 @@ class CarouselAppBar extends StatelessWidget {
                     child: Image(image: AssetImage(e.image)),
                   ),
                   Positioned(
-                     top: 180,
-                   right: 24,
-                    child: CustomCarouselIndicatorBuilder(carouselEntityList: carouselEntityList,currenIndex: currentIndex,)),
+                      top: 180,
+                      right: 24,
+                      child: CustomCarouselIndicatorBuilder(
+                        carouselEntityList: carouselEntityList,
+                        currenIndex: currentIndex,
+                      )),
                   Positioned(
                     top: 180,
                     left: 24,
@@ -90,7 +93,7 @@ class CarouselAppBar extends StatelessWidget {
                                   .buttonTheme
                                   .colorScheme!
                                   .onBackground,
-                                  textStyle: primaryTextTheme.displaySmall!)
+                              textStyle: primaryTextTheme.displaySmall!)
                         ]),
                   ),
                 ],

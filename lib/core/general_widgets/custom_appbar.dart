@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
 
 AppBar customAppBar(
     {Key? key,
@@ -39,7 +39,7 @@ AppBar customAppBar(
                     () {
                       Get.back();
                     },
-                icon:const Icon(Icons.arrow_back_rounded)),
+                icon: const Icon(Icons.arrow_back_rounded)),
           )
         : null,
     elevation: logoTitle ? 0 : elevation,

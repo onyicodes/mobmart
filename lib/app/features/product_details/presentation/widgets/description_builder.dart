@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/bullet_text_card.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/bullet_text_card.dart';
 
 class DescriptionBuilder extends StatelessWidget {
   final String description;
@@ -17,14 +17,18 @@ class DescriptionBuilder extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Padding(
+          Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Description: ',style: primaryTextTheme.displaySmall,),
+            child: Text(
+              'Description: ',
+              style: primaryTextTheme.displaySmall,
+            ),
           ),
-          for (String text in descriptionBulletList ) Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-            child: BulletTextCard(text: text),
-          )
+          for (String text in descriptionBulletList)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              child: BulletTextCard(text: text),
+            )
         ],
       ),
     );

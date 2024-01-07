@@ -1,14 +1,14 @@
-import 'package:mobmart/app/features/auth/presentation/controllers/signin_controller.dart';
-import 'package:mobmart/app/features/auth/presentation/widgets/forgot_password_bottomsheet.dart';
-import 'package:mobmart/core/constants/error_texts.dart';
-import 'package:mobmart/core/general_widgets/auth_field/custom_auth_field.dart';
-import 'package:mobmart/core/general_widgets/auth_field/password_textfield.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/general_widgets/button_widget.dart';
-import 'package:mobmart/core/general_widgets/custom_list_space.dart';
-import 'package:mobmart/core/general_widgets/social_signups.dart';
-import 'package:mobmart/core/parameters/auth/signin_params.dart';
+import 'package:mobmart_app/app/features/auth/presentation/controllers/signin_controller.dart';
+import 'package:mobmart_app/app/features/auth/presentation/widgets/forgot_password_bottomsheet.dart';
+import 'package:mobmart_app/core/constants/error_texts.dart';
+import 'package:mobmart_app/core/general_widgets/auth_field/custom_auth_field.dart';
+import 'package:mobmart_app/core/general_widgets/auth_field/password_textfield.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/general_widgets/button_widget.dart';
+import 'package:mobmart_app/core/general_widgets/custom_list_space.dart';
+import 'package:mobmart_app/core/general_widgets/social_signups.dart';
+import 'package:mobmart_app/core/parameters/auth/signin_params.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +22,7 @@ class SigninPage extends GetView<SigninController> {
       body: GetX<SigninController>(builder: (_) {
         return Container(
           width: double.infinity,
-          height:double.infinity,
+          height: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(AssetsConstants.appBg),

@@ -3,10 +3,12 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_connect/connect.dart';
-import 'package:mobmart/app/features/home/data/model/carousel_model.dart';
-import 'package:mobmart/app/features/home/data/model/category_model.dart';
-import 'package:mobmart/app/features/home/data/model/product_model.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
+import 'package:mobmart_app/app/features/home/data/model/carousel_model.dart';
+import 'package:mobmart_app/app/features/home/data/model/category_model.dart';
+import 'package:mobmart_app/app/features/home/data/model/product_model.dart';
+import 'package:mobmart_app/core/constants/api_url/api_url.dart';
+import 'package:mobmart_app/core/error/exceptions.dart';
+import 'package:mobmart_app/core/network/network_info.dart';
 
 abstract class HomeDataProvider extends GetConnect {
   Future<List<CarouselModel>> fetchCarousel();
@@ -16,7 +18,8 @@ abstract class HomeDataProvider extends GetConnect {
 
 class HomeDataProviderImpl extends HomeDataProvider {
   FirebaseFirestore firebaseDb;
-  HomeDataProviderImpl({required this.firebaseDb});
+  NetworkInfo networkInfo;
+  HomeDataProviderImpl({required this.firebaseDb, required this.networkInfo});
   @override
   Future<List<CategoryModel>> fetchCategories() async {
     final String response = await rootBundle
@@ -32,13 +35,46 @@ class HomeDataProviderImpl extends HomeDataProvider {
 
   @override
   Future<List<CarouselModel>> fetchCarousel() async {
-    final QuerySnapshot<Map<String, dynamic>> bannersData =
-   await  firebaseDb.collection( FirestoreCollections.banners.name).get();
-   
+    const String bannersUrl = ApiUrls.baseUrl + ApiUrls.banners;
 
-    return bannersData.docs
-        .map((carouselJson) => CarouselModel.fromMap(carouselJson.data()))
-        .toList();
+    final Response response = await get(bannersUrl);
+
+    if (await networkInfo.isConnected) {
+      final Map<String, dynamic>? jsonString;
+
+      jsonString = response.body;
+
+      if (jsonString != null && jsonString['success']) {
+        final List bannersJsonData = jsonString['data']["banners"];
+        print(bannersJsonData);
+
+        return bannersJsonData
+            .map((carouselJson) => CarouselModel.fromJson(carouselJson))
+            .toList();
+      } else if (response.statusCode == 400) {
+        if (jsonString != null) {
+          throw jsonString['message'];
+        }
+        throw BadRequestException();
+      } else if (response.statusCode == 401) {
+        throw FailedLoginException();
+      } else if (response.statusCode == 403) {
+        throw ForbiddenException();
+      } else if (response.statusCode == 404) {
+        throw AccountNotFoundException();
+      } else if (response.statusCode == 409) {
+        throw AccountNotVerifiedException();
+      } else if (response.statusCode == 500) {
+        throw ServerException();
+      } else {
+        if (jsonString != null) {
+          throw jsonString['message'];
+        }
+        throw UnknownException();
+      }
+    } else {
+      throw NetworkException();
+    }
   }
 
   @override

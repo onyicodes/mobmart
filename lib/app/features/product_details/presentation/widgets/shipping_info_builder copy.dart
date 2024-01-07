@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobmart/app/features/home/data/model/shipping_model.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/general_widgets/custom_list_space.dart';
+import 'package:mobmart_app/app/features/home/data/model/shipping_model.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/general_widgets/custom_list_space.dart';
 
 class ShippingInfoBuilder extends StatelessWidget {
   final ShippingInfoModel shippingInfo;
@@ -46,8 +46,7 @@ class ShippingInfoBuilder extends StatelessWidget {
               )
             ],
           ),
-           CustomListSpacing(spacingValue: ListSpacingValue.spacingV8.value),
-
+          CustomListSpacing(spacingValue: ListSpacingValue.spacingV8.value),
           Row(
             children: [
               Text(

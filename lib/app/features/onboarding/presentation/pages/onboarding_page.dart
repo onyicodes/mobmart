@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:mobmart/app/features/onboarding/presentation/controllers/onboarding_controller.dart';
-import 'package:mobmart/app/features/onboarding/presentation/widgets/onboarding_display_widget.dart';
-import 'package:mobmart/app/features/onboarding/presentation/widgets/radio_builder.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
-import 'package:mobmart/core/general_widgets/button_widget.dart';
+import 'package:mobmart_app/app/features/onboarding/presentation/controllers/onboarding_controller.dart';
+import 'package:mobmart_app/app/features/onboarding/presentation/widgets/onboarding_display_widget.dart';
+import 'package:mobmart_app/app/features/onboarding/presentation/widgets/radio_builder.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
+import 'package:mobmart_app/core/general_widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Trans;
-import 'package:mobmart/generated/locale_keys.g.dart';
+import 'package:mobmart_app/generated/locale_keys.g.dart';
 
 class OnboardingPage extends GetView<OnboardingController> {
   const OnboardingPage({Key? key}) : super(key: key);

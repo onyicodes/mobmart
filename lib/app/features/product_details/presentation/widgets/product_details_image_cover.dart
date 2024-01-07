@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/thumnail_image_builder.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/thumnail_image_builder.dart';
 
 class ProductDetailsImageCover extends StatelessWidget {
   final bool detailsView;
@@ -16,7 +16,6 @@ class ProductDetailsImageCover extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Stack(
       children: [
         Container(
@@ -28,7 +27,7 @@ class ProductDetailsImageCover extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(2)),
                 image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: AssetImage( imageUrlList[currentImageIndex]),
+                  image: AssetImage(imageUrlList[currentImageIndex]),
                 ))),
         Positioned(
           left: 20,

@@ -5,22 +5,22 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:mobmart/core/general_widgets/products/product_grid_builder.dart';
-import 'package:mobmart/app/features/product_details/presentation/controllers/product_details_controller.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/buy_button_widget.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/description_builder.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/review_pagination_builder.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/reviews_and_rating_bar_builder.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/reviews_card.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/about_item_builder.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/product_details_image_cover.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/seller_info_builder.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/shipping_info_builder%20copy.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/general_widgets/action_icon_widget.dart';
-import 'package:mobmart/core/util/check_favourited_products.dart';
-import 'package:mobmart/core/util/total_reviews_formatter.dart';
+import 'package:mobmart_app/core/general_widgets/products/product_grid_builder.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/controllers/product_details_controller.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/buy_button_widget.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/description_builder.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/review_pagination_builder.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/reviews_and_rating_bar_builder.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/reviews_card.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/about_item_builder.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/product_details_image_cover.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/seller_info_builder.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/shipping_info_builder%20copy.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/general_widgets/action_icon_widget.dart';
+import 'package:mobmart_app/core/util/check_favourited_products.dart';
+import 'package:mobmart_app/core/util/total_reviews_formatter.dart';
 
 class ProductDetailsPage extends GetView<ProductDetailsController> {
   const ProductDetailsPage({Key? key}) : super(key: key);
@@ -84,7 +84,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                   onTap: () {},
                   badgeCounter: 0),
               Padding(
-                padding: const EdgeInsets.only(right:12.0),
+                padding: const EdgeInsets.only(right: 12.0),
                 child: ActionButtonWidget(
                     svgImagePath: AssetsConstants.actionCartIcon,
                     onTap: () {},

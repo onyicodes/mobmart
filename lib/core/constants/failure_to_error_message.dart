@@ -1,5 +1,5 @@
-import 'package:mobmart/core/constants/error_texts.dart';
-import 'package:mobmart/core/error/failures.dart';
+import 'package:mobmart_app/core/constants/error_texts.dart';
+import 'package:mobmart_app/core/error/failures.dart';
 
 String mapFailureToErrorMessage(Failure failure) {
   switch (failure.runtimeType) {
@@ -16,7 +16,7 @@ String mapFailureToErrorMessage(Failure failure) {
       final response = ErrorMessage.noResultFound;
       return response;
     case BadRequestFailure:
-      final response =  ErrorMessage.badRequest;
+      final response = ErrorMessage.badRequest;
       return response;
     case ForbiddenFailure:
       final response = ErrorMessage.forbidden;

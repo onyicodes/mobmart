@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobmart/app/features/home/data/model/product_model.dart';
+import 'package:mobmart_app/app/features/home/data/model/product_model.dart';
 
 class AboutItemsBuilder extends StatelessWidget {
   final ProductModel productModel;
@@ -20,33 +20,31 @@ class AboutItemsBuilder extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.45,
                   child: Row(
-                    children: [Text("Brand:  ", style: primaryTextTheme.bodyLarge,), Text(productModel.brand, style: primaryTextTheme.headlineMedium,)],
+                    children: [
+                      Text(
+                        "Brand:  ",
+                        style: primaryTextTheme.bodyLarge,
+                      ),
+                      Text(
+                        productModel.brand,
+                        style: primaryTextTheme.headlineMedium,
+                      )
+                    ],
                   ),
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: Row(
-                    children: [Text("Color:  ", style: primaryTextTheme.bodyLarge,), Text(productModel.color, style: primaryTextTheme.headlineMedium,)],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  child: Row(
-                    children: [Text("Category:  ", style: primaryTextTheme.bodyLarge,), Text(productModel.category, style: primaryTextTheme.headlineMedium,)],
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  child: Row(
-                    children: [Text("Material:  ", style: primaryTextTheme.bodyLarge,), Text(productModel.material, style: primaryTextTheme.headlineMedium,)],
+                    children: [
+                      Text(
+                        "Color:  ",
+                        style: primaryTextTheme.bodyLarge,
+                      ),
+                      Text(
+                        productModel.color,
+                        style: primaryTextTheme.headlineMedium,
+                      )
+                    ],
                   ),
                 ),
               ],
@@ -61,15 +59,68 @@ class AboutItemsBuilder extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.45,
                   child: Row(
                     children: [
-                      Text("Condition:  ", style: primaryTextTheme.bodyLarge,),
-                      Text(productModel.condition, style: primaryTextTheme.headlineMedium,)
+                      Text(
+                        "Category:  ",
+                        style: primaryTextTheme.bodyLarge,
+                      ),
+                      Text(
+                        productModel.category,
+                        style: primaryTextTheme.headlineMedium,
+                      )
                     ],
                   ),
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: Row(
-                    children: [Text("Heavy:",style: primaryTextTheme.bodyLarge,), Text(productModel.heavy, style: primaryTextTheme.headlineMedium,)],
+                    children: [
+                      Text(
+                        "Material:  ",
+                        style: primaryTextTheme.bodyLarge,
+                      ),
+                      Text(
+                        productModel.material,
+                        style: primaryTextTheme.headlineMedium,
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: Row(
+                    children: [
+                      Text(
+                        "Condition:  ",
+                        style: primaryTextTheme.bodyLarge,
+                      ),
+                      Text(
+                        productModel.condition,
+                        style: primaryTextTheme.headlineMedium,
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: Row(
+                    children: [
+                      Text(
+                        "Heavy:",
+                        style: primaryTextTheme.bodyLarge,
+                      ),
+                      Text(
+                        productModel.heavy,
+                        style: primaryTextTheme.headlineMedium,
+                      )
+                    ],
                   ),
                 ),
               ],

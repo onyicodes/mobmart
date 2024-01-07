@@ -1,8 +1,8 @@
-import 'package:mobmart/app/features/auth/data/model/signin_model.dart';
-import 'package:mobmart/core/constants/api_url/api_url.dart';
-import 'package:mobmart/core/error/exceptions.dart';
-import 'package:mobmart/core/network/network_info.dart';
-import 'package:mobmart/core/parameters/auth/signin_params.dart';
+import 'package:mobmart_app/app/features/auth/data/model/signin_model.dart';
+import 'package:mobmart_app/core/constants/api_url/api_url.dart';
+import 'package:mobmart_app/core/error/exceptions.dart';
+import 'package:mobmart_app/core/network/network_info.dart';
+import 'package:mobmart_app/core/parameters/auth/signin_params.dart';
 import 'package:get/get_connect/connect.dart';
 
 abstract class SigninDataProvider extends GetConnect {
@@ -26,8 +26,6 @@ class SigninDataProviderImpl extends SigninDataProvider {
       final Map<String, dynamic>? jsonString;
 
       jsonString = response.body;
-      print(jsonString);
-      print(response.statusCode);
 
       if (jsonString != null && jsonString['success']) {
         final Map<String, dynamic> signinJsonData = jsonString['data'];

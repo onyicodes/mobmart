@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobmart/app/features/auth/presentation/controllers/signup_controller.dart';
-import 'package:mobmart/core/constants/error_texts.dart';
-import 'package:mobmart/core/general_widgets/auth_field/custom_auth_field.dart';
-import 'package:mobmart/core/general_widgets/auth_field/password_check.dart';
-import 'package:mobmart/core/general_widgets/auth_field/password_textfield.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/general_widgets/auth_field/phone_number_text_field.dart';
-import 'package:mobmart/core/general_widgets/button_widget.dart';
-import 'package:mobmart/core/general_widgets/custom_list_space.dart';
-import 'package:mobmart/core/general_widgets/social_signups.dart';
+import 'package:mobmart_app/app/features/auth/presentation/controllers/signup_controller.dart';
+import 'package:mobmart_app/core/constants/error_texts.dart';
+import 'package:mobmart_app/core/general_widgets/auth_field/custom_auth_field.dart';
+import 'package:mobmart_app/core/general_widgets/auth_field/password_check.dart';
+import 'package:mobmart_app/core/general_widgets/auth_field/password_textfield.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/general_widgets/auth_field/phone_number_text_field.dart';
+import 'package:mobmart_app/core/general_widgets/button_widget.dart';
+import 'package:mobmart_app/core/general_widgets/custom_list_space.dart';
+import 'package:mobmart_app/core/general_widgets/social_signups.dart';
 
 class SignupPage extends GetView<SignupController> {
   const SignupPage({Key? key}) : super(key: key);

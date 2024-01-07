@@ -1,7 +1,7 @@
-import 'package:mobmart/app/features/onboarding/data/datasources/onboard_content_local_data_source.dart';
-import 'package:mobmart/app/features/onboarding/domain/entities/onboarding_content_entity.dart';
-import 'package:mobmart/app/features/onboarding/domain/repositories/onboard_content_repository.dart';
-import 'package:mobmart/core/error/failures.dart';
+import 'package:mobmart_app/app/features/onboarding/data/datasources/onboard_content_local_data_source.dart';
+import 'package:mobmart_app/app/features/onboarding/domain/entities/onboarding_content_entity.dart';
+import 'package:mobmart_app/app/features/onboarding/domain/repositories/onboard_content_repository.dart';
+import 'package:mobmart_app/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 
 class OnboardContentRepositoryImpl extends OnboardContentRepository {

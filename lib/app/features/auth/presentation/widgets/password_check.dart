@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobmart/app/features/auth/presentation/controllers/signup_controller.dart';
+import 'package:mobmart_app/app/features/auth/presentation/controllers/signup_controller.dart';
 
 class PasswordCheck extends StatelessWidget {
   const PasswordCheck({

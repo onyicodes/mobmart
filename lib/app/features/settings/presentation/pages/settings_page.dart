@@ -1,8 +1,8 @@
-import 'package:mobmart/app/features/settings/presentation/controllers/settings_controller.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
+import 'package:mobmart_app/app/features/settings/presentation/controllers/settings_controller.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Trans;
-import 'package:mobmart/core/general_widgets/custom_appbar.dart';
+import 'package:mobmart_app/core/general_widgets/custom_appbar.dart';
 
 class SettingsPage extends GetView<SettingsController> {
   const SettingsPage({Key? key}) : super(key: key);

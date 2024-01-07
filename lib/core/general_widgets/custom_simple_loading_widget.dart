@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
 
 class CustomSimpleLoadingWidget extends StatelessWidget {
   final double size;
   final double strokeWidth;
   final bool applyIcon;
   const CustomSimpleLoadingWidget(
-      {Key? key, this.size = 10,this.applyIcon = true, this.strokeWidth = 2})
+      {Key? key, this.size = 10, this.applyIcon = true, this.strokeWidth = 2})
       : super(key: key);
 
   @override

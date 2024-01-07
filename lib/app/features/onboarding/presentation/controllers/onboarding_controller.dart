@@ -1,8 +1,8 @@
-import 'package:mobmart/app/features/onboarding/domain/entities/onboarding_content_entity.dart';
-import 'package:mobmart/app/features/onboarding/domain/usecases/onboard_buyer_content_usecase.dart';
-import 'package:mobmart/app/routes/app_pages.dart';
-import 'package:mobmart/core/keys/cache_keys.dart';
-import 'package:mobmart/core/parameters/no_params.dart';
+import 'package:mobmart_app/app/features/onboarding/domain/entities/onboarding_content_entity.dart';
+import 'package:mobmart_app/app/features/onboarding/domain/usecases/onboard_buyer_content_usecase.dart';
+import 'package:mobmart_app/app/routes/app_pages.dart';
+import 'package:mobmart_app/core/keys/cache_keys.dart';
+import 'package:mobmart_app/core/parameters/no_params.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';

@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
 
 class CustomLoadingIndicator extends StatelessWidget {
   final String loadingMessage;

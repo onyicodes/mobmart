@@ -3,8 +3,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:mobmart/app/getx_managers/services/auth_services.dart';
-import 'package:mobmart/core/network/network_info.dart';
+import 'package:mobmart_app/app/getx_managers/services/auth_services.dart';
+import 'package:mobmart_app/core/network/network_info.dart';
 
 initializeGetX() async {
   Get.deleteAll(force: true);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
 
 Future<dynamic> customSnackbar(
     {required String title,
@@ -13,15 +13,16 @@ Future<dynamic> customSnackbar(
     Color overlayColor = Colors.white}) {
   if (!Get.isSnackbarOpen) {
     Get.snackbar(title, message,
-        icon: icon ?? (isError
-            ? Image.asset(
-                AssetsConstants.unknownErrorImage,
-                width: 100,
-              )
-            : Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Image.asset(AssetsConstants.logo),
-              )),
+        icon: icon ??
+            (isError
+                ? Image.asset(
+                    AssetsConstants.unknownErrorImage,
+                    width: 100,
+                  )
+                : Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Image.asset(AssetsConstants.logo),
+                  )),
         onTap: onTap,
         duration: Duration(seconds: duration),
         backgroundColor: isError ? Colors.red.shade100 : null,

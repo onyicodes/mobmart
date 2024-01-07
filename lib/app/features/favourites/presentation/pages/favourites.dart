@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart' hide Trans;
-import 'package:mobmart/app/features/favourites/presentation/controllers/favourite_controller.dart';
-import 'package:mobmart/core/general_widgets/error_handling/error_handler_widget.dart';
-import 'package:mobmart/core/general_widgets/products/product_grid_builder.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/util/check_favourited_products.dart';
+import 'package:mobmart_app/app/features/favourites/presentation/controllers/favourite_controller.dart';
+import 'package:mobmart_app/core/general_widgets/error_handling/error_handler_widget.dart';
+import 'package:mobmart_app/core/general_widgets/products/product_grid_builder.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/util/check_favourited_products.dart';
 
 class FavouritePage extends GetView<FavouriteController> {
   const FavouritePage({Key? key}) : super(key: key);

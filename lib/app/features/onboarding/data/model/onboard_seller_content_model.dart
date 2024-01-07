@@ -1,6 +1,6 @@
 // ignore_for_file: annotate_overrides, overridden_fields
 
-import 'package:mobmart/app/features/onboarding/domain/entities/onboarding_content_entity.dart';
+import 'package:mobmart_app/app/features/onboarding/domain/entities/onboarding_content_entity.dart';
 
 class OnboardContentModel extends OnboardContentEntity {
   final String title;

@@ -1,24 +1,24 @@
 import 'dart:async';
 
-import 'package:mobmart/app/features/auth/data/model/signin_model.dart';
-import 'package:mobmart/app/features/auth/domain/usecases/email_signin_usecase.dart';
-import 'package:mobmart/app/features/auth/presentation/controllers/signup_controller.dart';
-import 'package:mobmart/app/routes/app_pages.dart';
-import 'package:mobmart/app/theme/theme.dart';
-import 'package:mobmart/core/constants/failure_to_error_message.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/error/failures.dart';
-import 'package:mobmart/core/general_widgets/custom_simple_loading_widget.dart';
-import 'package:mobmart/core/general_widgets/custom_snackbar.dart';
-import 'package:mobmart/core/keys/cache_keys.dart';
-import 'package:mobmart/core/parameters/auth/signin_params.dart';
-import 'package:mobmart/core/util/initialize_get.dart';
-import 'package:mobmart/core/validators/auth_field_validator.dart';
+import 'package:mobmart_app/app/features/auth/data/model/signin_model.dart';
+import 'package:mobmart_app/app/features/auth/domain/usecases/email_signin_usecase.dart';
+import 'package:mobmart_app/app/features/auth/presentation/controllers/signup_controller.dart';
+import 'package:mobmart_app/app/routes/app_pages.dart';
+import 'package:mobmart_app/app/theme/theme.dart';
+import 'package:mobmart_app/core/constants/failure_to_error_message.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/error/failures.dart';
+import 'package:mobmart_app/core/general_widgets/custom_simple_loading_widget.dart';
+import 'package:mobmart_app/core/general_widgets/custom_snackbar.dart';
+import 'package:mobmart_app/core/keys/cache_keys.dart';
+import 'package:mobmart_app/core/parameters/auth/signin_params.dart';
+import 'package:mobmart_app/core/util/initialize_get.dart';
+import 'package:mobmart_app/core/validators/auth_field_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mobmart/core/general_widgets/verify_pin_bottomsheet.dart';
+import 'package:mobmart_app/core/general_widgets/verify_pin_bottomsheet.dart';
 
 class SigninController extends GetxController {
   final TextEditingController userNameController = TextEditingController();

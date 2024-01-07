@@ -2,10 +2,10 @@
 //
 //     final productEntity = productEntityFromMap(jsonString);
 
-import 'package:mobmart/app/features/home/data/model/reviews_model.dart';
-import 'package:mobmart/app/features/home/data/model/seller_info_model.dart';
+import 'package:mobmart_app/app/features/home/data/model/reviews_model.dart';
+import 'package:mobmart_app/app/features/home/data/model/seller_info_model.dart';
 
-import 'package:mobmart/app/features/home/data/model/shipping_model.dart';
+import 'package:mobmart_app/app/features/home/data/model/shipping_model.dart';
 
 class ProductModel {
   final int id;
@@ -91,10 +91,10 @@ class ProductModel {
         "amountSold": amountSold,
         "brand": brand,
         "color": color,
-        "material":material,
-        "condition":condition,
-        "category":category,
-        "heavy":heavy,
+        "material": material,
+        "condition": condition,
+        "category": category,
+        "heavy": heavy,
         "favourited": favourited,
         "description": description,
         "shippingInfo": shippingInfo.toMap(),

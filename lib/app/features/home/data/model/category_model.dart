@@ -1,6 +1,6 @@
 // ignore_for_file: annotate_overrides, overridden_fields
 
-import 'package:mobmart/app/features/home/domain/entities/category_entity.dart';
+import 'package:mobmart_app/app/features/home/domain/entities/category_entity.dart';
 
 class CategoryModel extends CategoryEntity {
   final String icon;

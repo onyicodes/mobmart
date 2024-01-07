@@ -1,15 +1,14 @@
-
 import 'package:flutter/material.dart';
-import 'package:mobmart/app/features/favourites/presentation/controllers/favourite_controller.dart';
-import 'package:mobmart/app/features/home/data/model/product_model.dart';
-import 'package:mobmart/app/features/home/domain/entities/carousel_entity.dart';
-import 'package:mobmart/app/features/home/domain/entities/category_entity.dart';
-import 'package:mobmart/app/features/home/domain/usecases/fetch_carousel_usecase.dart';
-import 'package:mobmart/app/features/home/domain/usecases/fetch_categories_usecase.dart';
-import 'package:mobmart/app/features/home/domain/usecases/fetch_products_usecase.dart';
-import 'package:mobmart/app/routes/app_pages.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/parameters/no_params.dart';
+import 'package:mobmart_app/app/features/favourites/presentation/controllers/favourite_controller.dart';
+import 'package:mobmart_app/app/features/home/data/model/product_model.dart';
+import 'package:mobmart_app/app/features/home/domain/entities/carousel_entity.dart';
+import 'package:mobmart_app/app/features/home/domain/entities/category_entity.dart';
+import 'package:mobmart_app/app/features/home/domain/usecases/fetch_carousel_usecase.dart';
+import 'package:mobmart_app/app/features/home/domain/usecases/fetch_categories_usecase.dart';
+import 'package:mobmart_app/app/features/home/domain/usecases/fetch_products_usecase.dart';
+import 'package:mobmart_app/app/routes/app_pages.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/parameters/no_params.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:get/get.dart' hide Trans;
 
@@ -24,7 +23,6 @@ class HomeController extends GetxController {
 
   final ScrollController scrollController = ScrollController();
   final favouriteController = Get.find<FavouriteController>();
-  
 
   final _carousels = <CarouselEntity>[].obs;
   final _categories = <CategoryEntity>[].obs;
@@ -69,8 +67,6 @@ class HomeController extends GetxController {
     fetchCarousel();
     fetchCategories();
     fetchProducts();
-
-  
   }
 
   fetchCategories() async {
@@ -118,7 +114,6 @@ class HomeController extends GetxController {
   }
 
   viewProductDetails({required ProductModel productModel}) {
-    
     Get.toNamed(Routes.details, arguments: productModel);
   }
 }

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:get/get_connect/connect.dart';
-import 'package:mobmart/app/features/home/data/model/product_model.dart';
+import 'package:mobmart_app/app/features/home/data/model/product_model.dart';
 
 abstract class ProductDetailsDataProvider extends GetConnect {
   Future<List<ProductModel>> fetchRecommendations();

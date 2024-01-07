@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart' hide Trans;
-import 'package:mobmart/app/features/home/presentation/controllers/home_controller.dart';
-import 'package:mobmart/app/features/home/presentation/widgets/banner_loader.dart';
-import 'package:mobmart/app/features/home/presentation/widgets/carousel_app_bar.dart';
-import 'package:mobmart/app/features/home/presentation/widgets/category_builder_widget.dart';
-import 'package:mobmart/core/general_widgets/products/product_grid_builder.dart';
-import 'package:mobmart/app/features/home/presentation/widgets/search_app_bar_widget.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/util/check_favourited_products.dart';
+import 'package:mobmart_app/app/features/home/presentation/controllers/home_controller.dart';
+import 'package:mobmart_app/app/features/home/presentation/widgets/banner_loader.dart';
+import 'package:mobmart_app/app/features/home/presentation/widgets/carousel_app_bar.dart';
+import 'package:mobmart_app/app/features/home/presentation/widgets/category_builder_widget.dart';
+import 'package:mobmart_app/core/general_widgets/products/product_grid_builder.dart';
+import 'package:mobmart_app/app/features/home/presentation/widgets/search_app_bar_widget.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/util/check_favourited_products.dart';
 
 class Home extends GetView<HomeController> {
   const Home({Key? key}) : super(key: key);

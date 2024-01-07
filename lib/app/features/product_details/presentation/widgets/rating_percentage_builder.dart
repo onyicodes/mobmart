@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobmart/core/util/total_reviews_formatter.dart';
+import 'package:mobmart_app/core/util/total_reviews_formatter.dart';
 
 class RatingPercentageBuilder extends StatelessWidget {
   final int ratingValue;
@@ -16,7 +16,7 @@ class RatingPercentageBuilder extends StatelessWidget {
     TextTheme primaryTextTheme = Theme.of(context).primaryTextTheme;
     return Row(
       children: [
-     const   Icon(
+        const Icon(
           Icons.star_rounded,
           color: Colors.amber,
         ),
@@ -24,7 +24,9 @@ class RatingPercentageBuilder extends StatelessWidget {
           ratingValue.toString(),
           style: primaryTextTheme.headlineMedium,
         ),
-       const SizedBox(width: 8,),
+        const SizedBox(
+          width: 8,
+        ),
         Stack(
           children: [
             Container(
@@ -37,7 +39,7 @@ class RatingPercentageBuilder extends StatelessWidget {
             ),
             Container(
               height: 8,
-              width: 140 * (totalRatingGiven / totalRating ),
+              width: 140 * (totalRatingGiven / totalRating),
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
                 color: Theme.of(context).primaryColor,
@@ -55,6 +57,4 @@ class RatingPercentageBuilder extends StatelessWidget {
       ],
     );
   }
-
-  
 }

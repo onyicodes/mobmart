@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:mobmart/app/routes/app_pages.dart';
+import 'package:mobmart_app/app/routes/app_pages.dart';
 
 class SplashScreenController extends GetxController {
   SplashScreenController();

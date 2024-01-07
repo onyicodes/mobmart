@@ -1,10 +1,10 @@
 import 'package:get/get_connect/connect.dart';
-import 'package:mobmart/core/constants/api_url/api_url.dart';
-import 'package:mobmart/core/error/exceptions.dart';
-import 'package:mobmart/core/network/network_info.dart';
-import 'package:mobmart/core/parameters/auth/email_signup_params.dart';
-import 'package:mobmart/core/parameters/auth/resend_verify_token_params.dart';
-import 'package:mobmart/core/parameters/auth/verify_token_params.dart';
+import 'package:mobmart_app/core/constants/api_url/api_url.dart';
+import 'package:mobmart_app/core/error/exceptions.dart';
+import 'package:mobmart_app/core/network/network_info.dart';
+import 'package:mobmart_app/core/parameters/auth/email_signup_params.dart';
+import 'package:mobmart_app/core/parameters/auth/resend_verify_token_params.dart';
+import 'package:mobmart_app/core/parameters/auth/verify_token_params.dart';
 
 const baseUrl = 'https://www.olevelgurusapp.com/v3/index/languages';
 
@@ -63,8 +63,6 @@ class SignupDataProviderImpl extends SignupDataProvider {
     }
   }
 
-
-
   @override
   Future<String> verifyToken({required VerifyTokenParams params}) async {
     Map<String, String> verifyTokenField = params.toMap();
@@ -106,14 +104,16 @@ class SignupDataProviderImpl extends SignupDataProvider {
     }
   }
 
-
   @override
-  Future<String> resendVerifyToken({required ResendVerifyTokenParams params}) async {
+  Future<String> resendVerifyToken(
+      {required ResendVerifyTokenParams params}) async {
     Map<String, String> resendVerifyTokenField = params.toMap();
 
-    const String resendVerifyTokenUrl = ApiUrls.baseUrl + ApiUrls.resendVerifyToken;
+    const String resendVerifyTokenUrl =
+        ApiUrls.baseUrl + ApiUrls.resendVerifyToken;
 
-    final Response response = await post(resendVerifyTokenUrl, resendVerifyTokenField);
+    final Response response =
+        await post(resendVerifyTokenUrl, resendVerifyTokenField);
 
     if (await networkInfo.isConnected) {
       final Map<String, dynamic>? jsonString;

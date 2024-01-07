@@ -1,4 +1,4 @@
-import 'package:mobmart/app/features/onboarding/domain/entities/onboarding_content_entity.dart';
+import 'package:mobmart_app/app/features/onboarding/domain/entities/onboarding_content_entity.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingDisplayWidget extends StatelessWidget {
@@ -55,10 +55,10 @@ class OnboardingDisplayWidget extends StatelessWidget {
                   child: pageIndex != 0
                       ? IconButton(
                           onPressed: onTapBack,
-                          icon:const Icon(
+                          icon: const Icon(
                             Icons.arrow_back,
                           ))
-                      :const SizedBox(),
+                      : const SizedBox(),
                 )
               ],
             ),

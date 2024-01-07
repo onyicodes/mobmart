@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:mobmart/app/features/auth/presentation/widgets/pin_themes.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/general_widgets/custom_list_space.dart';
+import 'package:mobmart_app/app/features/auth/presentation/widgets/pin_themes.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/general_widgets/custom_list_space.dart';
 import 'package:flutter/material.dart';
-import 'package:mobmart/core/general_widgets/custom_simple_loading_widget.dart';
+import 'package:mobmart_app/core/general_widgets/custom_simple_loading_widget.dart';
 import 'package:pinput/pinput.dart';
 
 class MyValueNotifier extends ValueNotifier<int> {
@@ -25,9 +25,9 @@ class VerifyPinBottomSheet extends StatelessWidget {
       required this.confirmPin,
       required this.isLoading,
       required this.title,
-      required this.subTitle}){
-                 startTimer();
-      }
+      required this.subTitle}) {
+    startTimer();
+  }
 
   final MyValueNotifier myValueNotifier = MyValueNotifier(start: 60);
   int nextResendTime = 120;
@@ -58,10 +58,8 @@ class VerifyPinBottomSheet extends StatelessWidget {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
-   
     TextTheme primaryTextTheme = Theme.of(context).primaryTextTheme;
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
@@ -106,51 +104,48 @@ class VerifyPinBottomSheet extends StatelessWidget {
                 ValueListenableBuilder(
                     valueListenable: myValueNotifier,
                     builder: (context, value, child) {
-                    return Text(
-                      value == 0
-                          ? "Didn't receive the code?  "
-                          : nextResendTime == 120
-                              ? "Code can be resent after"
-                              : "Next code can be send after",
-                      style: const TextStyle(color: Colors.black54, fontSize: 15),
-                    );
-                  }
-                ),
+                      return Text(
+                        value == 0
+                            ? "Didn't receive the code?  "
+                            : nextResendTime == 120
+                                ? "Code can be resent after"
+                                : "Next code can be send after",
+                        style: const TextStyle(
+                            color: Colors.black54, fontSize: 15),
+                      );
+                    }),
                 ValueListenableBuilder(
-                        valueListenable: myValueNotifier,
-                        builder: (context, value, child) {
-                          
-                    return TextButton(
-                        onPressed: myValueNotifier.value == 0
-                            ? () {
-                                // _.resendOTP();
-                                print("omo");
-                    
-                                myValueNotifier.value = nextResendTime;
-                                nextResendTime = nextResendTime * 2;
-                                startTimer();
-                              }
-                            : null,
-                        child: Text(
-                                myValueNotifier.value == 0
-                                    ? "RESEND"
-                                    : " ${formatedTime(value)}",
-                                style: TextStyle(
-                                    color: myValueNotifier.value == 0
-                                        ? Colors.green.shade300
-                                        : Colors.black38,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16),
-                              )
-                            );
-                  }
-                ),
+                    valueListenable: myValueNotifier,
+                    builder: (context, value, child) {
+                      return TextButton(
+                          onPressed: myValueNotifier.value == 0
+                              ? () {
+                                  // _.resendOTP();
+                                  print("omo");
+
+                                  myValueNotifier.value = nextResendTime;
+                                  nextResendTime = nextResendTime * 2;
+                                  startTimer();
+                                }
+                              : null,
+                          child: Text(
+                            myValueNotifier.value == 0
+                                ? "RESEND"
+                                : " ${formatedTime(value)}",
+                            style: TextStyle(
+                                color: myValueNotifier.value == 0
+                                    ? Colors.green.shade300
+                                    : Colors.black38,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ));
+                    }),
                 CustomListSpacing(
                     spacingValue: ListSpacingValue.spacingV8.value),
                 if (isLoading)
-                const CustomSimpleLoadingWidget(
-                  size: 15,
-                )
+                  const CustomSimpleLoadingWidget(
+                    size: 15,
+                  )
               ],
             ),
             CustomListSpacing(spacingValue: ListSpacingValue.spacingV32.value),

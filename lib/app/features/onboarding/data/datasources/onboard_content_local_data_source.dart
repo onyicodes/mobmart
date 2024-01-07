@@ -1,8 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:mobmart/app/features/onboarding/data/model/onboard_seller_content_model.dart';
+import 'package:mobmart_app/app/features/onboarding/data/model/onboard_seller_content_model.dart';
 import 'package:get/get_connect/connect.dart';
-import 'package:mobmart/generated/locale_keys.g.dart';
-
+import 'package:mobmart_app/generated/locale_keys.g.dart';
 
 abstract class OnboardContentLocalDataSource extends GetConnect {
   Future<List<OnboardContentModel>> fetchOnboardingContents();
@@ -34,7 +33,6 @@ class OnboardContentLocalDataSourceImpl extends OnboardContentLocalDataSource {
     final List<OnboardContentModel> onboardContentModelList =
         onboardingContents.map((e) => OnboardContentModel.fromJson(e)).toList();
 
-    
     return onboardContentModelList;
   }
 }

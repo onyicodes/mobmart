@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:mobmart/app/features/auth/presentation/controllers/signup_controller.dart';
-import 'package:mobmart/core/constants/error_texts.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/general_widgets/button_widget.dart';
-import 'package:mobmart/core/general_widgets/custom_list_space.dart';
+import 'package:mobmart_app/app/features/auth/presentation/controllers/signup_controller.dart';
+import 'package:mobmart_app/core/constants/error_texts.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/general_widgets/button_widget.dart';
+import 'package:mobmart_app/core/general_widgets/custom_list_space.dart';
 
 class SuccessPage extends GetView<SignupController> {
   const SuccessPage({Key? key}) : super(key: key);

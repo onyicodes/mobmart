@@ -1,5 +1,5 @@
 // ignore_for_file: annotate_overrides, overridden_fields
-import 'package:mobmart/core/entities/user_entity.dart';
+import 'package:mobmart_app/core/entities/user_entity.dart';
 
 class UserModel extends UserEntity {
   const UserModel({
@@ -50,7 +50,9 @@ class UserModel extends UserEntity {
       deviceToken: json["deviceToken"] ?? "",
       verified: json["verified"] ?? false,
       photo: json["photo"] ?? "",
-      dob: DateTime.parse(json["dob"] != null && json["dob"] != ''? json["dob"] :  DateTime.now().toIso8601String()),
+      dob: DateTime.parse(json["dob"] != null && json["dob"] != ''
+          ? json["dob"]
+          : DateTime.now().toIso8601String()),
       createdAt:
           DateTime.parse(json["createdAt"] ?? DateTime.now().toIso8601String()),
       updatedAt:

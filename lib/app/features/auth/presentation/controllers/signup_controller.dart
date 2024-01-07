@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart' hide Trans;
 import 'package:get_storage/get_storage.dart';
-import 'package:mobmart/app/features/auth/domain/usecases/email_signup_usecase.dart';
-import 'package:mobmart/app/features/auth/domain/usecases/resend_verify_token_usecase.dart';
-import 'package:mobmart/app/features/auth/domain/usecases/verify_account_token_usecase.dart';
-import 'package:mobmart/app/features/auth/presentation/controllers/signin_controller.dart';
-import 'package:mobmart/app/routes/app_pages.dart';
-import 'package:mobmart/core/constants/error_texts.dart';
-import 'package:mobmart/core/constants/failure_to_error_message.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/general_widgets/custom_snackbar.dart';
-import 'package:mobmart/core/parameters/auth/email_signup_params.dart';
-import 'package:mobmart/core/parameters/auth/resend_verify_token_params.dart';
-import 'package:mobmart/core/parameters/auth/signin_params.dart';
-import 'package:mobmart/core/parameters/auth/verify_token_params.dart';
-import 'package:mobmart/core/validators/auth_field_validator.dart';
-import 'package:mobmart/core/general_widgets/verify_pin_bottomsheet.dart';
-import 'package:mobmart/generated/locale_keys.g.dart';
+import 'package:mobmart_app/app/features/auth/domain/usecases/email_signup_usecase.dart';
+import 'package:mobmart_app/app/features/auth/domain/usecases/resend_verify_token_usecase.dart';
+import 'package:mobmart_app/app/features/auth/domain/usecases/verify_account_token_usecase.dart';
+import 'package:mobmart_app/app/features/auth/presentation/controllers/signin_controller.dart';
+import 'package:mobmart_app/app/routes/app_pages.dart';
+import 'package:mobmart_app/core/constants/error_texts.dart';
+import 'package:mobmart_app/core/constants/failure_to_error_message.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/general_widgets/custom_snackbar.dart';
+import 'package:mobmart_app/core/parameters/auth/email_signup_params.dart';
+import 'package:mobmart_app/core/parameters/auth/resend_verify_token_params.dart';
+import 'package:mobmart_app/core/parameters/auth/signin_params.dart';
+import 'package:mobmart_app/core/parameters/auth/verify_token_params.dart';
+import 'package:mobmart_app/core/validators/auth_field_validator.dart';
+import 'package:mobmart_app/core/general_widgets/verify_pin_bottomsheet.dart';
+import 'package:mobmart_app/generated/locale_keys.g.dart';
 import 'package:phone_form_field/phone_form_field.dart';
 
 class SignupController extends GetxController {
@@ -210,7 +210,7 @@ class SignupController extends GetxController {
     });
   }
 
-  Future<RequestStatus>  resendVerifyToken({required String email}) async {
+  Future<RequestStatus> resendVerifyToken({required String email}) async {
     verifyTokenRequestStatus = RequestStatus.loading;
     final params = ResendVerifyTokenParams(email: email);
     final failOrResent = await resendVerifyTokenUsecase(params);

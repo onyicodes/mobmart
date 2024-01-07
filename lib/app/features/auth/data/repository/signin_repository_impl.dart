@@ -1,9 +1,9 @@
-import 'package:mobmart/app/features/auth/data/datasources/signin_datasource.dart';
-import 'package:mobmart/app/features/auth/data/model/signin_model.dart';
-import 'package:mobmart/app/features/auth/domain/repositories/signin_repository.dart';
-import 'package:mobmart/core/error/exceptions.dart';
-import 'package:mobmart/core/error/failures.dart';
-import 'package:mobmart/core/parameters/auth/signin_params.dart';
+import 'package:mobmart_app/app/features/auth/data/datasources/signin_datasource.dart';
+import 'package:mobmart_app/app/features/auth/data/model/signin_model.dart';
+import 'package:mobmart_app/app/features/auth/domain/repositories/signin_repository.dart';
+import 'package:mobmart_app/core/error/exceptions.dart';
+import 'package:mobmart_app/core/error/failures.dart';
+import 'package:mobmart_app/core/parameters/auth/signin_params.dart';
 import 'package:dartz/dartz.dart';
 
 class SigninRepositoryImpl extends SigninRepository {
@@ -23,10 +23,10 @@ class SigninRepositoryImpl extends SigninRepository {
       return Left(NetworkFailure());
     } on AccountNotFoundException {
       return Left(AccountNotFoundFailure());
-    } on AccountNotVerifiedException{
+    } on AccountNotVerifiedException {
       return Left(AccountNotVerifiedFailure());
     } catch (e) {
-      return  Left(UnknownFailure(message: e.toString()));
+      return Left(UnknownFailure(message: e.toString()));
     }
   }
 }

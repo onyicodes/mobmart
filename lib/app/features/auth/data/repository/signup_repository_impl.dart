@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:mobmart/app/features/auth/data/datasources/signup_datasource.dart';
-import 'package:mobmart/app/features/auth/domain/repositories/signup_repository.dart';
-import 'package:mobmart/core/error/exceptions.dart';
-import 'package:mobmart/core/error/failures.dart';
-import 'package:mobmart/core/parameters/auth/email_signup_params.dart';
-import 'package:mobmart/core/parameters/auth/resend_verify_token_params.dart';
-import 'package:mobmart/core/parameters/auth/verify_token_params.dart';
+import 'package:mobmart_app/app/features/auth/data/datasources/signup_datasource.dart';
+import 'package:mobmart_app/app/features/auth/domain/repositories/signup_repository.dart';
+import 'package:mobmart_app/core/error/exceptions.dart';
+import 'package:mobmart_app/core/error/failures.dart';
+import 'package:mobmart_app/core/parameters/auth/email_signup_params.dart';
+import 'package:mobmart_app/core/parameters/auth/resend_verify_token_params.dart';
+import 'package:mobmart_app/core/parameters/auth/verify_token_params.dart';
 
 class SignupRepositoryImpl extends SignupRepository {
   final SignupDataProvider dataProvider;
@@ -25,7 +25,7 @@ class SignupRepositoryImpl extends SignupRepository {
     } on AccountExistException {
       return Left(AccountExistsFailure());
     } catch (e) {
-      return  Left(UnknownFailure(message: e is String ? e.toString() : "" ));
+      return Left(UnknownFailure(message: e is String ? e.toString() : ""));
     }
   }
 
@@ -45,7 +45,6 @@ class SignupRepositoryImpl extends SignupRepository {
       return Left(UnknownFailure(message: e is String ? e.toString() : ""));
     }
   }
-
 
   @override
   Future<Either<Failure, String>> resendVerifyToken(

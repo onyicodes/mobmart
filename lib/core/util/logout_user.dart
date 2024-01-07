@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mobmart/app/routes/app_pages.dart';
-import 'package:mobmart/core/keys/cache_keys.dart';
-import 'package:mobmart/core/util/CustomSmartLoading.dart';
+import 'package:mobmart_app/app/routes/app_pages.dart';
+import 'package:mobmart_app/core/keys/cache_keys.dart';
+import 'package:mobmart_app/core/util/CustomSmartLoading.dart';
 
 logUserOut({required GetStorage storeBox}) async {
   String lastUserId = storeBox.read(CacheKeys.lastUserID) ?? "";

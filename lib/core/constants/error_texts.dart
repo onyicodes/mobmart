@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:mobmart/generated/locale_keys.g.dart';
+import 'package:mobmart_app/generated/locale_keys.g.dart';
 
 class AuthFieldValidationErrorMessage {
   static String emailEmpty =

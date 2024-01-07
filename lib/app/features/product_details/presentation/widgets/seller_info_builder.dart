@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:mobmart/app/features/home/data/model/seller_info_model.dart';
-import 'package:mobmart/app/features/product_details/presentation/widgets/seller_profile_online_pics.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/general_widgets/button_widget.dart';
-import 'package:mobmart/core/general_widgets/custom_list_space.dart';
+import 'package:mobmart_app/app/features/home/data/model/seller_info_model.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/widgets/seller_profile_online_pics.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/general_widgets/button_widget.dart';
+import 'package:mobmart_app/core/general_widgets/custom_list_space.dart';
 
 class SellerInfoBuilder extends StatelessWidget {
   final SellerInforModel sellerInfoModel;
@@ -24,8 +24,7 @@ class SellerInfoBuilder extends StatelessWidget {
             "Selling Information:  ",
             style: primaryTextTheme.displaySmall,
           ),
-          CustomListSpacing(
-                        spacingValue: ListSpacingValue.spacingV16.value),
+          CustomListSpacing(spacingValue: ListSpacingValue.spacingV16.value),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -42,14 +41,16 @@ class SellerInfoBuilder extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      sellerInfoModel.storeName.capitalize!.replaceAll(" ", "_"),
+                      sellerInfoModel.storeName.capitalize!
+                          .replaceAll(" ", "_"),
                       style: primaryTextTheme.headlineLarge,
                     ),
                     CustomListSpacing(
                         spacingValue: ListSpacingValue.spacingV8.value),
                     Text(
                       "Active ${sellerInfoModel.lastActive} Min ago  |  ${sellerInfoModel.storeRating.positiveReviews}% Positive Feedback",
-                      style: primaryTextTheme.headlineSmall!.copyWith(color: Theme.of(context).hintColor),
+                      style: primaryTextTheme.headlineSmall!
+                          .copyWith(color: Theme.of(context).hintColor),
                     ),
                     CustomListSpacing(
                         spacingValue: ListSpacingValue.spacingV8.value),

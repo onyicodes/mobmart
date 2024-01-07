@@ -1,4 +1,4 @@
-import 'package:mobmart/app/features/home/data/model/store_rating_model.dart';
+import 'package:mobmart_app/app/features/home/data/model/store_rating_model.dart';
 
 class SellerInforModel {
   final String storeName;
@@ -18,7 +18,7 @@ class SellerInforModel {
         storeName: json["storeName"],
         image: json["image"],
         lastActive: json["lastActive"],
-        storeRating: StoreRatingModel.fromMap(json["storeRating"]) ,
+        storeRating: StoreRatingModel.fromMap(json["storeRating"]),
       );
 
   Map<String, dynamic> toMap() => {

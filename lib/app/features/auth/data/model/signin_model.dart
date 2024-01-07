@@ -1,9 +1,8 @@
 // ignore_for_file: overridden_fields, annotate_overrides
 
+import 'package:mobmart_app/core/models/user_model.dart';
 
-import 'package:mobmart/core/models/user_model.dart';
-
-class SigninModel  {
+class SigninModel {
   final String accessToken;
   final String refreshToken;
   final UserModel user;

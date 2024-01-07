@@ -1,22 +1,22 @@
 import 'package:get/get.dart';
-import 'package:mobmart/app/features/home/presentation/bindings/home_binding.dart';
-import 'package:mobmart/app/features/home/presentation/pages/home.dart';
-import 'package:mobmart/app/features/landing/presentation/bindings/landing_binding.dart';
-import 'package:mobmart/app/features/landing/presentation/pages/landing_page.dart';
-import 'package:mobmart/app/features/onboarding/presentation/bindings/onboard_binding.dart';
-import 'package:mobmart/app/features/onboarding/presentation/pages/onboarding_page.dart';
-import 'package:mobmart/app/features/product_details/presentation/bindings/product_details_binding.dart';
-import 'package:mobmart/app/features/product_details/presentation/pages/product_details_page.dart';
-import 'package:mobmart/app/features/auth/presentation/bindings/signup_binding.dart';
-import 'package:mobmart/app/features/auth/presentation/pages/signin_page.dart';
-import 'package:mobmart/app/features/auth/presentation/pages/signup_page.dart';
-import 'package:mobmart/app/features/auth/presentation/pages/success_page.dart';
-import 'package:mobmart/app/features/settings/presentation/bindings/settings_binding.dart';
-import 'package:mobmart/app/features/settings/presentation/pages/settings_page.dart';
-import 'package:mobmart/app/features/splash/presentation/bindings/splash_screen_binding.dart';
-import 'package:mobmart/app/features/splash/presentation/pages/splash_screen.dart';
-import 'package:mobmart/app/getx_managers/middlewares/auth_guard_middlewares.dart';
-import 'package:mobmart/app/getx_managers/middlewares/onboard_guard_middleware.dart';
+import 'package:mobmart_app/app/features/home/presentation/bindings/home_binding.dart';
+import 'package:mobmart_app/app/features/home/presentation/pages/home.dart';
+import 'package:mobmart_app/app/features/landing/presentation/bindings/landing_binding.dart';
+import 'package:mobmart_app/app/features/landing/presentation/pages/landing_page.dart';
+import 'package:mobmart_app/app/features/onboarding/presentation/bindings/onboard_binding.dart';
+import 'package:mobmart_app/app/features/onboarding/presentation/pages/onboarding_page.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/bindings/product_details_binding.dart';
+import 'package:mobmart_app/app/features/product_details/presentation/pages/product_details_page.dart';
+import 'package:mobmart_app/app/features/auth/presentation/bindings/signup_binding.dart';
+import 'package:mobmart_app/app/features/auth/presentation/pages/signin_page.dart';
+import 'package:mobmart_app/app/features/auth/presentation/pages/signup_page.dart';
+import 'package:mobmart_app/app/features/auth/presentation/pages/success_page.dart';
+import 'package:mobmart_app/app/features/settings/presentation/bindings/settings_binding.dart';
+import 'package:mobmart_app/app/features/settings/presentation/pages/settings_page.dart';
+import 'package:mobmart_app/app/features/splash/presentation/bindings/splash_screen_binding.dart';
+import 'package:mobmart_app/app/features/splash/presentation/pages/splash_screen.dart';
+import 'package:mobmart_app/app/getx_managers/middlewares/auth_guard_middlewares.dart';
+import 'package:mobmart_app/app/getx_managers/middlewares/onboard_guard_middleware.dart';
 
 part './app_routes.dart';
 
@@ -31,32 +31,27 @@ abstract class AppPages {
         name: Routes.onboarding,
         page: () => const OnboardingPage(),
         binding: OnboardingBinding(),
-        middlewares: [OnboardGuardMiddleware()]
-        ),
+        middlewares: [OnboardGuardMiddleware()]),
     GetPage(
         name: Routes.landing,
         page: () => LandingPage(),
         binding: LandingBinding(),
-        middlewares: [AuthGuardMiddleware()]
-        ),
-        
-     GetPage(
+        middlewares: [AuthGuardMiddleware()]),
+    GetPage(
         name: Routes.accountSuccess,
         binding: SignupBinding(),
         page: () => const SuccessPage()),
-
-     GetPage(
+    GetPage(
         name: Routes.settings,
         binding: SettingsBinding(),
         page: () => const SettingsPage()),
-
-     GetPage(
-        name: Routes.signin,
-        page: () => const SigninPage(),
-        binding:SignupBinding(),
-         transition: Transition.rightToLeft,
-        ),
-     GetPage(
+    GetPage(
+      name: Routes.signin,
+      page: () => const SigninPage(),
+      binding: SignupBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
       name: Routes.signup,
       page: () => const SignupPage(),
       binding: SignupBinding(),
@@ -69,7 +64,7 @@ abstract class AppPages {
         transition: Transition.leftToRight),
     GetPage(
         name: Routes.details,
-        page: () =>  const ProductDetailsPage(),
+        page: () => const ProductDetailsPage(),
         binding: ProductDetailsBinding(),
         transition: Transition.downToUp),
   ];

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mobmart/core/constants/general_constants.dart';
-import 'package:mobmart/core/general_widgets/custom_search_field.dart';
+import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/general_widgets/custom_search_field.dart';
 
 class SearchAppBar extends StatelessWidget {
   final Color backgroundColor;
   final List<Widget> actionWidgets;
-  const SearchAppBar({super.key, required this.backgroundColor, required this.actionWidgets});
+  const SearchAppBar(
+      {super.key, required this.backgroundColor, required this.actionWidgets});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +20,12 @@ class SearchAppBar extends StatelessWidget {
             inputType: TextInputType.text,
             onChanged: (value) {},
             errorText: ''),
-            SizedBox(width: ListSpacingValue.spacingV16.value),
-            for(var widget in actionWidgets)
-
-            Padding(padding:const EdgeInsets.all(4) , child: widget,)
-            
+        SizedBox(width: ListSpacingValue.spacingV16.value),
+        for (var widget in actionWidgets)
+          Padding(
+            padding: const EdgeInsets.all(4),
+            child: widget,
+          )
       ],
     );
   }

@@ -1,11 +1,10 @@
-
 import 'package:email_validator/email_validator.dart';
-import 'package:mobmart/app/features/auth/presentation/bindings/signup_binding.dart';
-import 'package:mobmart/app/features/auth/presentation/controllers/signin_controller.dart';
-import 'package:mobmart/app/features/auth/presentation/controllers/signup_controller.dart';
-import 'package:mobmart/core/constants/error_texts.dart';
-import 'package:mobmart/core/parameters/auth/email_signup_params.dart';
-import 'package:mobmart/core/parameters/auth/signin_params.dart';
+import 'package:mobmart_app/app/features/auth/presentation/bindings/signup_binding.dart';
+import 'package:mobmart_app/app/features/auth/presentation/controllers/signin_controller.dart';
+import 'package:mobmart_app/app/features/auth/presentation/controllers/signup_controller.dart';
+import 'package:mobmart_app/core/constants/error_texts.dart';
+import 'package:mobmart_app/core/parameters/auth/email_signup_params.dart';
+import 'package:mobmart_app/core/parameters/auth/signin_params.dart';
 
 final signupController = getSignupControllerSl<SignupController>();
 final signinController = getSignupControllerSl<SigninController>();

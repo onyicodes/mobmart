@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:mobmart/app/features/splash/presentation/controllers/splash_screen_controller.dart';
-import 'package:mobmart/core/constants/assets_constants.dart';
+import 'package:mobmart_app/app/features/splash/presentation/controllers/splash_screen_controller.dart';
+import 'package:mobmart_app/core/constants/assets_constants.dart';
 
 class SplashScreenPage extends GetView<SplashScreenController> {
   SplashScreenPage({super.key}) {
