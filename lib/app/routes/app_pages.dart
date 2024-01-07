@@ -11,6 +11,8 @@ import 'package:mobmart/app/features/auth/presentation/bindings/signup_binding.d
 import 'package:mobmart/app/features/auth/presentation/pages/signin_page.dart';
 import 'package:mobmart/app/features/auth/presentation/pages/signup_page.dart';
 import 'package:mobmart/app/features/auth/presentation/pages/success_page.dart';
+import 'package:mobmart/app/features/settings/presentation/bindings/settings_binding.dart';
+import 'package:mobmart/app/features/settings/presentation/pages/settings_page.dart';
 import 'package:mobmart/app/features/splash/presentation/bindings/splash_screen_binding.dart';
 import 'package:mobmart/app/features/splash/presentation/pages/splash_screen.dart';
 import 'package:mobmart/app/getx_managers/middlewares/auth_guard_middlewares.dart';
@@ -42,6 +44,11 @@ abstract class AppPages {
         name: Routes.accountSuccess,
         binding: SignupBinding(),
         page: () => const SuccessPage()),
+
+     GetPage(
+        name: Routes.settings,
+        binding: SettingsBinding(),
+        page: () => const SettingsPage()),
 
      GetPage(
         name: Routes.signin,

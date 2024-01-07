@@ -32,25 +32,23 @@ class ForgotPassword extends StatelessWidget {
             ),
             // const Align(
             //     alignment: Alignment.topCenter, child: BottomSheetBorderLine()),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+            CustomListSpacing(spacingValue: ListSpacingValue.spacingV32.value),
             Text(
-              AuthFieldText.forgotPassword,
+              LocaleKeysAuthFieldText.forgotPassword,
               style: primaryTextTheme.displayMedium,
             ),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV24.value),
-            Text(AuthFieldText.forgotPasswordEnterEmailText,
+            CustomListSpacing(spacingValue: ListSpacingValue.spacingV24.value),
+            Text(
+              LocaleKeysAuthFieldText.forgotPasswordEnterEmailText,
               style: primaryTextTheme.bodyLarge,
             ),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+            CustomListSpacing(spacingValue: ListSpacingValue.spacingV32.value),
             GetX<SigninController>(
               builder: (_) {
                 return CustomAuthField(
                     controller: _.emailAddressController,
-                    hintText: AuthFieldText.emailHint,
-                    label: AuthFieldText.emailLabel,
+                    hintText: LocaleKeysAuthFieldText.emailHint,
+                    label: LocaleKeysAuthFieldText.emailLabel,
                     errorText: _.emailError,
                     onChanged: (String value) {
                       if (_.emailError.isNotEmpty) {
@@ -60,15 +58,13 @@ class ForgotPassword extends StatelessWidget {
                     inputType: TextInputType.emailAddress);
               },
             ),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+            CustomListSpacing(spacingValue: ListSpacingValue.spacingV32.value),
             Center(
               child: GetBuilder<SigninController>(
                 builder: (_) {
                   return CustomButton(
-                      label: AuthFieldText.continueButton,
+                      label: LocaleKeysAuthFieldText.continueButton,
                       onPressed: () {
-                       
                         _.goToPushToken();
                       },
                       radius: 12,
@@ -80,8 +76,7 @@ class ForgotPassword extends StatelessWidget {
                 },
               ),
             ),
-            CustomListSpacing(
-                spacingValue: ListSpacingValue.spacingV32.value),
+            CustomListSpacing(spacingValue: ListSpacingValue.spacingV32.value),
           ],
         ),
       ),

@@ -170,7 +170,7 @@ class SignupController extends GetxController {
                     ? fail.message
                     : mapFailureToErrorMessage(fail));
           }, (successMessage) async {
-           requestStatus = RequestStatus.success;
+            requestStatus = RequestStatus.success;
             await customSnackbar(
                 title: 'Success',
                 message: LocaleKeys.snackBar_signUp_accountSuccess.tr());
@@ -210,12 +210,15 @@ class SignupController extends GetxController {
     });
   }
 
-  resendVerifyToken({required String email}) async {
+  Future<RequestStatus>  resendVerifyToken({required String email}) async {
     verifyTokenRequestStatus = RequestStatus.loading;
     final params = ResendVerifyTokenParams(email: email);
     final failOrResent = await resendVerifyTokenUsecase(params);
     failOrResent.fold((fail) async {
       verifyTokenRequestStatus = RequestStatus.error;
+      if (Get.isSnackbarOpen) {
+        Get.closeAllSnackbars();
+      }
       await customSnackbar(
           title: 'Error',
           message: fail.message.isNotEmpty
@@ -223,10 +226,14 @@ class SignupController extends GetxController {
               : mapFailureToErrorMessage(fail));
     }, (successMessage) async {
       verifyTokenRequestStatus = RequestStatus.success;
+      if (Get.isSnackbarOpen) {
+        Get.closeAllSnackbars();
+      }
       await customSnackbar(
           title: 'Success',
           message: LocaleKeys.snackBar_signUp_VerificationResent.tr());
     });
+    return verifyTokenRequestStatus;
   }
 
   openPinVerification() {
@@ -255,7 +262,6 @@ class SignupController extends GetxController {
       await customSnackbar(title: "Success", message: "Welcome");
       signInRequestStatus = RequestStatus.success;
       Get.offAndToNamed(Routes.landing);
-
     } else {
       customSnackbar(
           title: "Sign in", message: 'Sign in to continue', duration: 5);

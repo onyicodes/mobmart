@@ -21,8 +21,8 @@ class SigninPage extends GetView<SigninController> {
     return Scaffold(
       body: GetX<SigninController>(builder: (_) {
         return Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+          width: double.infinity,
+          height:double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(AssetsConstants.appBg),
@@ -31,14 +31,14 @@ class SigninPage extends GetView<SigninController> {
           ),
           child: ListView(
             children: [
-               CustomListSpacing(
+              CustomListSpacing(
                   spacingValue: ListSpacingValue.spacingV100.value),
               CustomListSpacing(
                   spacingValue: ListSpacingValue.spacingV32.value),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
-                  AuthFieldText.signinPageTitle,
+                  LocaleKeysAuthFieldText.signinPageTitle,
                   textAlign: TextAlign.center,
                   style: primaryTextTheme.displayMedium,
                 ),
@@ -46,16 +46,16 @@ class SigninPage extends GetView<SigninController> {
               CustomListSpacing(
                   spacingValue: ListSpacingValue.spacingV32.value),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
-                  AuthFieldText.signinPageSubtitle,
+                  LocaleKeysAuthFieldText.signinPageSubtitle,
                   textAlign: TextAlign.center,
                   style: primaryTextTheme.bodyLarge,
                 ),
               ),
               CustomListSpacing(
                   spacingValue: ListSpacingValue.spacingV32.value),
-             SocialSignups(
+              SocialSignups(
                 onGoogleTap: () {
                   _.googleSignup();
                 },
@@ -65,8 +65,8 @@ class SigninPage extends GetView<SigninController> {
               ),
               CustomAuthField(
                   controller: _.emailAddressController,
-                  hintText: AuthFieldText.emailHint,
-                  label: AuthFieldText.emailLabel,
+                  hintText: LocaleKeysAuthFieldText.emailHint,
+                  label: LocaleKeysAuthFieldText.emailLabel,
                   errorText: _.emailError,
                   onChanged: (String value) {
                     if (_.emailError.isNotEmpty) {
@@ -78,14 +78,14 @@ class SigninPage extends GetView<SigninController> {
                   controller: _.passwordController,
                   errorText: _.passwordError,
                   obscurePassword: _.obscurePasswordText,
-                  label: AuthFieldText.passwordLabel,
+                  label: LocaleKeysAuthFieldText.passwordLabel,
                   onChanged: (String value) {
                     _.checkPasswordError();
                   },
                   toggleObscureText: () {
                     _.obscurePasswordText = !_.obscurePasswordText;
                   },
-                  hintText: AuthFieldText.passwordHint),
+                  hintText: LocaleKeysAuthFieldText.passwordHint),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0),
                 child: Row(
@@ -96,7 +96,7 @@ class SigninPage extends GetView<SigninController> {
                           _.forgotPassword(bottomsheet: const ForgotPassword());
                         },
                         child: Text(
-                          AuthFieldText.forgotPassword,
+                          LocaleKeysAuthFieldText.forgotPassword,
                           style: primaryTextTheme.headlineMedium!
                               .copyWith(color: Theme.of(context).primaryColor),
                         )),
@@ -105,9 +105,10 @@ class SigninPage extends GetView<SigninController> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:20.0, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
                 child: CustomButton(
-                  label: AuthFieldText.signinButtonLabel,
+                  label: LocaleKeysAuthFieldText.signinButtonLabel,
                   onPressed: () {
                     _.signin(
                         params: SigninParams(
@@ -123,12 +124,13 @@ class SigninPage extends GetView<SigninController> {
                   borderColor: Theme.of(context).primaryColor,
                 ),
               ),
-              CustomListSpacing(spacingValue: ListSpacingValue.spacingV12.value),
+              CustomListSpacing(
+                  spacingValue: ListSpacingValue.spacingV12.value),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                   AuthFieldText.dontHaveAccountText,
+                    LocaleKeysAuthFieldText.dontHaveAccountText,
                     style: primaryTextTheme.headlineMedium!
                         .copyWith(fontWeight: FontWeight.normal),
                   ),
@@ -137,7 +139,7 @@ class SigninPage extends GetView<SigninController> {
                         _.goToSignup();
                       },
                       child: Text(
-                        AuthFieldText.signupButtonLabel,
+                        LocaleKeysAuthFieldText.signupButtonLabel,
                         style: primaryTextTheme.headlineMedium!
                             .copyWith(color: Theme.of(context).primaryColor),
                       ))

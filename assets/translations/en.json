@@ -62,6 +62,10 @@
             "continueButton": "Continue",
             "continueToApp": "Continue to app",
             "forgotPasswordEnterEmailText":"Enter the email associated with your account for the verification proccesss and we will send 6 digits verification code to your email."
+            },
+
+            "settings": {
+                "logoutSuccess":"Log out successful"
             }
     },
     "snackBar":{

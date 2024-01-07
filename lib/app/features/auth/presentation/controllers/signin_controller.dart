@@ -2,12 +2,17 @@ import 'dart:async';
 
 import 'package:mobmart/app/features/auth/data/model/signin_model.dart';
 import 'package:mobmart/app/features/auth/domain/usecases/email_signin_usecase.dart';
+import 'package:mobmart/app/features/auth/presentation/controllers/signup_controller.dart';
 import 'package:mobmart/app/routes/app_pages.dart';
+import 'package:mobmart/app/theme/theme.dart';
 import 'package:mobmart/core/constants/failure_to_error_message.dart';
 import 'package:mobmart/core/constants/general_constants.dart';
+import 'package:mobmart/core/error/failures.dart';
+import 'package:mobmart/core/general_widgets/custom_simple_loading_widget.dart';
 import 'package:mobmart/core/general_widgets/custom_snackbar.dart';
 import 'package:mobmart/core/keys/cache_keys.dart';
 import 'package:mobmart/core/parameters/auth/signin_params.dart';
+import 'package:mobmart/core/util/initialize_get.dart';
 import 'package:mobmart/core/validators/auth_field_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -24,6 +29,7 @@ class SigninController extends GetxController {
 
   final EmailSigninUsecase emailSigninUsecase;
   final AuthFieldValidationPage authFieldValidationPage;
+
   final GetStorage storeBox;
   SigninController(
       {required this.emailSigninUsecase,
@@ -33,6 +39,7 @@ class SigninController extends GetxController {
 
   final _obscurePasswordText = true.obs;
   final _requestStatus = RequestStatus.initial.obs;
+  final _sendVerificationRequestStatus = RequestStatus.initial.obs;
   final _phoneError = ''.obs;
   final _userNameError = ''.obs;
   final _passwordError = ''.obs;
@@ -45,6 +52,8 @@ class SigninController extends GetxController {
   String get passwordError => _passwordError.value;
   String get emailError => _emailError.value;
   RequestStatus get requestStatus => _requestStatus.value;
+  RequestStatus get sendVerificationRequestStatus =>
+      _sendVerificationRequestStatus.value;
   bool get startedTypingPw => _startedTypingPw.value;
 
   set obscurePasswordText(value) => _obscurePasswordText.value = value;
@@ -53,12 +62,13 @@ class SigninController extends GetxController {
   set passwordError(value) => _passwordError.value = value;
   set emailError(value) => _emailError.value = value;
   set requestStatus(value) => _requestStatus.value = value;
+  set sendVerificationRequestStatus(value) =>
+      _sendVerificationRequestStatus.value = value;
   set startedTypingPw(value) => _startedTypingPw.value = value;
-
 
   late String lastUserId;
   @override
-  onInit(){
+  onInit() {
     super.onInit();
     lastUserId = storeBox.read(CacheKeys.lastUserID) ?? "";
   }
@@ -102,21 +112,44 @@ class SigninController extends GetxController {
   Future<RequestStatus> signInUser({required SigninParams params}) async {
     final failOrSignup = await emailSigninUsecase(params);
     return failOrSignup.fold((fail) async {
-     // if (fail.runtimeType == AccountNotVerifiedException) {
-        // final token = await Get.toNamed(Routes.verifycode,
-        //     arguments: CodeVerificationData(
-        //         method: CodeVerificationMeans.email,
-        //         user: params.email,
-        //         pushVerificationCode: true,
-        //         type: VerificationRequestType.verifyAccount));
+      if (fail.runtimeType == AccountNotVerifiedFailure) {
+        Get.snackbar("", "",
+            titleText: Text(mapFailureToErrorMessage(fail)),
+            messageText: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                    child: Text(
+                  emailAddressController.text,
+                  style: const TextStyle(decoration: TextDecoration.underline),
+                )),
+                TextButton(
+                    style: ButtonStyle(
+                        side: MaterialStateProperty.all(BorderSide(
+                            color: MobMartAppTheme.light().primaryColor))),
+                    onPressed: () {
+                      verifyAccount();
+                    },
+                    child: GetX<SigninController>(builder: (_) {
+                      return Row(
+                        children: [
+                          Text(
+                            "Verify now",
+                            style: TextStyle(
+                                color: MobMartAppTheme.light().primaryColor),
+                          ),
+                          if (sendVerificationRequestStatus ==
+                              RequestStatus.loading)
+                            const CustomSimpleLoadingWidget()
+                        ],
+                      );
+                    }))
+              ],
+            ),
+            duration: const Duration(days: 1));
 
-        // if (token != null) {
-        //   requestStatus = RequestStatus.loading;
-        //   return await signInUser(params: params);
-        // } else {
-        //   return Future.value(RequestStatus.error);
-        // }
-     // } else {
+        return Future.value(RequestStatus.error);
+      } else {
         customSnackbar(
             title: "Error",
             message: fail.message.isNotEmpty
@@ -124,22 +157,22 @@ class SigninController extends GetxController {
                 : mapFailureToErrorMessage(fail),
             duration: 5);
         return Future.value(RequestStatus.error);
-     // }
+      }
     }, (signInModel) async {
       lastUserId = signInModel.user.id.toString();
-      await storeBox.write(
-          CacheKeys.loginMethod(lastUserId), EnumAccountProviders.credentials.name );
+      await storeBox.write(CacheKeys.loginMethod(lastUserId),
+          EnumAccountProviders.credentials.name);
       await secureStorage.write(
           key: CacheKeys.password(lastUserId), value: params.password);
 
       await saveData(signInModel: signInModel, email: params.email);
 
-      
       return Future.value(RequestStatus.success);
     });
   }
 
   saveData({required SigninModel signInModel, required String email}) async {
+    await initializeGetX(); // clear route and removes all controllers before logging in
     if (storeBox.read(CacheKeys.cannotLoginAsAGuest) == null) {
       await storeBox.write(CacheKeys.cannotLoginAsAGuest, true);
     }
@@ -159,21 +192,21 @@ class SigninController extends GetxController {
         CacheKeys.accountType(lastUserId), signInModel.user.userType);
   }
 
-  // Future<RequestStatus> signInUser({required SigninParams params}) async {
-  //   final failOrSignup = await emailSigninUsecase(params);
-  //   failOrSignup.fold((fail) {
-  //     print(fail.message);
-  //     customSnackbar(title: "Error", message: mapFailureToErrorMessage(fail));
-  //     return Future.value(RequestStatus.error);
-  //   }, (signInModel) async {
-  //     customSnackbar(title: "Success", message: "Signed in successfully");
-  //     await storeBox.write(CacheKeys.accessToken, signInModel.accessToken);
-  //     await storeBox.write(CacheKeys.userData, signInModel.user);
-  //     await storeBox.write(CacheKeys.isLoggedIn, true);
-  //     return Future.value(RequestStatus.success);
-  //   });
-  //   return Future.value(RequestStatus.error);
-  // }
+  verifyAccount() async {
+    final signupController = Get.find<SignupController>();
+    if (signupController.initialized) {
+      sendVerificationRequestStatus = RequestStatus.loading;
+      signupController.emailAddressController.text =
+          emailAddressController.text;
+      signupController.passwordController.text = passwordController.text;
+      sendVerificationRequestStatus = await signupController.resendVerifyToken(
+          email: emailAddressController.text);
+
+      if (sendVerificationRequestStatus == RequestStatus.success) {
+        signupController.openPinVerification();
+      }
+    }
+  }
 
   Future<void> signin({required SigninParams params}) async {
     requestStatus = RequestStatus.loading;
@@ -185,7 +218,7 @@ class SigninController extends GetxController {
         requestStatus = await signInUser(params: params);
 
         if (requestStatus == RequestStatus.success) {
-          Get.offAndToNamed(Routes.home);
+          Get.offAndToNamed(Routes.landing);
         }
       } else {
         requestStatus = RequestStatus.error;

@@ -1,3 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:mobmart/generated/locale_keys.g.dart';
+
 enum ListSpacingValue {
   spacingV100(100),
   spacingV80(80),
@@ -13,16 +16,12 @@ enum ListSpacingValue {
   final double value;
 }
 
-enum FirestoreCollections {
-  banners
+class LocaleKeysSettingsTexts {
+  static String logoutSuccess = LocaleKeys.pages_settings_logoutSuccess.tr();
 }
 
-enum EnumAccountProviders {
-  google,
-  credentials,
-  apple,
-  facebook
-}
+enum FirestoreCollections { banners }
 
+enum EnumAccountProviders { google, credentials, apple, facebook }
 
 enum RequestStatus { initial, loading, success, error }

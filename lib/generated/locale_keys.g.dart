@@ -56,6 +56,8 @@ abstract class  LocaleKeys {
   static const pages_auth_continueToApp = 'pages.auth.continueToApp';
   static const pages_auth_forgotPasswordEnterEmailText = 'pages.auth.forgotPasswordEnterEmailText';
   static const pages_auth = 'pages.auth';
+  static const pages_settings_logoutSuccess = 'pages.settings.logoutSuccess';
+  static const pages_settings = 'pages.settings';
   static const pages = 'pages';
   static const snackBar_signUp_accountSuccess = 'snackBar.signUp.accountSuccess';
   static const snackBar_signUp_passwordRequirements = 'snackBar.signUp.passwordRequirements';

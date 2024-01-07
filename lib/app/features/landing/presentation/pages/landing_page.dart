@@ -7,6 +7,7 @@ import 'package:mobmart/app/features/favourites/presentation/controllers/favouri
 import 'package:mobmart/app/features/favourites/presentation/pages/favourites.dart';
 import 'package:mobmart/app/features/home/presentation/pages/home.dart';
 import 'package:mobmart/app/features/landing/presentation/controllers/landing_controller.dart';
+import 'package:mobmart/app/features/settings/presentation/pages/settings_page.dart';
 import 'package:mobmart/core/constants/assets_constants.dart';
 import 'package:mobmart/core/general_widgets/action_icon_widget.dart';
 import 'package:mobmart/generated/locale_keys.g.dart';
@@ -31,7 +32,7 @@ class LandingPage extends GetView<LandingController> {
     Home(),
     FavouritePage(),
      Text("Cart"),
-    Text("Settings")
+    SettingsPage()
   ];
 
   @override

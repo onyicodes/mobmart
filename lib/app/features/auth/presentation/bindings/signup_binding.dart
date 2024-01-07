@@ -24,7 +24,7 @@ class SignupBinding implements Bindings {
         storeBox: getSignupControllerSl(),
         secureStorage: getSignupControllerSl(),
         verifyAccountTokenUsecase: getSignupControllerSl(),
-        resendVerifyTokenUsecase: getSignupControllerSl()));
+        resendVerifyTokenUsecase: getSignupControllerSl()), permanent: true);
 
      getSignupControllerSl.lazyPut<SigninController>(
         () => SigninController(

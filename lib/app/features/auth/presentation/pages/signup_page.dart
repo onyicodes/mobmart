@@ -34,7 +34,7 @@ class SignupPage extends GetView<SignupController> {
               CustomListSpacing(
                   spacingValue: ListSpacingValue.spacingV100.value),
               Text(
-                AuthFieldText.signupPageTitle,
+                LocaleKeysAuthFieldText.signupPageTitle,
                 textAlign: TextAlign.center,
                 style: primaryTextTheme.displayMedium,
               ),
@@ -43,7 +43,7 @@ class SignupPage extends GetView<SignupController> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  AuthFieldText.signupPageSubtitle,
+                  LocaleKeysAuthFieldText.signupPageSubtitle,
                   textAlign: TextAlign.center,
                   style: primaryTextTheme.bodyLarge,
                 ),
@@ -60,8 +60,8 @@ class SignupPage extends GetView<SignupController> {
               ),
               CustomAuthField(
                   controller: _.emailAddressController,
-                  hintText: AuthFieldText.emailHint,
-                  label: AuthFieldText.emailLabel,
+                  hintText: LocaleKeysAuthFieldText.emailHint,
+                  label: LocaleKeysAuthFieldText.emailLabel,
                   errorText: _.emailError,
                   onChanged: (String value) {
                     if (_.emailError.isNotEmpty) {
@@ -71,8 +71,8 @@ class SignupPage extends GetView<SignupController> {
                   inputType: TextInputType.emailAddress),
               CustomAuthField(
                   controller: _.userNameController,
-                  hintText: AuthFieldText.nameHint,
-                  label: AuthFieldText.nameLabel,
+                  hintText: LocaleKeysAuthFieldText.nameHint,
+                  label: LocaleKeysAuthFieldText.nameLabel,
                   onChanged: (String value) {
                     if (_.userNameError.isNotEmpty) {
                       _.userNameError = '';
@@ -83,8 +83,8 @@ class SignupPage extends GetView<SignupController> {
               PhoneInputTextField(
                   controller: _.phoneController,
                   errorText: _.phoneError,
-                  hintText: AuthFieldText.phoneHint,
-                  label: AuthFieldText.phoneLabel,
+                  hintText: LocaleKeysAuthFieldText.phoneHint,
+                  label: LocaleKeysAuthFieldText.phoneLabel,
                   onChanged: (phone) {
                     _.onPhoneChange(phone);
                   }),
@@ -92,7 +92,7 @@ class SignupPage extends GetView<SignupController> {
                   controller: _.passwordController,
                   errorText: _.passwordError,
                   obscurePassword: _.obscurePasswordText,
-                  label: AuthFieldText.passwordLabel,
+                  label: LocaleKeysAuthFieldText.passwordLabel,
                   onChanged: (String value) {
                     _.checkPassword(text: value);
                   },
@@ -107,15 +107,14 @@ class SignupPage extends GetView<SignupController> {
                   toggleObscureText: () {
                     _.obscurePasswordText = !_.obscurePasswordText;
                   },
-                  hintText: AuthFieldText.passwordHint),
+                  hintText: LocaleKeysAuthFieldText.passwordHint),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
                 child: CustomButton(
-                  label: AuthFieldText.signupButtonLabel,
+                  label: LocaleKeysAuthFieldText.signupButtonLabel,
                   onPressed: () {
-                   
-                   _.signup();
+                    _.signup();
                   },
                   radius: 12,
                   height: 55,
@@ -131,7 +130,7 @@ class SignupPage extends GetView<SignupController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    AuthFieldText.alreadyHaveAccountText,
+                    LocaleKeysAuthFieldText.alreadyHaveAccountText,
                     style: primaryTextTheme.headlineMedium!
                         .copyWith(fontWeight: FontWeight.normal),
                   ),
@@ -140,7 +139,7 @@ class SignupPage extends GetView<SignupController> {
                         _.goToSignIn();
                       },
                       child: Text(
-                        AuthFieldText.signinButtonLabel,
+                        LocaleKeysAuthFieldText.signinButtonLabel,
                         style: primaryTextTheme.headlineMedium!
                             .copyWith(color: Theme.of(context).primaryColor),
                       ))

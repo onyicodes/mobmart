@@ -26,10 +26,13 @@ class SigninDataProviderImpl extends SigninDataProvider {
       final Map<String, dynamic>? jsonString;
 
       jsonString = response.body;
+      print(jsonString);
+      print(response.statusCode);
 
       if (jsonString != null && jsonString['success']) {
         final Map<String, dynamic> signinJsonData = jsonString['data'];
         final signinModel = SigninModel.fromJson(signinJsonData);
+
         return signinModel;
       } else if (response.statusCode == 400) {
         if (jsonString != null) {
@@ -37,13 +40,13 @@ class SigninDataProviderImpl extends SigninDataProvider {
         }
         throw BadRequestException();
       } else if (response.statusCode == 401) {
-        throw  FailedLoginException();
+        throw FailedLoginException();
       } else if (response.statusCode == 403) {
         throw ForbiddenException();
       } else if (response.statusCode == 404) {
         throw AccountNotFoundException();
       } else if (response.statusCode == 409) {
-        throw  AccountNotVerifiedException();
+        throw AccountNotVerifiedException();
       } else if (response.statusCode == 500) {
         throw ServerException();
       } else {

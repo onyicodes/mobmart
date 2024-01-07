@@ -9,8 +9,13 @@ import 'package:mobmart/firebase_options.dart';
 import 'package:mobmart/generated/codegen_loader.g.dart';
 
 void main() async {
-  print("started here");
+  print("started");
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    name: "mobmart",
+    options: DefaultFirebaseOptions.currentPlatform);
+
+  print("going");
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // transparent status bar
@@ -19,11 +24,6 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   await GetStorage.init();
   initializeGetX();
-  
-   Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-  
 
   runApp(EasyLocalization(
       supportedLocales: const [Locale('en')],

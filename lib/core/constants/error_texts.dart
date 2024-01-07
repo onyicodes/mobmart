@@ -20,7 +20,7 @@ class AuthFieldValidationErrorMessage {
       LocaleKeys.error_AuthFieldValidationError_passwordFormatWrong.tr();
 }
 
-class AuthFieldText {
+class LocaleKeysAuthFieldText {
   static String emailLabel = LocaleKeys.pages_auth_emailLabel.tr();
   static String emailHint = LocaleKeys.pages_auth_emailHint.tr();
   static String phoneLabel = LocaleKeys.pages_auth_phoneLabel.tr();
@@ -61,7 +61,8 @@ class ErrorMessage {
       LocaleKeys.error_createAccount_emailExists.tr();
   static String failedLogin = LocaleKeys.error_login_failedLogin.tr();
   static String accountNotFound = LocaleKeys.error_login_accountNotFound.tr();
-  static String accountNotVerified = LocaleKeys.error_login_accountNotVerified.tr();
+  static String accountNotVerified =
+      LocaleKeys.error_login_accountNotVerified.tr();
 }
 
 enum PublishDealValidationErrorMessage {
