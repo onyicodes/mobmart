@@ -1,6 +1,5 @@
 import 'package:mobmart_app/app/features/auth/presentation/controllers/signin_controller.dart';
 import 'package:mobmart_app/app/features/auth/presentation/widgets/forgot_password_bottomsheet.dart';
-import 'package:mobmart_app/core/constants/error_texts.dart';
 import 'package:mobmart_app/core/general_widgets/auth_field/custom_auth_field.dart';
 import 'package:mobmart_app/core/general_widgets/auth_field/password_textfield.dart';
 import 'package:mobmart_app/core/constants/assets_constants.dart';
@@ -93,7 +92,12 @@ class SigninPage extends GetView<SigninController> {
                   children: [
                     TextButton(
                         onPressed: () {
-                          _.forgotPassword(bottomsheet: const ForgotPassword());
+                        
+                          _.forgotPassword(bottomsheet: ForgotPassword(
+                            recoverAccount: () {
+                              _.recoverAccount();
+                            },
+                          ));
                         },
                         child: Text(
                           LocaleKeysAuthFieldText.forgotPassword,

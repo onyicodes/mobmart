@@ -75,12 +75,12 @@ class VerifyPinBottomSheet extends StatelessWidget {
           children: [
             CustomListSpacing(spacingValue: ListSpacingValue.spacingV32.value),
             Text(
-              'Enter 6 Digits Code',
+             title,
               style: primaryTextTheme.displayMedium,
             ),
             CustomListSpacing(spacingValue: ListSpacingValue.spacingV16.value),
             Text(
-              """Enter the 6 digits code that you received on your email.""",
+             subTitle,
               style: primaryTextTheme.bodyLarge,
             ),
             CustomListSpacing(spacingValue: ListSpacingValue.spacingV32.value),
@@ -106,10 +106,10 @@ class VerifyPinBottomSheet extends StatelessWidget {
                     builder: (context, value, child) {
                       return Text(
                         value == 0
-                            ? "Didn't receive the code?  "
+                            ? LocaleKeysAuthFieldText.didnotReceiveCode
                             : nextResendTime == 120
-                                ? "Code can be resent after"
-                                : "Next code can be send after",
+                                ? LocaleKeysAuthFieldText.codeToBeResentAfter
+                                : LocaleKeysAuthFieldText.nextCodeToResentAfter,
                         style: const TextStyle(
                             color: Colors.black54, fontSize: 15),
                       );

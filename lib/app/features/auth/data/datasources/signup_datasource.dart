@@ -91,6 +91,8 @@ class SignupDataProviderImpl extends SignupDataProvider {
         throw BadRequestException();
       } else if (response.statusCode == 403) {
         throw ForbiddenException();
+      } else if (response.statusCode == 404) {
+        throw NotFoundException();
       } else if (response.statusCode == 500) {
         throw ServerException();
       } else {

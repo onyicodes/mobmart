@@ -18,34 +18,8 @@ class AuthFieldValidationErrorMessage {
       LocaleKeys.error_AuthFieldValidationError_passwordEmpty.tr();
   static String passwordFormatWrong =
       LocaleKeys.error_AuthFieldValidationError_passwordFormatWrong.tr();
-}
-
-class LocaleKeysAuthFieldText {
-  static String emailLabel = LocaleKeys.pages_auth_emailLabel.tr();
-  static String emailHint = LocaleKeys.pages_auth_emailHint.tr();
-  static String phoneLabel = LocaleKeys.pages_auth_phoneLabel.tr();
-  static String phoneHint = LocaleKeys.pages_auth_phoneHint.tr();
-  static String nameLabel = LocaleKeys.pages_auth_nameLabel.tr();
-  static String nameHint = LocaleKeys.pages_auth_nameHint.tr();
-  static String passwordLabel = LocaleKeys.pages_auth_passwordLabel.tr();
-  static String passwordHint = LocaleKeys.pages_auth_passwordHint.tr();
-  static String signinButtonLabel =
-      LocaleKeys.pages_auth_signinButtonLabel.tr();
-  static String signupButtonLabel =
-      LocaleKeys.pages_auth_signupButtonLabel.tr();
-  static String signinPageTitle = LocaleKeys.pages_auth_signInTitle.tr();
-  static String signinPageSubtitle = LocaleKeys.pages_auth_signInSubtitle.tr();
-  static String signupPageTitle = LocaleKeys.pages_auth_signUpTitle.tr();
-  static String signupPageSubtitle = LocaleKeys.pages_auth_signUpSubtitle.tr();
-  static String forgotPassword = LocaleKeys.pages_auth_forgotPasword.tr();
-  static String alreadyHaveAccountText =
-      LocaleKeys.pages_auth_alreadyHaveAccountText.tr();
-  static String dontHaveAccountText =
-      LocaleKeys.pages_auth_dontHaveAccountText.tr();
-  static String forgotPasswordEnterEmailText =
-      LocaleKeys.pages_auth_forgotPasswordEnterEmailText.tr();
-  static String continueButton = LocaleKeys.pages_auth_continueButton.tr();
-  static String continueToAppButton = LocaleKeys.pages_auth_continueToApp.tr();
+  static String confirmPasswordMismatch =
+      LocaleKeys.error_AuthFieldValidationError_confirmPasswordMismatch.tr();
 }
 
 class ErrorMessage {
@@ -63,36 +37,5 @@ class ErrorMessage {
   static String accountNotFound = LocaleKeys.error_login_accountNotFound.tr();
   static String accountNotVerified =
       LocaleKeys.error_login_accountNotVerified.tr();
-}
-
-enum PublishDealValidationErrorMessage {
-  nameEmpty('Name field is required '),
-  descriptionEmpty('Description field is required '),
-  newPrice('Enter new price'),
-  validFromEmpty('ValidFrom is required'),
-  validToEmpty('ValidTo is required'),
-  validToNotValid('Select a date ahead of valid from field'),
-  categoryEmpty('Category field is required');
-
-  const PublishDealValidationErrorMessage(this.message);
-  final String message;
-}
-
-enum DealDetailsErrorMessage {
-  messageEmpty('Review field cannot be empty'),
-  rating('You must provide rating to proceed');
-
-  const DealDetailsErrorMessage(this.message);
-  final String message;
-}
-
-enum BusinessInfoErrorMessage {
-  locationEmpty('Location field is required'),
-  businessNameEmpty('Business name field is required '),
-  businessDescriptionEmpty('Business description field is required '),
-  businessPhoneEmpty('Business phone field is required '),
-  businessTypeEmpty('Business Type field is required');
-
-  const BusinessInfoErrorMessage(this.message);
-  final String message;
+  static String invalidTokenError = LocaleKeys.error_login_tokenNotFound.tr();
 }

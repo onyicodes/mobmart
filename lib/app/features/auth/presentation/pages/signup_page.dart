@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobmart_app/app/features/auth/presentation/controllers/signup_controller.dart';
-import 'package:mobmart_app/core/constants/error_texts.dart';
 import 'package:mobmart_app/core/general_widgets/auth_field/custom_auth_field.dart';
 import 'package:mobmart_app/core/general_widgets/auth_field/password_check.dart';
 import 'package:mobmart_app/core/general_widgets/auth_field/password_textfield.dart';

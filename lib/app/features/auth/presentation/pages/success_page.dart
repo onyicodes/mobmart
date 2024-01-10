@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mobmart_app/app/features/auth/presentation/controllers/signup_controller.dart';
-import 'package:mobmart_app/core/constants/error_texts.dart';
 import 'package:mobmart_app/core/constants/assets_constants.dart';
 import 'package:mobmart_app/core/constants/general_constants.dart';
 import 'package:mobmart_app/core/general_widgets/button_widget.dart';

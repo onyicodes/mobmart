@@ -25,7 +25,9 @@ class CodegenLoader extends AssetLoader{
     "settings": "Settings"
   },
   "buttons": {
-    "reload": "Reload"
+    "reload": "Reload",
+    "continue": "Continue",
+    "cancel": "Cancel"
   },
   "error": {
     "networkError": "Connection error",
@@ -44,7 +46,8 @@ class CodegenLoader extends AssetLoader{
       "phoneFormatWrong": "wrong phone format entered",
       "userNameEmpty": "Username is required",
       "passwordEmpty": "Password is required",
-      "passwordFormatWrong": "Password must be between 8 to 12 characters"
+      "passwordFormatWrong": "Password must be between 8 to 12 characters",
+      "confirmPasswordMismatch": "Password does not match"
     },
     "createAccount": {
       "emailExists": "Email already exist"
@@ -52,7 +55,8 @@ class CodegenLoader extends AssetLoader{
     "login": {
       "failedLogin": "You have entered an invalid username or password",
       "accountNotFound": "Account not found!",
-      "accountNotVerified": "Kindly verify your account to continu"
+      "accountNotVerified": "Kindly verify your account to continue",
+      "tokenNotFound": "You have entered an invalid token"
     }
   },
   "pages": {
@@ -60,10 +64,8 @@ class CodegenLoader extends AssetLoader{
       "signInTitle": "Welcome back",
       "signInSubtitle": "Find the right product for you. Sell your products",
       "dontHaveAccountText": "Don't have an account?",
-      "signinButtonLabel": "Sign in",
       "signUpTitle": "Join us in making impact",
       "signUpSubtitle": "Find the right product for you. Sell your products",
-      "signupButtonLabel": "Sign up",
       "emailLabel": "E-mail",
       "emailHint": "abc@example",
       "nameLabel": "Name",
@@ -74,9 +76,23 @@ class CodegenLoader extends AssetLoader{
       "phoneHint": "07000000000",
       "forgotPasword": "Forgot password",
       "alreadyHaveAccountText": "Already have an account?",
-      "continueButton": "Continue",
       "continueToApp": "Continue to app",
-      "forgotPasswordEnterEmailText": "Enter the email associated with your account for the verification proccesss and we will send 6 digits verification code to your email."
+      "forgotPasswordEnterEmailText": "Enter the email associated with your account for the verification proccesss and we will send 6 digits verification code to your email.",
+      "verifyAccountTitle": "Verify your account",
+      "verifyAccountBody": "Enter the 6 digits code that you received on your email.",
+      "didnotReceiveCode": "Didn't receive the code?  ",
+      "codeToBeResentAfter": "Code can be resent after",
+      "nextCodeToBeAfter": "Next code can be send after",
+      "resetPasswordTitle": "Reset Password",
+      "resetPasswordBody": "Set the new password for your account so you can login and access all the features.",
+      "newPasswordHint": "New Password",
+      "confirmNewPasswordHint": "Confirm Password",
+      "buttons": {
+        "signinLabel": "Sign in",
+        "signupLabel": "Sign up",
+        "verifyNow": "Verify now",
+        "RESEND": "RESEND"
+      }
     },
     "settings": {
       "logoutSuccess": "Log out successful"
@@ -88,6 +104,9 @@ class CodegenLoader extends AssetLoader{
       "passwordRequirements": "Check password field requirements",
       "AccountVerified": "Account verified successfully",
       "VerificationResent": "A token has been sent to your email"
+    },
+    "recoverAccount": {
+      "passwordResetSuccess": "Password reset was successful. Log in with your new password"
     }
   },
   "onboarding": {

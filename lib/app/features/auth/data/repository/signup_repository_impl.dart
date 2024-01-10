@@ -22,7 +22,9 @@ class SignupRepositoryImpl extends SignupRepository {
       return Left(ServerFailure());
     } on NetworkException {
       return Left(NetworkFailure());
-    } on AccountExistException {
+    } on BadRequestException {
+      return Left(BadRequestFailure());
+    }  on AccountExistException {
       return Left(AccountExistsFailure());
     } catch (e) {
       return Left(UnknownFailure(message: e is String ? e.toString() : ""));
@@ -37,11 +39,13 @@ class SignupRepositoryImpl extends SignupRepository {
       return Right(token);
     } on ServerException {
       return Left(ServerFailure());
-    } on NetworkException {
+    } on BadRequestException {
+      return Left(BadRequestFailure());
+    }  on NetworkException {
       return Left(NetworkFailure());
-    } on AccountExistException {
-      return Left(AccountExistsFailure());
-    } catch (e) {
+    } on NotFoundException {
+      return Left(TokenNotFoundFailure());
+    }  catch (e) {
       return Left(UnknownFailure(message: e is String ? e.toString() : ""));
     }
   }
@@ -54,7 +58,9 @@ class SignupRepositoryImpl extends SignupRepository {
       return Right(token);
     } on ServerException {
       return Left(ServerFailure());
-    } on NetworkException {
+    } on BadRequestException {
+      return Left(BadRequestFailure());
+    }  on NetworkException {
       return Left(NetworkFailure());
     } on AccountExistException {
       return Left(AccountExistsFailure());

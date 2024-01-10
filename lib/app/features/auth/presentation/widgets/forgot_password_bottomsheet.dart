@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:mobmart_app/app/features/auth/presentation/controllers/signin_controller.dart';
-import 'package:mobmart_app/core/constants/error_texts.dart';
 import 'package:mobmart_app/core/general_widgets/auth_field/custom_auth_field.dart';
 import 'package:mobmart_app/core/constants/general_constants.dart';
 import 'package:mobmart_app/core/general_widgets/button_widget.dart';
@@ -10,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ForgotPassword extends StatelessWidget {
-  const ForgotPassword({super.key});
+  final VoidCallback recoverAccount;
+  const ForgotPassword({super.key, required this.recoverAccount});
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +46,13 @@ class ForgotPassword extends StatelessWidget {
             GetX<SigninController>(
               builder: (_) {
                 return CustomAuthField(
-                    controller: _.emailAddressController,
+                    controller: _.recoverAccEmailAddressController,
                     hintText: LocaleKeysAuthFieldText.emailHint,
                     label: LocaleKeysAuthFieldText.emailLabel,
-                    errorText: _.emailError,
+                    errorText: _.recoverAccEmailError,
                     onChanged: (String value) {
-                      if (_.emailError.isNotEmpty) {
-                        _.emailError = '';
+                      if (_.recoverAccEmailError.isNotEmpty) {
+                        _.recoverAccEmailError = '';
                       }
                     },
                     inputType: TextInputType.emailAddress);
@@ -60,15 +60,14 @@ class ForgotPassword extends StatelessWidget {
             ),
             CustomListSpacing(spacingValue: ListSpacingValue.spacingV32.value),
             Center(
-              child: GetBuilder<SigninController>(
+              child: GetX<SigninController>(
                 builder: (_) {
                   return CustomButton(
                       label: LocaleKeysAuthFieldText.continueButton,
-                      onPressed: () {
-                        _.goToPushToken();
-                      },
+                      onPressed: recoverAccount,
                       radius: 12,
                       width: 345,
+                      loading:_.recoverAccRequestStatus == RequestStatus.loading,
                       borderColor: Theme.of(context).primaryColor,
                       backgroundColor: Theme.of(context).primaryColor,
                       textColor: const Color(0xffffffff),

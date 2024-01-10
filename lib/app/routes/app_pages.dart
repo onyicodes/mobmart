@@ -7,7 +7,7 @@ import 'package:mobmart_app/app/features/onboarding/presentation/bindings/onboar
 import 'package:mobmart_app/app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:mobmart_app/app/features/product_details/presentation/bindings/product_details_binding.dart';
 import 'package:mobmart_app/app/features/product_details/presentation/pages/product_details_page.dart';
-import 'package:mobmart_app/app/features/auth/presentation/bindings/signup_binding.dart';
+import 'package:mobmart_app/app/features/auth/presentation/bindings/auth_binding.dart';
 import 'package:mobmart_app/app/features/auth/presentation/pages/signin_page.dart';
 import 'package:mobmart_app/app/features/auth/presentation/pages/signup_page.dart';
 import 'package:mobmart_app/app/features/auth/presentation/pages/success_page.dart';
@@ -39,7 +39,7 @@ abstract class AppPages {
         middlewares: [AuthGuardMiddleware()]),
     GetPage(
         name: Routes.accountSuccess,
-        binding: SignupBinding(),
+        binding: AuthBinding(),
         page: () => const SuccessPage()),
     GetPage(
         name: Routes.settings,
@@ -48,13 +48,13 @@ abstract class AppPages {
     GetPage(
       name: Routes.signin,
       page: () => const SigninPage(),
-      binding: SignupBinding(),
+      binding: AuthBinding(),
       transition: Transition.rightToLeft,
     ),
     GetPage(
       name: Routes.signup,
       page: () => const SignupPage(),
-      binding: SignupBinding(),
+      binding: AuthBinding(),
       transition: Transition.leftToRight,
     ),
     GetPage(

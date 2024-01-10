@@ -159,31 +159,23 @@ class SignupController extends GetxController {
     await authFieldValidationPage
         .validateEmailSignupData(params: params)
         .then((validated) async {
-      if (validated) {
-        if (validPasswordField) {
-          final failOrSignup = await emailSignupUsecase(params);
-          failOrSignup.fold((fail) async {
-            requestStatus = RequestStatus.error;
-            await customSnackbar(
-                title: 'Error',
-                message: fail.message.isNotEmpty
-                    ? fail.message
-                    : mapFailureToErrorMessage(fail));
-          }, (successMessage) async {
-            requestStatus = RequestStatus.success;
-            await customSnackbar(
-                title: 'Success',
-                message: LocaleKeys.snackBar_signUp_accountSuccess.tr());
-            openPinVerification();
-            // Get.toNamed(Routes.verifycode, arguments: token);
-          });
-        } else {
-          passwordError = AuthFieldValidationErrorMessage.passwordFormatWrong;
-          customSnackbar(
-              title: 'Error',
-              message: LocaleKeys.snackBar_signUp_passwordRequirements);
-          requestStatus = RequestStatus.error;
-        }
+          if (validPasswordField) {
+            final failOrSignup = await emailSignupUsecase(params);
+            failOrSignup.fold((fail) async {
+              requestStatus = RequestStatus.error;
+              await customSnackbar(
+                  title: 'Error',
+                  message: fail.message.isNotEmpty
+                      ? fail.message
+                      : mapFailureToErrorMessage(fail));
+            }, (successMessage) async {
+              requestStatus = RequestStatus.success;
+              await customSnackbar(
+                  title: 'Success',
+                  message: LocaleKeys.snackBar_signUp_accountSuccess.tr());
+              openPinVerification();
+            });
+       
       } else {
         requestStatus = RequestStatus.error;
       }
@@ -236,18 +228,18 @@ class SignupController extends GetxController {
     return verifyTokenRequestStatus;
   }
 
-  openPinVerification() {
+  openPinVerification({void Function(String pin)? onConfirmPin}) {
     Get.bottomSheet(GetX<SignupController>(builder: (_) {
       return VerifyPinBottomSheet(
         onResendPin: () {
           resendVerifyToken(email: emailAddressController.text);
         },
-        confirmPin: (pin) {
-          verifyToken(pin: pin);
+        confirmPin: onConfirmPin ?? (pin) {
+           verifyToken(pin: pin);
         },
         isLoading: verifyTokenRequestStatus == RequestStatus.loading,
-        title: '',
-        subTitle: '',
+        title: LocaleKeysAuthFieldText.verifyAccountTitle,
+        subTitle: LocaleKeysAuthFieldText.verifyAccountBody,
       );
     }), isDismissible: false);
   }
