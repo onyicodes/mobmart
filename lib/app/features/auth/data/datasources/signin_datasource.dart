@@ -97,7 +97,6 @@ class SigninDataProviderImpl extends SigninDataProvider {
     }
   }
 
-
   @override
   Future<bool> resetPassword({required ResetPasswordParams params}) async {
     Map<String, String> recoverAccountField = params.toMap();

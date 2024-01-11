@@ -1,5 +1,4 @@
 import 'package:mobmart_app/core/constants/error_texts.dart';
-import 'package:mobmart_app/core/error/exceptions.dart';
 import 'package:mobmart_app/core/error/failures.dart';
 
 String mapFailureToErrorMessage(Failure failure) {
@@ -28,7 +27,7 @@ String mapFailureToErrorMessage(Failure failure) {
     case const (FailedLoginFailure):
       final response = ErrorMessage.failedLogin;
       return response;
-    case const (AccountNotFoundException):
+    case const (AccountNotFoundFailure):
       final response = ErrorMessage.accountNotFound;
       return response;
     case const (AccountNotVerifiedFailure):

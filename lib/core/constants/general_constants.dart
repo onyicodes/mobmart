@@ -71,7 +71,9 @@ class LocaleKeysGeneralButtonText {
 }
 
 class LocaleKeysSnackbarText {
-  static String resetSuccess = LocaleKeys.snackBar_recoverAccount_passwordResetSuccess;
+  static String pinVerified =
+      LocaleKeys.snackBar_recoverAccount_pinVerified.tr();
+  static String resetSuccess = LocaleKeys.snackBar_recoverAccount_passwordResetSuccess.tr();
   
 }
 

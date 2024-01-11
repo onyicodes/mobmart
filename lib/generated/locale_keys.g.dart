@@ -80,6 +80,7 @@ abstract class  LocaleKeys {
   static const snackBar_signUp_VerificationResent = 'snackBar.signUp.VerificationResent';
   static const snackBar_signUp = 'snackBar.signUp';
   static const snackBar_recoverAccount_passwordResetSuccess = 'snackBar.recoverAccount.passwordResetSuccess';
+  static const snackBar_recoverAccount_pinVerified = 'snackBar.recoverAccount.pinVerified';
   static const snackBar_recoverAccount = 'snackBar.recoverAccount';
   static const snackBar = 'snackBar';
   static const onboarding_buttons_skip = 'onboarding.buttons.skip';

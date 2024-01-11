@@ -151,7 +151,7 @@ class SignupController extends GetxController {
     requestStatus = RequestStatus.loading;
     SignupParams params = SignupParams(
         phone: phoneController.value!.nsn,
-        email: emailAddressController.text.trim(),
+        email: emailAddressController.text.trim().toLowerCase(),
         name: userNameController.text,
         password: passwordController.text,
         countryCode: phoneController.value!.countryCode,
@@ -232,7 +232,7 @@ class SignupController extends GetxController {
     Get.bottomSheet(GetX<SignupController>(builder: (_) {
       return VerifyPinBottomSheet(
         onResendPin: () {
-          resendVerifyToken(email: emailAddressController.text);
+          resendVerifyToken(email: emailAddressController.text.toLowerCase());
         },
         confirmPin: onConfirmPin ?? (pin) {
            verifyToken(pin: pin);
@@ -241,7 +241,7 @@ class SignupController extends GetxController {
         title: LocaleKeysAuthFieldText.verifyAccountTitle,
         subTitle: LocaleKeysAuthFieldText.verifyAccountBody,
       );
-    }), isDismissible: false);
+    }), isDismissible: false, exitBottomSheetDuration: Durations.medium3);
   }
 
   signInUser({required String email, required String password}) async {

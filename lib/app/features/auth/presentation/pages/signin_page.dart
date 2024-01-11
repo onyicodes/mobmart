@@ -116,7 +116,7 @@ class SigninPage extends GetView<SigninController> {
                   onPressed: () {
                     _.signin(
                         params: SigninParams(
-                      email: _.emailAddressController.text,
+                      email: _.emailAddressController.text.toLowerCase(),
                       password: _.passwordController.text,
                     ));
                   },

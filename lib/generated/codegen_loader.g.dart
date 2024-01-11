@@ -106,7 +106,8 @@ class CodegenLoader extends AssetLoader{
       "VerificationResent": "A token has been sent to your email"
     },
     "recoverAccount": {
-      "passwordResetSuccess": "Password reset was successful. Log in with your new password"
+      "passwordResetSuccess": "Password reset was successful. Log in with your new password",
+      "pinVerified": "Pin has been verified successfully"
     }
   },
   "onboarding": {

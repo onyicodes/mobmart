@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:mobmart_app/app/features/auth/data/model/signin_model.dart';
 import 'package:mobmart_app/app/features/auth/domain/usecases/email_signin_usecase.dart';
 import 'package:mobmart_app/app/features/auth/domain/usecases/recover_account_usecase.dart';
@@ -24,7 +23,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart' hide Trans;
 import 'package:get_storage/get_storage.dart';
-import 'package:mobmart_app/generated/locale_keys.g.dart';
 
 class SigninController extends GetxController {
   final TextEditingController userNameController = TextEditingController();
@@ -154,8 +152,9 @@ class SigninController extends GetxController {
     }
   }
 
-  forgotPassword({required Widget bottomsheet}) {
-    Get.bottomSheet(bottomsheet);
+  forgotPassword({required Widget bottomsheet}) async{
+    recoverAccEmailAddressController.clear();
+   await Get.bottomSheet(bottomsheet,exitBottomSheetDuration: Durations.medium3, enterBottomSheetDuration: Durations.medium4 );
   }
 
   checkPassword({required String text}) {
@@ -198,8 +197,8 @@ class SigninController extends GetxController {
   }
 
   recoverAccount() async {
-    final params =
-        RecoverAccountParams(email: recoverAccEmailAddressController.text);
+    final params = RecoverAccountParams(
+        email: recoverAccEmailAddressController.text.toLowerCase());
 
     authFieldValidationPage
         .validateRecoverAccountData(params: params)
@@ -218,7 +217,7 @@ class SigninController extends GetxController {
         }, (recovered) async {
           recoverAccRequestStatus = RequestStatus.success;
           if (Get.isBottomSheetOpen ?? false) {
-            Get.back();
+           Get.back();
           }
           openVerifyRecoverAcc();
         });
@@ -254,9 +253,11 @@ class SigninController extends GetxController {
               : mapFailureToErrorMessage(fail));
     }, (successMessage) async {
       signupController.verifyTokenRequestStatus = RequestStatus.success;
-      await customSnackbar(
-          title: 'Success',
-          message: LocaleKeys.snackBar_signUp_AccountVerified.tr());
+      if (Get.isBottomSheetOpen ?? false) {
+        Get.back();
+      }
+      customSnackbar(
+          title: 'Success', message: LocaleKeysSnackbarText.pinVerified);
       goToPResetPassword(
           resetPwBottomsheet: ResetPassword(
         pin: pin,
@@ -284,7 +285,10 @@ class SigninController extends GetxController {
                   : mapFailureToErrorMessage(fail));
         }, (successMessage) async {
           resetPasswordRequestStatus = RequestStatus.success;
-          await customSnackbar(
+          if (Get.isBottomSheetOpen ?? false) {
+            Get.back();
+          }
+          customSnackbar(
               title: 'Success', message: LocaleKeysSnackbarText.resetSuccess);
         });
       } else {
@@ -294,12 +298,10 @@ class SigninController extends GetxController {
   }
 
   goToPResetPassword({required Widget resetPwBottomsheet}) {
-    if (Get.isBottomSheetOpen ?? false) {
-      Get.back();
-    }
     resetPasswordController.clear();
     confirmPasswordController.clear();
-    Get.bottomSheet(resetPwBottomsheet, isScrollControlled: true);
+    Get.bottomSheet(resetPwBottomsheet,
+        isScrollControlled: true, exitBottomSheetDuration: Durations.long4);
   }
 
   Future<RequestStatus> signInUser({required SigninParams params}) async {
@@ -359,10 +361,10 @@ class SigninController extends GetxController {
     if (signupController.initialized) {
       sendVerificationRequestStatus = RequestStatus.loading;
       signupController.emailAddressController.text =
-          emailAddressController.text;
+          emailAddressController.text.toLowerCase();
       signupController.passwordController.text = passwordController.text;
       sendVerificationRequestStatus = await signupController.resendVerifyToken(
-          email: emailAddressController.text);
+          email: emailAddressController.text.toLowerCase());
 
       if (sendVerificationRequestStatus == RequestStatus.success) {
         signupController.openPinVerification();
