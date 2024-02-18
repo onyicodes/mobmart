@@ -18,7 +18,7 @@ class ProductShimmerLoadingCard extends StatelessWidget {
           children: [
             Container(
               height:150,
-              width: 200,
+              width: 180,
               color: Colors.grey.shade100,
             ),
             const SizedBox(
@@ -44,6 +44,7 @@ class ProductShimmerLoadingCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Row(
                     children: [
@@ -53,7 +54,7 @@ class ProductShimmerLoadingCard extends StatelessWidget {
                       ),
                       Container(
                         height: 10,
-                        width: 80,
+                        width: 70,
                         color: Colors.grey.shade100,
                       ),
                      

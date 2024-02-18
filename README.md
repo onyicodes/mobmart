@@ -17,5 +17,5 @@ samples, guidance on mobile development, and a full API reference.
 
 
 * Easy Localization setup steps
-- flutter pub run easy_localization:generate --source-dir ./assets/translations
-- flutter pub run easy_localization:generate -S assets/translations -f keys -o locale_keys.g.dart
+- dart run easy_localization:generate --source-dir ./assets/translations
+- dart run easy_localization:generate -S assets/translations -f keys -o locale_keys.g.dart

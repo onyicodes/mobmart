@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobmart_app/app/features/favourites/domain/usecases/fetch_favourite_products_usecase.dart';
-import 'package:mobmart_app/app/features/home/data/model/product_model.dart';
 import 'package:mobmart_app/app/routes/app_pages.dart';
 import 'package:mobmart_app/core/constants/failure_to_error_message.dart';
 import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/models/product_models/product_model.dart';
 import 'package:mobmart_app/core/parameters/no_params.dart';
 import 'package:get/get.dart' hide Trans;
 
@@ -13,11 +13,11 @@ class FavouriteController extends GetxController {
 
   final ScrollController scrollController = ScrollController();
 
-  final _favouriteProductModelList = <ProductModel>[].obs;
+  final _favouriteProductModelList = <Products>[].obs;
   final _favProductsRequestStatus = RequestStatus.initial.obs;
   final _errorMessage = "".obs;
 
-  List<ProductModel> get favouriteProductModelList =>
+  List<Products> get favouriteProductModelList =>
       _favouriteProductModelList;
   String get errorMessage => _errorMessage.value;
   RequestStatus get favProductsRequestStatus => _favProductsRequestStatus.value;
@@ -48,13 +48,13 @@ class FavouriteController extends GetxController {
     });
   }
 
-  updateFavouriteProduct({required ProductModel productModel}) {
+  updateFavouriteProduct({required Products productModel}) {
     favouriteProductModelList
         .removeWhere((element) => element.id == productModel.id);
     update();
   }
 
-  viewProductDetails({required ProductModel productModel}) {
+  viewProductDetails({required Products productModel}) {
     Get.toNamed(Routes.details, arguments: productModel);
   }
 }

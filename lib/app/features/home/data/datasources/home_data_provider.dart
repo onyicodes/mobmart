@@ -5,15 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:get/get_connect/connect.dart';
 import 'package:mobmart_app/app/features/home/data/model/carousel_model.dart';
 import 'package:mobmart_app/app/features/home/data/model/category_model.dart';
-import 'package:mobmart_app/app/features/home/data/model/product_model.dart';
 import 'package:mobmart_app/core/constants/api_url/api_url.dart';
 import 'package:mobmart_app/core/error/exceptions.dart';
+import 'package:mobmart_app/core/models/product_models/product_model.dart';
 import 'package:mobmart_app/core/network/network_info.dart';
 
 abstract class HomeDataProvider extends GetConnect {
   Future<List<CarouselModel>> fetchCarousel();
   Future<List<CategoryModel>> fetchCategories();
-  Future<List<ProductModel>> fetchProducts();
+  Future<List<Products>> fetchProducts();
 }
 
 class HomeDataProviderImpl extends HomeDataProvider {
@@ -46,7 +46,6 @@ class HomeDataProviderImpl extends HomeDataProvider {
 
       if (jsonString != null && jsonString['success']) {
         final List bannersJsonData = jsonString['data']["banners"];
-        print(bannersJsonData);
 
         return bannersJsonData
             .map((carouselJson) => CarouselModel.fromJson(carouselJson))
@@ -57,13 +56,11 @@ class HomeDataProviderImpl extends HomeDataProvider {
         }
         throw BadRequestException();
       } else if (response.statusCode == 401) {
-        throw FailedLoginException();
+        throw NotAuthorizedException();
       } else if (response.statusCode == 403) {
         throw ForbiddenException();
       } else if (response.statusCode == 404) {
-        throw AccountNotFoundException();
-      } else if (response.statusCode == 409) {
-        throw AccountNotVerifiedException();
+        throw NotFoundException();
       } else if (response.statusCode == 500) {
         throw ServerException();
       } else {
@@ -78,17 +75,39 @@ class HomeDataProviderImpl extends HomeDataProvider {
   }
 
   @override
-  Future<List<ProductModel>> fetchProducts() async {
-    final String response =
-        await rootBundle.loadString('assets/json_contents/home/products.json');
+  Future<List<Products>> fetchProducts() async {
+    const String productsUrl = ApiUrls.baseUrl + ApiUrls.products;
 
-    final Map<String, dynamic> jsonMap;
-    jsonMap = jsonDecode(response);
+    final Response response = await get(productsUrl);
+    print(response.body);
+    if (await networkInfo.isConnected) {
+      final Map<String, dynamic>? jsonString;
 
-    final List productJsonList = jsonMap["data"];
+      jsonString = response.body;
 
-    return productJsonList
-        .map((carouselJson) => ProductModel.fromMap(carouselJson))
-        .toList();
+      if (jsonString != null && jsonString['success']) {
+        final List productsJsonData = jsonString['data']["products"];
+        return productsJsonData
+            .map((carouselJson) => Products.fromJson(carouselJson))
+            .toList();
+      } else if (response.statusCode == 400) {
+        throw BadRequestException();
+      } else if (response.statusCode == 401) {
+        throw NotAuthorizedException();
+      } else if (response.statusCode == 403) {
+        throw ForbiddenException();
+      } else if (response.statusCode == 404) {
+        throw NotFoundException();
+      } else if (response.statusCode == 500) {
+        throw ServerException();
+      } else {
+        if (jsonString != null) {
+          throw jsonString['message'];
+        }
+        throw UnknownException();
+      }
+    } else {
+      throw NetworkException();
+    }
   }
 }

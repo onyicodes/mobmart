@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mobmart_app/app/features/home/data/model/shipping_model.dart';
 import 'package:mobmart_app/core/constants/general_constants.dart';
 import 'package:mobmart_app/core/general_widgets/custom_list_space.dart';
+import 'package:mobmart_app/core/models/product_models/shipping_info_model.dart';
 
 class ShippingInfoBuilder extends StatelessWidget {
-  final ShippingInfoModel shippingInfo;
+  final ShippingInfo shippingInfo;
   const ShippingInfoBuilder({super.key, required this.shippingInfo});
 
   @override
@@ -28,7 +28,7 @@ class ShippingInfoBuilder extends StatelessWidget {
                 style: primaryTextTheme.bodyLarge,
               ),
               Text(
-                shippingInfo.delivery,
+                shippingInfo.shippingFrom??"",
                 style: primaryTextTheme.headlineMedium,
               )
             ],
@@ -41,7 +41,7 @@ class ShippingInfoBuilder extends StatelessWidget {
                 style: primaryTextTheme.bodyLarge,
               ),
               Text(
-                shippingInfo.shipping,
+                shippingInfo.shippingFee??"Free",
                 style: primaryTextTheme.headlineMedium,
               )
             ],
@@ -54,7 +54,7 @@ class ShippingInfoBuilder extends StatelessWidget {
                 style: primaryTextTheme.bodyLarge,
               ),
               Text(
-                shippingInfo.arrive,
+                shippingInfo.arrivalDate??"20",
                 style: primaryTextTheme.headlineMedium,
               )
             ],

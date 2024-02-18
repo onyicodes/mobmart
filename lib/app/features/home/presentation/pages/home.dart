@@ -6,6 +6,7 @@ import 'package:mobmart_app/app/features/home/presentation/controllers/home_cont
 import 'package:mobmart_app/app/features/home/presentation/widgets/banner_loader.dart';
 import 'package:mobmart_app/app/features/home/presentation/widgets/carousel_app_bar.dart';
 import 'package:mobmart_app/app/features/home/presentation/widgets/category_builder_widget.dart';
+import 'package:mobmart_app/core/general_widgets/error_handling/error_handler_widget.dart';
 import 'package:mobmart_app/core/general_widgets/products/product_grid_builder.dart';
 import 'package:mobmart_app/app/features/home/presentation/widgets/search_app_bar_widget.dart';
 import 'package:mobmart_app/core/constants/general_constants.dart';
@@ -53,16 +54,9 @@ class Home extends GetView<HomeController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Best Sale Product",
+                                      "Products",
                                       style: primaryTextTheme.displaySmall,
                                     ),
-                                    Text(
-                                      "See more",
-                                      style: primaryTextTheme.headlineMedium!
-                                          .copyWith(
-                                              color: Theme.of(context)
-                                                  .primaryColor),
-                                    )
                                   ],
                                 ),
                               )),
@@ -152,20 +146,19 @@ class Home extends GetView<HomeController> {
                         ? GetBuilder<HomeController>(builder: (_) {
                             return ProductGridBuilder(
                                 productList: _.productModelList,
-                                checkFavourited: (product) => checkFavourited(
-                                    productModel: product,
-                                    favouriteProductList: _.favouriteController
-                                        .favouriteProductModelList),
+                                checkFavourited: (product) =>
+                                    checkFavourited(productModel: product),
                                 productRequestStatus: _.productsRequestStatus,
                                 onTapProduct: (productModel) {
                                   _.viewProductDetails(
-                                      productModel: productModel);
+                                      productModel: productModel, index: 0);
                                 });
                           })
-                        : Container(
-                            color: Colors.red,
-                            height: 200,
-                            width: 200,
+                        : ErrorHandlerWidget(
+                            message: _.errorMessage,
+                            onReload: () {
+                              _.fetchProducts();
+                            },
                           );
                   }),
                 )

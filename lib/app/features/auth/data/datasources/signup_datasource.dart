@@ -42,9 +42,7 @@ class SignupDataProviderImpl extends SignupDataProvider {
           throw UnknownException();
         }
       } else if (response.statusCode == 400) {
-        if (jsonString != null) {
-          throw jsonString["message"];
-        }
+        
         throw BadRequestException();
       } else if (response.statusCode == 403) {
         throw ForbiddenException();
@@ -85,9 +83,6 @@ class SignupDataProviderImpl extends SignupDataProvider {
           throw UnknownException();
         }
       } else if (response.statusCode == 400) {
-        if (jsonString != null) {
-          throw jsonString["message"];
-        }
         throw BadRequestException();
       } else if (response.statusCode == 403) {
         throw ForbiddenException();
@@ -131,9 +126,7 @@ class SignupDataProviderImpl extends SignupDataProvider {
           throw UnknownException();
         }
       } else if (response.statusCode == 400) {
-        if (jsonString != null) {
-          throw jsonString["message"];
-        }
+        
         throw BadRequestException();
       } else if (response.statusCode == 403) {
         throw ForbiddenException();

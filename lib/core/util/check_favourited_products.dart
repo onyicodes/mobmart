@@ -1,7 +1,6 @@
-import 'package:mobmart_app/app/features/home/data/model/product_model.dart';
+import 'package:mobmart_app/core/models/product_models/product_model.dart';
 
 bool checkFavourited(
-    {required ProductModel productModel,
-    required List<ProductModel> favouriteProductList}) {
-  return favouriteProductList.any((element) => element.id == productModel.id);
+    {required Products productModel}) {
+  return productModel.count?.favorites != 0;
 }

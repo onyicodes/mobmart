@@ -350,7 +350,7 @@ class SigninController extends GetxController {
     await storeBox.write(CacheKeys.refreshToken(lastUserId),
         "Bearer ${signInModel.refreshToken}");
     await storeBox.write(
-        CacheKeys.userData(lastUserId), signInModel.user.toMap());
+        CacheKeys.userData(lastUserId), signInModel.user.toJson());
     await storeBox.write(CacheKeys.isLoggedIn(lastUserId), true);
     await storeBox.write(
         CacheKeys.accountType(lastUserId), signInModel.user.userType);

@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_connect/connect.dart';
-import 'package:mobmart_app/app/features/home/data/model/product_model.dart';
 import 'package:mobmart_app/core/error/exceptions.dart';
+import 'package:mobmart_app/core/models/product_models/product_model.dart';
 
 abstract class FavouriteDataProvider extends GetConnect {
-  Future<List<ProductModel>> fetchFavouriteProducts();
+  Future<List<Products>> fetchFavouriteProducts();
 }
 
 class FavouriteDataProviderImpl extends FavouriteDataProvider {
@@ -15,7 +15,7 @@ class FavouriteDataProviderImpl extends FavouriteDataProvider {
   FavouriteDataProviderImpl({required this.firebaseDb});
 
   @override
-  Future<List<ProductModel>> fetchFavouriteProducts() async {
+  Future<List<Products>> fetchFavouriteProducts() async {
     final String response =
         await rootBundle.loadString('assets/json_contents/home/products.json');
 
@@ -28,7 +28,7 @@ class FavouriteDataProviderImpl extends FavouriteDataProvider {
     }
 
     return productJsonList
-        .map((carouselJson) => ProductModel.fromMap(carouselJson))
+        .map((carouselJson) => Products.fromJson(carouselJson))
         .toList();
   }
 }

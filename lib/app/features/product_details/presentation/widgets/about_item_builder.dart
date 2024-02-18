@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mobmart_app/app/features/home/data/model/product_model.dart';
+import 'package:mobmart_app/core/models/product_models/about_product_model.dart';
 
 class AboutItemsBuilder extends StatelessWidget {
-  final ProductModel productModel;
-  const AboutItemsBuilder({super.key, required this.productModel});
+  final AboutProduct aboutProduct;
+  const AboutItemsBuilder({super.key, required this.aboutProduct});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class AboutItemsBuilder extends StatelessWidget {
                         style: primaryTextTheme.bodyLarge,
                       ),
                       Text(
-                        productModel.brand,
+                        aboutProduct.brandName,
                         style: primaryTextTheme.headlineMedium,
                       )
                     ],
@@ -40,10 +40,11 @@ class AboutItemsBuilder extends StatelessWidget {
                         "Color:  ",
                         style: primaryTextTheme.bodyLarge,
                       ),
-                      Text(
-                        productModel.color,
+                      for(final color in aboutProduct.colors)
+                        Text(color.colorCode,
                         style: primaryTextTheme.headlineMedium,
                       )
+                     
                     ],
                   ),
                 ),
@@ -64,7 +65,7 @@ class AboutItemsBuilder extends StatelessWidget {
                         style: primaryTextTheme.bodyLarge,
                       ),
                       Text(
-                        productModel.category,
+                        aboutProduct.category?.name??"",
                         style: primaryTextTheme.headlineMedium,
                       )
                     ],
@@ -79,7 +80,7 @@ class AboutItemsBuilder extends StatelessWidget {
                         style: primaryTextTheme.bodyLarge,
                       ),
                       Text(
-                        productModel.material,
+                        aboutProduct.material,
                         style: primaryTextTheme.headlineMedium,
                       )
                     ],
@@ -102,7 +103,7 @@ class AboutItemsBuilder extends StatelessWidget {
                         style: primaryTextTheme.bodyLarge,
                       ),
                       Text(
-                        productModel.condition,
+                        aboutProduct.condition,
                         style: primaryTextTheme.headlineMedium,
                       )
                     ],
@@ -117,7 +118,7 @@ class AboutItemsBuilder extends StatelessWidget {
                         style: primaryTextTheme.bodyLarge,
                       ),
                       Text(
-                        productModel.heavy,
+                        '${aboutProduct.weight}',
                         style: primaryTextTheme.headlineMedium,
                       )
                     ],

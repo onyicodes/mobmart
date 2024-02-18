@@ -10,6 +10,7 @@ class CacheKeys {
   static String acceptedLocationService = 'acceptedLocationService';
   static String locationServiceDenyTime = 'locationServiceDenyTime';
   static String isLoggedIn(String lastUserId) => 'isLoggedIn$lastUserId';
+  static String cacheProductDetails(int productId) => 'cacheProdduct$productId';
   static String cannotLoginAsAGuest = "cannotLoginAsAGuest";
   static String isGuest(String lastUserId) => 'isGuest$lastUserId';
   static String accountType(String lastUserId) => 'accountType$lastUserId';

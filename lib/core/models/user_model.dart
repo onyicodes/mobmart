@@ -1,19 +1,37 @@
 // ignore_for_file: annotate_overrides, overridden_fields
+import 'dart:convert';
+
 import 'package:mobmart_app/core/entities/user_entity.dart';
 
 class UserModel extends UserEntity {
-  const UserModel({
+  final int id;
+  final String email;
+  final String name;
+  final String userType;
+  final String photo;
+  final DateTime dob;
+  final String deviceToken;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final bool verified;
+  final String phone;
+  final DateTime lastSeen;
+  final bool deleted;
+
+  UserModel({
     required this.id,
     required this.email,
     required this.name,
-    required this.phone,
-    required this.deviceToken,
-    required this.verified,
-    required this.createdAt,
-    required this.updatedAt,
+    required this.userType,
     required this.photo,
     required this.dob,
-    required this.userType,
+    required this.deviceToken,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.verified,
+    required this.lastSeen,
+    required this.phone,
+    required this.deleted,
   }) : super(
             id: id,
             email: email,
@@ -27,49 +45,69 @@ class UserModel extends UserEntity {
             updatedAt: updatedAt,
             userType: userType);
 
-  final int id;
-  final String email;
-  final String name;
-  final String photo;
-  final DateTime dob;
-  final String phone;
-  final String deviceToken;
-  final bool verified;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final String userType;
+  UserModel copyWith({
+    int? id,
+    String? email,
+    String? name,
+    String? userType,
+    String? photo,
+    DateTime? dob,
+    String? phone,
+    String? deviceToken,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    bool? verified,
+    DateTime? lastSeen,
+    bool? deleted,
+  }) =>
+      UserModel(
+        id: id ?? this.id,
+        email: email ?? this.email,
+        name: name ?? this.name,
+        userType: userType ?? this.userType,
+        photo: photo ?? this.photo,
+        dob: dob ?? this.dob,
+        phone:phone??this.phone,
+        deviceToken: deviceToken ?? this.deviceToken,
+        createdAt: createdAt ?? this.createdAt,
+        updatedAt: updatedAt ?? this.updatedAt,
+        verified: verified ?? this.verified,
+        lastSeen: lastSeen ?? this.lastSeen,
+        deleted: deleted ?? this.deleted,
+      );
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    print(json);
+  factory UserModel.fromRawJson(String str) => UserModel.fromJson(json.decode(str));
 
-    return UserModel(
-      id: json["id"] ?? 0,
-      email: json["email"] ?? "",
-      name: json["name"] ?? "",
-      phone: json["phone"] ?? "",
-      deviceToken: json["deviceToken"] ?? "",
-      verified: json["verified"] ?? false,
-      photo: json["photo"] ?? "",
-      dob: DateTime.parse(json["dob"] != null && json["dob"] != ''
-          ? json["dob"]
-          : DateTime.now().toIso8601String()),
-      createdAt:
-          DateTime.parse(json["createdAt"] ?? DateTime.now().toIso8601String()),
-      updatedAt:
-          DateTime.parse(json["updatedAt"] ?? DateTime.now().toIso8601String()),
-      userType: json["userType"] ?? "",
-    );
-  }
+  String toRawJson() => json.encode(toJson());
 
-  Map<String, dynamic> toMap() => {
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        id: json["id"],
+        email: json["email"]??"",
+        name: json["name"],
+        userType: json["userType"],
+        photo: json["photo"]??"",
+        dob: json["dob"],
+        phone: json['phone'],
+        deviceToken: json["deviceToken"],
+        createdAt: DateTime.parse(json["createdAt"]),
+        updatedAt: DateTime.parse(json["updatedAt"]),
+        verified: json["verified"],
+        lastSeen: DateTime.parse(json["lastSeen"]),
+        deleted: json["deleted"],
+      );
+
+  Map<String, dynamic> toJson() => {
         "id": id,
         "email": email,
         "name": name,
-        "phone": phone,
+        "userType": userType,
+        "photo": photo,
+        "dob": dob,
         "deviceToken": deviceToken,
-        "verified": verified,
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
-        "userType": userType,
+        "verified": verified,
+        "lastSeen": lastSeen.toIso8601String(),
+        "deleted": deleted,
       };
 }

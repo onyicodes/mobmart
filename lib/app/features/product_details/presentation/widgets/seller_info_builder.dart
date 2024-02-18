@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:mobmart_app/app/features/home/data/model/seller_info_model.dart';
 import 'package:mobmart_app/app/features/product_details/presentation/widgets/seller_profile_online_pics.dart';
 import 'package:mobmart_app/core/constants/assets_constants.dart';
 import 'package:mobmart_app/core/constants/general_constants.dart';
 import 'package:mobmart_app/core/general_widgets/button_widget.dart';
 import 'package:mobmart_app/core/general_widgets/custom_list_space.dart';
+import 'package:mobmart_app/core/models/product_models/business_model.dart';
 
 class SellerInfoBuilder extends StatelessWidget {
-  final SellerInforModel sellerInfoModel;
-  const SellerInfoBuilder({super.key, required this.sellerInfoModel});
+  final Business sellerInfoModel;
+  final DateTime? lastSeen;
+  const SellerInfoBuilder({super.key, required this.sellerInfoModel, required this.lastSeen});
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +31,9 @@ class SellerInfoBuilder extends StatelessWidget {
             child: Row(
               children: [
                 SellerProfileOnlinePics(
-                  profilePics: sellerInfoModel.image,
-                  lastActiveTime: sellerInfoModel.lastActive,
-                  storeName: sellerInfoModel.storeName,
+                  profilePics: sellerInfoModel.photo,
+                  lastActiveTime: 2,
+                  storeName: sellerInfoModel.name,
                 ),
                 const SizedBox(
                   width: 12,
@@ -41,14 +42,13 @@ class SellerInfoBuilder extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      sellerInfoModel.storeName.capitalize!
-                          .replaceAll(" ", "_"),
+                      sellerInfoModel.name.capitalize!.replaceAll(" ", "_"),
                       style: primaryTextTheme.headlineLarge,
                     ),
                     CustomListSpacing(
                         spacingValue: ListSpacingValue.spacingV8.value),
                     Text(
-                      "Active ${sellerInfoModel.lastActive} Min ago  |  ${sellerInfoModel.storeRating.positiveReviews}% Positive Feedback",
+                      "Active $lastSeen Min ago ",
                       style: primaryTextTheme.headlineSmall!
                           .copyWith(color: Theme.of(context).hintColor),
                     ),

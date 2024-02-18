@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mobmart_app/app/features/home/data/model/product_model.dart';
 import 'package:mobmart_app/core/general_widgets/products/product_card.dart';
 import 'package:mobmart_app/core/general_widgets/products/product_shimmer_loading_card.dart';
 import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/models/product_models/product_model.dart';
 
 class ProductGridBuilder extends StatelessWidget {
-  final List<ProductModel> productList;
+  final List<Products> productList;
   final RequestStatus productRequestStatus;
-  final void Function(ProductModel productModel)? updateFav;
+  final void Function(Products productModel)? updateFav;
   final bool isSeller;
-  final bool Function(ProductModel productModel) checkFavourited;
-  final void Function(ProductModel productModel) onTapProduct;
+  final bool Function(Products productModel) checkFavourited;
+  final void Function(Products productModel) onTapProduct;
   const ProductGridBuilder(
       {super.key,
       required this.productList,

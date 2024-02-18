@@ -4,6 +4,8 @@ class ApiUrls {
   static const String signup = '/register';
   static const String deals = '/deals';
   static const String banners = '/home/banners';
+  static const String products = '/products';
+  static const String productDetails = '/product/details';
   static const String verifyToken = '/verify-token';
   static const String recoverAccount = "/recoverAccount";
   static const String resetPassword = "/reset/password";

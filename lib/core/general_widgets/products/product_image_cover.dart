@@ -25,31 +25,7 @@ class ProductImageCover extends StatelessWidget {
                   fit: BoxFit.fill,
                   image: AssetImage(imageUrl),
                 ))),
-        Positioned(
-            right: 0,
-            top: 0,
-            child: IconButton(
-              icon: ClipOval(
-                  // <-- clips to the 200x200 [Container] below
-                  child: BackdropFilter(
-                      filter: ImageFilter.blur(
-                        sigmaX: 5.0,
-                        sigmaY: 5.0,
-                      ),
-                      child: Container(
-                          height: 50,
-                          width: 50,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                          ),
-                          child: favourited
-                              ? const Icon(
-                                  Icons.favorite,
-                                  color: Colors.red,
-                                )
-                              : const Icon(Icons.favorite_border)))),
-              onPressed: updateFav,
-            )),
+      
       ],
     );
   }

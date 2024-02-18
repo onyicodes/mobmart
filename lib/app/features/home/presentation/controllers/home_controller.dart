@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mobmart_app/app/features/favourites/presentation/controllers/favourite_controller.dart';
-import 'package:mobmart_app/app/features/home/data/model/product_model.dart';
 import 'package:mobmart_app/app/features/home/domain/entities/carousel_entity.dart';
 import 'package:mobmart_app/app/features/home/domain/entities/category_entity.dart';
 import 'package:mobmart_app/app/features/home/domain/usecases/fetch_carousel_usecase.dart';
 import 'package:mobmart_app/app/features/home/domain/usecases/fetch_categories_usecase.dart';
 import 'package:mobmart_app/app/features/home/domain/usecases/fetch_products_usecase.dart';
 import 'package:mobmart_app/app/routes/app_pages.dart';
+import 'package:mobmart_app/core/constants/failure_to_error_message.dart';
 import 'package:mobmart_app/core/constants/general_constants.dart';
+import 'package:mobmart_app/core/general_widgets/custom_snackbar.dart';
+import 'package:mobmart_app/core/models/product_models/product_model.dart';
 import 'package:mobmart_app/core/parameters/no_params.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:get/get.dart' hide Trans;
@@ -26,8 +28,9 @@ class HomeController extends GetxController {
 
   final _carousels = <CarouselEntity>[].obs;
   final _categories = <CategoryEntity>[].obs;
-  final _productModelList = <ProductModel>[].obs;
-  final _favouriteProductModelList = <ProductModel>[].obs;
+  final _errorMessage = "".obs;
+  final RxList<Products> _productModelList = <Products>[].obs;
+  final _favouriteProductModelList = <Products>[].obs;
   final _currentCarouselIndex = 0.obs;
   final _carouselBackgroundColor = Colors.transparent.obs;
   final _carouselRequestStatus = RequestStatus.initial.obs;
@@ -37,8 +40,8 @@ class HomeController extends GetxController {
 
   List<CarouselEntity> get carouselsList => _carousels;
   List<CategoryEntity> get categoriesList => _categories;
-  List<ProductModel> get productModelList => _productModelList;
-  List<ProductModel> get favouriteProductModelList =>
+  List<Products> get productModelList => _productModelList;
+  List<Products> get favouriteProductModelList =>
       _favouriteProductModelList;
   Color get carouselBackgroundColor => _carouselBackgroundColor.value;
   RequestStatus get carouselRequestStatus => _carouselRequestStatus.value;
@@ -46,6 +49,7 @@ class HomeController extends GetxController {
   RequestStatus get productsRequestStatus => _productsRequestStatus.value;
   int get currentCarouselIndex => _currentCarouselIndex.value;
   bool get appBarExpanded => _appBarExpanded.value;
+  String get errorMessage => _errorMessage.value;
 
   set carouselsList(value) => _carousels.value = value;
   set categoriesList(value) => _categories.value = value;
@@ -58,6 +62,7 @@ class HomeController extends GetxController {
   set carouselBackgroundColor(value) => _carouselBackgroundColor.value = value;
   set currentCarouselIndex(value) => _currentCarouselIndex.value = value;
   set appBarExpanded(value) => _appBarExpanded.value = value;
+  set errorMessage(value) => _errorMessage.value = value;
 
   PaletteGenerator? paletteGenerator;
   List<PaletteColor> carouselPaletteColorList = <PaletteColor>[];
@@ -98,6 +103,8 @@ class HomeController extends GetxController {
     final failOrFetch = await fetchProductsUsecase(NoParams());
     failOrFetch.fold((l) {
       productsRequestStatus = RequestStatus.error;
+      errorMessage = mapFailureToErrorMessage(l);
+      customSnackbar(title: "Error", message:  errorMessage);
     }, (r) async {
       productModelList = r;
 
@@ -113,7 +120,10 @@ class HomeController extends GetxController {
     carouselBackgroundColor = carouselPaletteColorList.first.color;
   }
 
-  viewProductDetails({required ProductModel productModel}) {
-    Get.toNamed(Routes.details, arguments: productModel);
+  viewProductDetails({required Products productModel, required int index}) {
+    final countUpdate = productModel.count?.copyWith(favorites: 1);
+    productModelList[index] = productModel.copyWith(count: countUpdate);
+
+    Get.toNamed(Routes.details, arguments: 1);
   }
 }
